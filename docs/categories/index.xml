@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Categories on Takuto&#39;s Blog</title>
+    <link>https://takutopsych.github.io/TakutoPsychBlog/categories/</link>
+    <description>Recent content in Categories on Takuto&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja</language>
+    <lastBuildDate>Sun, 06 Mar 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://takutopsych.github.io/TakutoPsychBlog/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>メン</title>
+      <link>https://takutopsych.github.io/TakutoPsychBlog/categories/%E3%83%A1%E3%83%B3/</link>
+      <pubDate>Sun, 06 Mar 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://takutopsych.github.io/TakutoPsychBlog/categories/%E3%83%A1%E3%83%B3/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>R</title>
+      <link>https://takutopsych.github.io/TakutoPsychBlog/categories/r/</link>
+      <pubDate>Tue, 01 Dec 2020 21:13:14 -0500</pubDate>
+      
+      <guid>https://takutopsych.github.io/TakutoPsychBlog/categories/r/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
