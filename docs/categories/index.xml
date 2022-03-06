@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Categories on Takuto&#39;s Blog</title>
+    <title>Categories on TakutoPsych Blog</title>
     <link>https://takutopsych.github.io/TakutoPsychBlog/categories/</link>
-    <description>Recent content in Categories on Takuto&#39;s Blog</description>
+    <description>Recent content in Categories on TakutoPsych Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
     <lastBuildDate>Sun, 06 Mar 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://takutopsych.github.io/TakutoPsychBlog/categories/index.xml" rel="self" type="application/rss+xml" />
@@ -13,6 +13,15 @@
       <pubDate>Sun, 06 Mar 2022 00:00:00 +0000</pubDate>
       
       <guid>https://takutopsych.github.io/TakutoPsychBlog/categories/%E5%9B%BA%E5%AE%9A%E3%83%9A%E3%83%BC%E3%82%B8/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ブログ</title>
+      <link>https://takutopsych.github.io/TakutoPsychBlog/categories/%E3%83%96%E3%83%AD%E3%82%B0/</link>
+      <pubDate>Thu, 15 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://takutopsych.github.io/TakutoPsychBlog/categories/%E3%83%96%E3%83%AD%E3%82%B0/</guid>
       <description></description>
     </item>
     
