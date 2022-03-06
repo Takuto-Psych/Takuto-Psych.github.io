@@ -1,15 +1,24 @@
 ---
-title: ラーメン
-author: TakutoPsych
+title: 研究業績
+author: Takuto
 date: '2022-03-06'
 slug: []
-categories:
-  - メン
-tags:
-  - ラーメン
+categories: []
+tags: []
 cover: ''
 keywords:
   - ''
   - ''
 summary: ''
 ---
+
+
+
+## 論文
+
+### 査読あり論文
+
+1.  Yoshida, T., & Ura, M. (2021). Loss of Control over Addictive Behaviors Mediate the Effect of Social Exclusion in Addiction. *International Journal of Psychological Studies*, 13(1), 27. <https://doi.org/10.5539/ijps.v13n1p27>
+
+
+
