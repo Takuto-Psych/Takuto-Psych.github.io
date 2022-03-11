@@ -2,26 +2,26 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>TakutoPsych Blog</title>
-    <link>https://takutopsych.github.io/TakutoPsychBlog/</link>
+    <link>https://takutopsych.github.io/</link>
     <description>Recent content on TakutoPsych Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Sun, 06 Mar 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://takutopsych.github.io/TakutoPsychBlog/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 06 Mar 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://takutopsych.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>博士後期課程に行くつもりだけど就職活動をした</title>
-      <link>https://takutopsych.github.io/TakutoPsychBlog/post/2022-03-06-/</link>
+      <link>https://takutopsych.github.io/post/2022-03-06-/</link>
       <pubDate>Sun, 06 Mar 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://takutopsych.github.io/TakutoPsychBlog/post/2022-03-06-/</guid>
+      <guid>https://takutopsych.github.io/post/2022-03-06-/</guid>
       <description>ゲームは趣味としてやりましょう</description>
     </item>
     
     <item>
       <title>研究内容・興味関心</title>
-      <link>https://takutopsych.github.io/TakutoPsychBlog/researchinterest/</link>
+      <link>https://takutopsych.github.io/researchinterest/</link>
       <pubDate>Sun, 06 Mar 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://takutopsych.github.io/TakutoPsychBlog/researchinterest/</guid>
+      <guid>https://takutopsych.github.io/researchinterest/</guid>
       <description>  研究テーマ・研究のモチベーション 依存症について  依存症を予測する環境因子の解明
  依存症の心理学的なメカニズムの解明
  依存症の神経科学的なメカニズムの解明
@@ -36,19 +36,19 @@
     
     <item>
       <title>研究業績</title>
-      <link>https://takutopsych.github.io/TakutoPsychBlog/researchachievement/</link>
+      <link>https://takutopsych.github.io/researchachievement/</link>
       <pubDate>Sun, 06 Mar 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://takutopsych.github.io/TakutoPsychBlog/researchachievement/</guid>
+      <guid>https://takutopsych.github.io/researchachievement/</guid>
       <description>  論文 査読あり論文 Yoshida, T., &amp;amp; Ura, M. (2021). Loss of Control over Addictive Behaviors Mediate the Effect of Social Exclusion in Addiction. International Journal of Psychological Studies, 13(1), 27. https://doi.org/10.5539/ijps.v13n1p27    </description>
     </item>
     
     <item>
       <title>自己紹介</title>
-      <link>https://takutopsych.github.io/TakutoPsychBlog/profile/</link>
+      <link>https://takutopsych.github.io/profile/</link>
       <pubDate>Sun, 06 Mar 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://takutopsych.github.io/TakutoPsychBlog/profile/</guid>
+      <guid>https://takutopsych.github.io/profile/</guid>
       <description>名前と年齢 吉田 拓人(よしだ たくと) 平成10年生まれ
  教育歴  2016 スポーツを頑張り脳震盪が繰り返される18年間
  2020 追手門学院大学心理学部心理学科卒業(学士)
