@@ -10,7 +10,7 @@
     <link rel="stylesheet" href='https://takutopsych.github.io/css/light.css' />
     <link rel="stylesheet" href='https://takutopsych.github.io/css/dark.css' />
     <link rel="stylesheet" href='https://takutopsych.github.io/css/syntax.css' />
-    <title>報酬感受性のパラメータをイジって予測誤差大きくなるか確認してみた - TakutoPsych Blog</title>
+    <title>報酬感受性のパラメータをイジって予測誤差大きくなるか確認してみたよ - TakutoPsych Blog</title>
     
     <link rel="icon" type="image/x-icon" href='/images/github.png'>
     
@@ -26,7 +26,7 @@
 
 
 <meta name="twitter:card" content="summary" />
-<meta name="twitter:title" content="報酬感受性のパラメータをイジって予測誤差大きくなるか確認してみた - TakutoPsych Blog" />
+<meta name="twitter:title" content="報酬感受性のパラメータをイジって予測誤差大きくなるか確認してみたよ - TakutoPsych Blog" />
 <meta name="twitter:description"
   content="Qの上限が上がってるんやからそりゃ予測誤差deltaも上がるわな" />
 <meta name="twitter:site" content="https://takutopsych.github.io/" />
@@ -36,11 +36,11 @@
 
 
 <meta property="og:type" content="article" />
-<meta property="og:title" content="報酬感受性のパラメータをイジって予測誤差大きくなるか確認してみた - TakutoPsych Blog">
+<meta property="og:title" content="報酬感受性のパラメータをイジって予測誤差大きくなるか確認してみたよ - TakutoPsych Blog">
 <meta property="og:description"
   content="Qの上限が上がってるんやからそりゃ予測誤差deltaも上がるわな" />
 <meta property="og:url" content="https://takutopsych.github.io/post/2022-03-12-/" />
-<meta property="og:site_name" content="報酬感受性のパラメータをイジって予測誤差大きくなるか確認してみた" />
+<meta property="og:site_name" content="報酬感受性のパラメータをイジって予測誤差大きくなるか確認してみたよ" />
 <meta property="og:image"
   content="https://takutopsych.github.io/">
 <meta property="og:image:width" content="2048">
@@ -123,7 +123,7 @@
                   <span class="author">
                     <a href="https://takutopsych.github.io/">TakutoPsych</a></span><span
                     class="path-divider">/</span><strong class="css-truncate-target mr-1" style="max-width: 410px"><a
-                      href="https://takutopsych.github.io/post/2022-03-12-/">報酬感受性のパラメータをイジって予測誤差大きくなるか確認してみた</a></strong>
+                      href="https://takutopsych.github.io/post/2022-03-12-/">報酬感受性のパラメータをイジって予測誤差大きくなるか確認してみたよ</a></strong>
                 </h1>
                 <div class="note m-0">
                   Created <relative-time datetime="Sat, 12 Mar 2022 00:00:00 &#43;0000"
@@ -132,9 +132,9 @@
 
                   
                   <span class="file-info-divider"></span>
-                  Modified <relative-time datetime="Sat, 12 Mar 2022 16:57:20 &#43;0900"
+                  Modified <relative-time datetime="Sat, 12 Mar 2022 17:20:59 &#43;0900"
                     class="no-wrap">
-                    Sat, 12 Mar 2022 16:57:20 &#43;0900</relative-time>
+                    Sat, 12 Mar 2022 17:20:59 &#43;0900</relative-time>
                   
                 </div>
               </div>
@@ -238,7 +238,7 @@
 <p>確率選択課題では、◯と△という刺激を参加者にに提示して◯もしくは△の選択をさせます。参加者が◯を選ぶと、80%で報酬のフィードバック、20%で報酬なしのフィードバックを得られます。一方△を選ぶと、確率を入れ替えて、20%で報酬のフィードバック、80%で報酬なしのフィードバックを得られます。課題によっては、報酬なしのフィードバックのところが罰のフィードバックになります。</p>
 <p>以下の図1の実験図は修論の図を少し改変したものです。その図の学習セッションが上に書いたものです。修論では、罰ありに設定して、70%, 30%の刺激ペアAB、60%, 40%の刺激ペアCDになっています。投稿したら読んでくだしゃい。</p>
 <div class="figure">
-<img src="images/posts/2022-03-12-/only_gain_probablistic_selection_task.001.jpeg"  alt="図1. 確率選択課題" />
+<img src="img/only_gain_probablistic_selection_task.001.jpeg" title="図1. 確率選択課題" alt="" />
 <p class="caption">図1. 確率選択課題</p>
 </div>
 <p>今回は、刺激ペア多いとめんどくさいし、テストセッションに興味ないし、パラメータ多いとめんどくさいので、標準的な80%で報酬のフィードバック20%で報酬なしのフィードバックを得られる刺激Aと20%で報酬のフィードバック80%で報酬なしのフィードバックを得られる刺激Bのペアを利用してシミュレーションしていきます。</p>
@@ -483,9 +483,9 @@ print(all_alphas_color_point)</code></pre>
 <pre class="r"><code>##mean
 with(simulation_DF, tapply(delta, list(rhos, alphas), mean))</code></pre>
 <pre><code>##          0.1        0.5        0.9
-## 1 0.09778483 0.02385826 0.01111100
-## 5 0.41273591 0.10072984 0.05105051
-## 9 0.68555725 0.15174041 0.00999091</code></pre>
+## 1 0.07760067 0.01286252 0.01100121
+## 5 0.43974304 0.08134765 0.05605056
+## 9 0.73435651 0.19261195 0.09999099</code></pre>
 <p>おっと、δの平均値だけ見ると、ρの高さが、δの大きさを予測してなさそうですね。</p>
 <p>ただ、図と合わせてみると、正の値であれ負の値であれδの絶対値の大きさに、ρが効きそうですね。絶対値の大きい正と絶対値の大きい負の値を足し合わせたから、0に近づいちゃったのかもしれません。</p>
 <p>てことで、以下の処理。</p>
@@ -527,10 +527,10 @@ print(only_gain_alphas_color_point)</code></pre>
 <p>ついでに記述統計。</p>
 <pre class="r"><code>##mean
 with(only_gain_trial_simulation_DF, tapply(delta, list(rhos, alphas), mean))</code></pre>
-<pre><code>##         0.1       0.5       0.9
-## 1 0.3473121 0.3946495 0.3093256
-## 5 1.2758536 1.2932214 1.0905484
-## 9 2.6267873 1.4558836 2.0444388</code></pre>
+<pre><code>##         0.1      0.5       0.9
+## 1 0.5209803 0.245039 0.2795644
+## 5 1.5913677 1.227705 1.4759570
+## 9 2.7257330 1.965298 2.2646805</code></pre>
 <p>報酬が得られなかった試行を取り除いたら、つまりδが負になる試行を取り除いたら、全試行では陰に隠れていたρの強烈なδへのパワーが現れましたね。</p>
 <p>報酬感受性ρがδの予測誤差を修飾していることが確認されました。動機づけを生み出すドパミンは、他のパラメータで修飾されているかもしれませんね。気持ちよさ(hedonic)を生み出すモルヒネがドパミンの修飾パラメータだと僕は思いました。まあ強化学習とかQ学習とか数理的な背景は置いておいても、報酬得られた時にその主観的な気持ちよさが大きくなれば、そりゃその行動の動機づけ高まりますよね、多分。そいえば、射精時の主観的な気持ちよさが、オピオイド拮抗薬を入れたら下がったり<span class="citation">(<a href="#ref-Murphy1990" role="doc-biblioref">Murphy et al. 1990</a>)</span>するんで、まあ報酬それ自体の気持ち良さの修飾にオピオイド効いているような気はします。強化学習の報酬の文脈とはズレるけども。</p>
 <p>あと、すっごいどうでもいい後書きなんですけど、αを「あるふぁ」と打って変換で入力していたのですが、いっぱい「あるふぁ」を打っていたら、アルファタウリにF1頑張ってほしいなって思いました。すっごいどうでもいい後書き失礼しました。</p>
