@@ -6,7 +6,25 @@
     <description>Recent content on TakutoPsych Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Sun, 06 Mar 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://takutopsych.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 12 Mar 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://takutopsych.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>報酬感受性のパラメータをイジって予測誤差大きくなるか確認してみた</title>
+      <link>https://takutopsych.github.io/post/2022-03-12-/</link>
+      <pubDate>Sat, 12 Mar 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://takutopsych.github.io/post/2022-03-12-/</guid>
+      <description>Qの上限が上がってるんやからそりゃ予測誤差deltaも上がるわな</description>
+    </item>
+    
+    <item>
+      <title>博士後期課程に行くつもりだけど就職活動をした</title>
+      <link>https://takutopsych.github.io/post/2022-03-06-/</link>
+      <pubDate>Sun, 06 Mar 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://takutopsych.github.io/post/2022-03-06-/</guid>
+      <description>ゲームは趣味としてやりましょう</description>
+    </item>
+    
     <item>
       <title>研究内容・興味関心</title>
       <link>https://takutopsych.github.io/researchinterest/</link>
