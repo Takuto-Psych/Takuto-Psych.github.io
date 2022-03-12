@@ -132,9 +132,9 @@
 
                   
                   <span class="file-info-divider"></span>
-                  Modified <relative-time datetime="Sat, 12 Mar 2022 17:20:59 &#43;0900"
+                  Modified <relative-time datetime="Sat, 12 Mar 2022 17:23:33 &#43;0900"
                     class="no-wrap">
-                    Sat, 12 Mar 2022 17:20:59 &#43;0900</relative-time>
+                    Sat, 12 Mar 2022 17:23:33 &#43;0900</relative-time>
                   
                 </div>
               </div>
@@ -482,10 +482,10 @@ print(all_alphas_color_point)</code></pre>
 <p>記述統計をとってみると、</p>
 <pre class="r"><code>##mean
 with(simulation_DF, tapply(delta, list(rhos, alphas), mean))</code></pre>
-<pre><code>##          0.1        0.5        0.9
-## 1 0.07760067 0.01286252 0.01100121
-## 5 0.43974304 0.08134765 0.05605056
-## 9 0.73435651 0.19261195 0.09999099</code></pre>
+<pre><code>##         0.1        0.5        0.9
+## 1 0.1063440 0.03023908 0.01211121
+## 5 0.4018482 0.09915743 0.05560561
+## 9 0.8458679 0.16593750 0.09999992</code></pre>
 <p>おっと、δの平均値だけ見ると、ρの高さが、δの大きさを予測してなさそうですね。</p>
 <p>ただ、図と合わせてみると、正の値であれ負の値であれδの絶対値の大きさに、ρが効きそうですね。絶対値の大きい正と絶対値の大きい負の値を足し合わせたから、0に近づいちゃったのかもしれません。</p>
 <p>てことで、以下の処理。</p>
@@ -528,9 +528,9 @@ print(only_gain_alphas_color_point)</code></pre>
 <pre class="r"><code>##mean
 with(only_gain_trial_simulation_DF, tapply(delta, list(rhos, alphas), mean))</code></pre>
 <pre><code>##         0.1      0.5       0.9
-## 1 0.5209803 0.245039 0.2795644
-## 5 1.5913677 1.227705 1.4759570
-## 9 2.7257330 1.965298 2.2646805</code></pre>
+## 1 0.4169013 0.316427 0.2217453
+## 5 1.5720608 1.183670 1.5822321
+## 9 1.7323303 2.099103 2.3057660</code></pre>
 <p>報酬が得られなかった試行を取り除いたら、つまりδが負になる試行を取り除いたら、全試行では陰に隠れていたρの強烈なδへのパワーが現れましたね。</p>
 <p>報酬感受性ρがδの予測誤差を修飾していることが確認されました。動機づけを生み出すドパミンは、他のパラメータで修飾されているかもしれませんね。気持ちよさ(hedonic)を生み出すモルヒネがドパミンの修飾パラメータだと僕は思いました。まあ強化学習とかQ学習とか数理的な背景は置いておいても、報酬得られた時にその主観的な気持ちよさが大きくなれば、そりゃその行動の動機づけ高まりますよね、多分。そいえば、射精時の主観的な気持ちよさが、オピオイド拮抗薬を入れたら下がったり<span class="citation">(<a href="#ref-Murphy1990" role="doc-biblioref">Murphy et al. 1990</a>)</span>するんで、まあ報酬それ自体の気持ち良さの修飾にオピオイド効いているような気はします。強化学習の報酬の文脈とはズレるけども。</p>
 <p>あと、すっごいどうでもいい後書きなんですけど、αを「あるふぁ」と打って変換で入力していたのですが、いっぱい「あるふぁ」を打っていたら、アルファタウリにF1頑張ってほしいなって思いました。すっごいどうでもいい後書き失礼しました。</p>
@@ -599,6 +599,14 @@ Murphy, Michael R., Stuart A. Checkley, Jonathan R. Seckl, and Stafford L. Light
 </body>
 
 <script type="application/javascript" src="https://takutopsych.github.io/js/github-style.js"></script>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"
+  integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"
+  integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"
+  integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
+  onload="renderMathInElement(document.body);"></script>
 
 
 
