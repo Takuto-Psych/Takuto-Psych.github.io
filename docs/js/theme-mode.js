@@ -16,8 +16,8 @@ function switchTheme() {
       iconElement.removeAttribute('class');
     }
   }
+  
 }
-
 function setTheme(style) {
   document.querySelectorAll('.isInitialToggle').forEach(elem => {
     elem.classList.remove('isInitialToggle');
@@ -35,3 +35,5 @@ function currentTheme() {
 (() => {
   setTheme(currentTheme());
 })();
+
+

@@ -173,8 +173,6 @@
                   </div>
                 </div>
               </div>
-
-
               <div class="Box-body px-5 pb-5" style="z-index: 1">
                 <article class="markdown-body entry-content container-lg">
 <script src="https://takutopsych.github.io/researchachievement/index_files/header-attrs/header-attrs.js"></script>
@@ -198,19 +196,31 @@
     </div>
   </main>
 </div>
+
 <script type="application/javascript" src='https://takutopsych.github.io/js/toc.js'></script>
 <link rel="stylesheet" href='https://takutopsych.github.io/css/toc.css' />
 
 
+<div class="utterances">
+  <script>
+    if(currentTheme() == 'light'){
+      var utterancesTheme = 'github-light';
+    } else{
+      var utterancesTheme = 'github-dark';
+    }
+    var utterancesScript = document.createElement('script');
+    utterancesScript.src = 'https://utteranc.es/client.js';
+    utterancesScript.setAttribute('repo', 'TakutoPsych\/TakutoPsych.github.io');
+    utterancesScript.setAttribute('issue-term', 'title');
+    utterancesScript.setAttribute('theme', utterancesTheme);
+    utterancesScript.setAttribute('crossorigin', 'anonymous');
+    utterancesScript.setAttribute('async', '');
+    document.querySelector('.utterances').appendChild(utterancesScript);
+  </script>
+</div>
+
+
   <div class="footer container-xl width-full p-responsive">
-    <script src="https://utteranc.es/client.js"
-          repo="TakutoPsych/takutopsych.github.io"
-          issue-term="pathname"
-          theme="github-light"
-          crossorigin="anonymous"
-          async>
-        </script>
-<div class="footer container-xl width-full p-responsive">
   <div
     class="position-relative d-flex flex-row-reverse flex-lg-row flex-wrap flex-lg-nowrap flex-justify-center flex-lg-justify-between flex-sm-items-center pt-6 pb-2 mt-6 f6 text-gray border-top border-gray-light ">
     <a aria-label="Homepage" title="GitHub" class="footer-octicon d-none d-lg-block mr-lg-4" href="https://takutopsych.github.io/">
