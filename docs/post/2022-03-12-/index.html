@@ -132,9 +132,9 @@
 
                   
                   <span class="file-info-divider"></span>
-                  Modified <relative-time datetime="Sat, 12 Mar 2022 17:23:33 &#43;0900"
+                  Modified <relative-time datetime="Mon, 14 Mar 2022 18:03:44 &#43;0900"
                     class="no-wrap">
-                    Sat, 12 Mar 2022 17:23:33 &#43;0900</relative-time>
+                    Mon, 14 Mar 2022 18:03:44 &#43;0900</relative-time>
                   
                 </div>
               </div>
@@ -164,7 +164,7 @@
                         </div>
                       </div>
                     </details-menu>
-                      4365 Words
+                      4471 Words
                     
 
                   </div>
@@ -300,7 +300,9 @@ B_probability &lt;- 0.2</code></pre>
 <div id="パラメータチュニチュニします" class="section level3">
 <h3>パラメータチュニチュニします</h3>
 <p>まずはパラメータをチューニングしていきます。</p>
-<pre class="r"><code>alpha_input &lt;- c(0.1, 0.5, 0.9)
+<pre class="r"><code>## alphaの値を設定する。
+alpha_input &lt;- c(0.1, 0.5, 0.9)
+## rhoの値を設定する。
 rho_input &lt;- c(1, 5, 9)
 
 alpha_length &lt;- length(alpha_input)
@@ -482,10 +484,10 @@ print(all_alphas_color_point)</code></pre>
 <p>記述統計をとってみると、</p>
 <pre class="r"><code>##mean
 with(simulation_DF, tapply(delta, list(rhos, alphas), mean))</code></pre>
-<pre><code>##         0.1        0.5        0.9
-## 1 0.1063440 0.03023908 0.01211121
-## 5 0.4018482 0.09915743 0.05560561
-## 9 0.8458679 0.16593750 0.09999992</code></pre>
+<pre><code>##          0.1         0.5        0.9
+## 1 0.09910012 0.008436569 0.01201011
+## 5 0.38192734 0.078124976 0.05510561
+## 9 0.72081151 0.082177733 0.10098911</code></pre>
 <p>おっと、δの平均値だけ見ると、ρの高さが、δの大きさを予測してなさそうですね。</p>
 <p>ただ、図と合わせてみると、正の値であれ負の値であれδの絶対値の大きさに、ρが効きそうですね。絶対値の大きい正と絶対値の大きい負の値を足し合わせたから、0に近づいちゃったのかもしれません。</p>
 <p>てことで、以下の処理。</p>
@@ -527,13 +529,22 @@ print(only_gain_alphas_color_point)</code></pre>
 <p>ついでに記述統計。</p>
 <pre class="r"><code>##mean
 with(only_gain_trial_simulation_DF, tapply(delta, list(rhos, alphas), mean))</code></pre>
-<pre><code>##         0.1      0.5       0.9
-## 1 0.4169013 0.316427 0.2217453
-## 5 1.5720608 1.183670 1.5822321
-## 9 1.7323303 2.099103 2.3057660</code></pre>
+<pre><code>##         0.1       0.5       0.9
+## 1 0.3239501 0.2647654 0.2413424
+## 5 1.1651199 0.7043983 1.1191400
+## 9 3.0813903 1.6233622 2.1848176</code></pre>
 <p>報酬が得られなかった試行を取り除いたら、つまりδが負になる試行を取り除いたら、全試行では陰に隠れていたρの強烈なδへのパワーが現れましたね。</p>
 <p>報酬感受性ρがδの予測誤差を修飾していることが確認されました。動機づけを生み出すドパミンは、他のパラメータで修飾されているかもしれませんね。気持ちよさ(hedonic)を生み出すモルヒネがドパミンの修飾パラメータだと僕は思いました。まあ強化学習とかQ学習とか数理的な背景は置いておいても、報酬得られた時にその主観的な気持ちよさが大きくなれば、そりゃその行動の動機づけ高まりますよね、多分。そいえば、射精時の主観的な気持ちよさが、オピオイド拮抗薬を入れたら下がったり<span class="citation">(<a href="#ref-Murphy1990" role="doc-biblioref">Murphy et al. 1990</a>)</span>するんで、まあ報酬それ自体の気持ち良さの修飾にオピオイド効いているような気はします。強化学習の報酬の文脈とはズレるけども。</p>
 <p>あと、すっごいどうでもいい後書きなんですけど、αを「あるふぁ」と打って変換で入力していたのですが、いっぱい「あるふぁ」を打っていたら、アルファタウリにF1頑張ってほしいなって思いました。すっごいどうでもいい後書き失礼しました。</p>
+</div>
+<div id="サンプルコード" class="section level2">
+<h2>サンプルコード</h2>
+<p>ここまでチャンクで書いたスクリプトは、<a href="r_script/sample_code.R">こちら</a>からダウンロードできます。</p>
+<p>ρやαの値をいじりたい場合は、</p>
+<pre class="r"><code>rho_input &lt;- c(1, 5, 9)</code></pre>
+<p>と</p>
+<pre class="r"><code>alpha_input &lt;- c(0.1, 0.5, 0.9)</code></pre>
+<p>の値をいじってください。</p>
 </div>
 <div id="引用文献" class="section level2 unnumbered">
 <h2>引用文献</h2>

@@ -1,3 +1,1 @@
 User-agent: *
-Disallow:
-Sitemap: https://takutopsych.github.io/sitemap.xml
