@@ -6,7 +6,16 @@
     <description>Recent content in 勉強 on TakutoPsych Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Sat, 12 Mar 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://takutopsych.github.io/tags/%E5%8B%89%E5%BC%B7/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 15 Mar 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://takutopsych.github.io/tags/%E5%8B%89%E5%BC%B7/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>強化学習のそれぞれのパラメータの役割</title>
+      <link>https://takutopsych.github.io/post/2022-03-15-/</link>
+      <pubDate>Tue, 15 Mar 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://takutopsych.github.io/post/2022-03-15-/</guid>
+      <description>  </description>
+    </item>
+    
     <item>
       <title>報酬感受性のパラメータをイジって予測誤差大きくなるか確認してみたよ</title>
       <link>https://takutopsych.github.io/post/2022-03-12-/</link>

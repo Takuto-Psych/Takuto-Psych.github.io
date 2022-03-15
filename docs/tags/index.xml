@@ -6,11 +6,11 @@
     <description>Recent content in Tags on TakutoPsych Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Sat, 12 Mar 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://takutopsych.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 15 Mar 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://takutopsych.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>R</title>
       <link>https://takutopsych.github.io/tags/r/</link>
-      <pubDate>Sat, 12 Mar 2022 00:00:00 +0000</pubDate>
+      <pubDate>Tue, 15 Mar 2022 00:00:00 +0000</pubDate>
       
       <guid>https://takutopsych.github.io/tags/r/</guid>
       <description></description>
@@ -19,18 +19,54 @@
     <item>
       <title>勉強</title>
       <link>https://takutopsych.github.io/tags/%E5%8B%89%E5%BC%B7/</link>
-      <pubDate>Sat, 12 Mar 2022 00:00:00 +0000</pubDate>
+      <pubDate>Tue, 15 Mar 2022 00:00:00 +0000</pubDate>
       
       <guid>https://takutopsych.github.io/tags/%E5%8B%89%E5%BC%B7/</guid>
       <description></description>
     </item>
     
     <item>
+      <title>学習心理学</title>
+      <link>https://takutopsych.github.io/tags/%E5%AD%A6%E7%BF%92%E5%BF%83%E7%90%86%E5%AD%A6/</link>
+      <pubDate>Tue, 15 Mar 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://takutopsych.github.io/tags/%E5%AD%A6%E7%BF%92%E5%BF%83%E7%90%86%E5%AD%A6/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>強化学習</title>
       <link>https://takutopsych.github.io/tags/%E5%BC%B7%E5%8C%96%E5%AD%A6%E7%BF%92/</link>
-      <pubDate>Sat, 12 Mar 2022 00:00:00 +0000</pubDate>
+      <pubDate>Tue, 15 Mar 2022 00:00:00 +0000</pubDate>
       
       <guid>https://takutopsych.github.io/tags/%E5%BC%B7%E5%8C%96%E5%AD%A6%E7%BF%92/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>文献</title>
+      <link>https://takutopsych.github.io/tags/%E6%96%87%E7%8C%AE/</link>
+      <pubDate>Tue, 15 Mar 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://takutopsych.github.io/tags/%E6%96%87%E7%8C%AE/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>神経科学</title>
+      <link>https://takutopsych.github.io/tags/%E7%A5%9E%E7%B5%8C%E7%A7%91%E5%AD%A6/</link>
+      <pubDate>Tue, 15 Mar 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://takutopsych.github.io/tags/%E7%A5%9E%E7%B5%8C%E7%A7%91%E5%AD%A6/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>論文</title>
+      <link>https://takutopsych.github.io/tags/%E8%AB%96%E6%96%87/</link>
+      <pubDate>Tue, 15 Mar 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://takutopsych.github.io/tags/%E8%AB%96%E6%96%87/</guid>
       <description></description>
     </item>
     
