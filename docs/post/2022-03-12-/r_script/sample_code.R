@@ -3,6 +3,7 @@ library(ggplot2)
 library(dplyr)
 library(tidyr)
 library(htmlTable)
+set.seed(1)
 ##　試行数について
 trial <- 100
 ## 選択刺激の報酬フィードバックの確率設定
@@ -159,3 +160,5 @@ geom_point()
 print(only_gain_alphas_color_point)
 ##mean
 with(only_gain_trial_simulation_DF, tapply(delta, list(rhos, alphas), mean))
+rho_input <- c(1, 5, 9)
+alpha_input <- c(0.1, 0.5, 0.9)
