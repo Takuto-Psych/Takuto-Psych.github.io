@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>TakutoPsy Blog</title>
+    <title>Takuto Psych Blog</title>
     <link>https://takuto-psych.github.io/</link>
-    <description>Recent content on TakutoPsy Blog</description>
+    <description>Recent content on Takuto Psych Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
     <lastBuildDate>Tue, 15 Mar 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://takuto-psych.github.io/index.xml" rel="self" type="application/rss+xml" />
