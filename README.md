@@ -5,4 +5,4 @@
 Rのコード上げたり。
 
 
-https://takutopsych.github.io/
+https://takuto-psych.github.io/
