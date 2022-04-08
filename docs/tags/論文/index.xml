@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>論文 on TakutoPsych Blog</title>
-    <link>https://takutopsych.github.io/tags/%E8%AB%96%E6%96%87/</link>
-    <description>Recent content in 論文 on TakutoPsych Blog</description>
+    <title>論文 on TakutoPsy Blog</title>
+    <link>https://takuto-psych.github.io/tags/%E8%AB%96%E6%96%87/</link>
+    <description>Recent content in 論文 on TakutoPsy Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Tue, 15 Mar 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://takutopsych.github.io/tags/%E8%AB%96%E6%96%87/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 15 Mar 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://takuto-psych.github.io/tags/%E8%AB%96%E6%96%87/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>確率選択課題におけるQ学習式のパラメータの役割</title>
-      <link>https://takutopsych.github.io/post/2022-03-15-/</link>
+      <link>https://takuto-psych.github.io/post/2022-03-15-/</link>
       <pubDate>Tue, 15 Mar 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://takutopsych.github.io/post/2022-03-15-/</guid>
+      <guid>https://takuto-psych.github.io/post/2022-03-15-/</guid>
       <description>Q学習の代表的なパラメータの説明をしました。数式よりも実際の行動選択の説明を頑張りました。みんな！強化しよう！！</description>
     </item>
     

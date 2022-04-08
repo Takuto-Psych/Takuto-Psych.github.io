@@ -1,1 +1,1 @@
-User-agent: *Sitemap: https://takutopsych.github.io/sitemap.xml
+User-agent: *
