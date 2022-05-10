@@ -128,9 +128,9 @@
 
                   
                   <span class="file-info-divider"></span>
-                  Modified <relative-time datetime="Tue, 10 May 2022 18:19:01 &#43;0900"
+                  Modified <relative-time datetime="Tue, 10 May 2022 19:08:34 &#43;0900"
                     class="no-wrap">
-                    Tue, 10 May 2022 18:19:01 &#43;0900</relative-time>
+                    Tue, 10 May 2022 19:08:34 &#43;0900</relative-time>
                   
                 </div>
               </div>
@@ -160,7 +160,7 @@
                         </div>
                       </div>
                     </details-menu>
-                      1976 Words
+                      2161 Words
                     
 
                   </div>
@@ -199,7 +199,7 @@
 <div id="dplyrとは" class="section level2">
 <h2>dplyrとは</h2>
 <p>R上でエレガントにデータフレーム処理を行うためのパッケージがdplyrです。まあ多分この記事に辿り着いている異常者の皆様には説明不要な気がしますが。</p>
-<p>あ、そんな異常者の皆様もdplyrの読み方は知らないでしょう。dplyrは、ドピュリ！！！嗚呼ああぁぁ！！！イグッ!!と読みます。会社や大学で、dplyrの説明するときには、ドピュリ！！！嗚呼ああぁぁ！！！イグッ!!と言いましょう。 嘘つきがたまに、「ディープライヤー」とか言ってますが、嘘つきは相手にしてはいけません。ドピュリ！！嗚呼ああぁぁ！！イグッ!!ですからね。</p>
+<p>あ、そんな異常者の皆様もdplyrの読み方は知らないでしょう。dplyrは、ドピュリ！！！嗚呼ああぁぁ！！！と読みます。会社や大学で、dplyrの説明するときには、ドピュリ！！！嗚呼ああぁぁ！！！と言いましょう。 嘘つきがたまに、「ディープライヤー」とか言ってますが、嘘つきは相手にしてはいけません。ドピュリ！！嗚呼ああぁぁ！！ですからね。</p>
 </div>
 <div id="sqlとは" class="section level2">
 <h2>SQLとは</h2>
@@ -267,32 +267,32 @@
 <tr class="odd">
 <td>データフレーム(変数)の中の列(変数)を指定</td>
 <td>〇〇<strong>$</strong>列</td>
-<td>R標準のデータフレーム捜査</td>
+<td>R標準のデータフレーム操作</td>
 <td>〇〇 <strong>.</strong> 列</td>
 </tr>
 <tr class="even">
-<td></td>
-<td></td>
-<td></td>
-<td></td>
+<td>完全一致</td>
+<td>==</td>
+<td>R標準演算子</td>
+<td>=‘異常人間’</td>
 </tr>
 <tr class="odd">
-<td></td>
-<td></td>
-<td></td>
-<td></td>
+<td>部分一致</td>
+<td>stringr::str_detect(“常人”)</td>
+<td>dplyrじゃないけどtidyverse内なので許せ</td>
+<td>LIKE ‘%常人%’</td>
 </tr>
 <tr class="even">
-<td></td>
-<td></td>
-<td></td>
-<td></td>
+<td>前方一致</td>
+<td>stringr::str_starts(“異常”)</td>
+<td>dplyrじゃないけどtidyverse内なので許せ</td>
+<td>LIKE ‘異常%’</td>
 </tr>
 <tr class="odd">
-<td></td>
-<td></td>
-<td></td>
-<td></td>
+<td>後方一致</td>
+<td>stringr::str_ends(“人間”)</td>
+<td>dplyrじゃないけどtidyverse内なので許せ</td>
+<td>LIKE ‘%人間’</td>
 </tr>
 <tr class="even">
 <td></td>
