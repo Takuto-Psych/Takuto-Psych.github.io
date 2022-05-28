@@ -10,7 +10,7 @@
     <link rel="stylesheet" href='https://takuto-psych.github.io/css/light.css' />
     <link rel="stylesheet" href='https://takuto-psych.github.io/css/dark.css' />
     <link rel="stylesheet" href='https://takuto-psych.github.io/css/syntax.css' />
-    <title>dplyrとSQLとの対応をまとめてみた - Takuto Psych Blog</title>
+    <title>dplyrとSQLとの対応をまとめてみた（初級編） - Takuto Psych Blog</title>
     
     <link rel="icon" type="image/x-icon" href='/images/avatar.png'>
     
@@ -26,7 +26,7 @@
 
 
 <meta name="twitter:card" content="summary" />
-<meta name="twitter:title" content="dplyrとSQLとの対応をまとめてみた - Takuto Psych Blog" />
+<meta name="twitter:title" content="dplyrとSQLとの対応をまとめてみた（初級編） - Takuto Psych Blog" />
 <meta name="twitter:description"
   content="ほぼ一緒！" />
 <meta name="twitter:site" content="https://takuto-psych.github.io/" />
@@ -36,11 +36,11 @@
 
 
 <meta property="og:type" content="article" />
-<meta property="og:title" content="dplyrとSQLとの対応をまとめてみた - Takuto Psych Blog">
+<meta property="og:title" content="dplyrとSQLとの対応をまとめてみた（初級編） - Takuto Psych Blog">
 <meta property="og:description"
   content="ほぼ一緒！" />
 <meta property="og:url" content="https://takuto-psych.github.io/post/2022-05-10-/" />
-<meta property="og:site_name" content="dplyrとSQLとの対応をまとめてみた" />
+<meta property="og:site_name" content="dplyrとSQLとの対応をまとめてみた（初級編）" />
 <meta property="og:image"
   content="https://takuto-psych.github.io/">
 <meta property="og:image:width" content="2048">
@@ -119,7 +119,7 @@
                   <span class="author">
                     <a href="https://takuto-psych.github.io/">Takuto-Psych</a></span><span
                     class="path-divider">/</span><strong class="css-truncate-target mr-1" style="max-width: 410px"><a
-                      href="https://takuto-psych.github.io/post/2022-05-10-/">dplyrとSQLとの対応をまとめてみた</a></strong>
+                      href="https://takuto-psych.github.io/post/2022-05-10-/">dplyrとSQLとの対応をまとめてみた（初級編）</a></strong>
                 </h1>
                 <div class="note m-0">
                   Created <relative-time datetime="Tue, 10 May 2022 00:00:00 &#43;0000"
@@ -128,9 +128,9 @@
 
                   
                   <span class="file-info-divider"></span>
-                  Modified <relative-time datetime="Tue, 10 May 2022 19:10:33 &#43;0900"
+                  Modified <relative-time datetime="Sat, 28 May 2022 16:30:35 &#43;0900"
                     class="no-wrap">
-                    Tue, 10 May 2022 19:10:33 &#43;0900</relative-time>
+                    Sat, 28 May 2022 16:30:35 &#43;0900</relative-time>
                   
                 </div>
               </div>
@@ -160,7 +160,7 @@
                         </div>
                       </div>
                     </details-menu>
-                      2166 Words
+                      2487 Words
                     
 
                   </div>
@@ -210,161 +210,81 @@
 <div id="dplyrとsqlの対応" class="section level2">
 <h2>dplyrとSQLの対応</h2>
 <p>dplyrでよく使うデータフレームの処理の関数や引数と、それに対応するSQLの処理の書き方をまとめていきます。</p>
-<p>基本的には、対応するSQL構文は、SELECT文になるかと思います。それ以外のSQL上の処理については、僕が勉強するたびに、新たに別の記事を追加するか、この記事を更新する形で説明を追加していこうと思います。</p>
-<p>また、元々僕自身がRユーザーなので、変数の型の表現はRでの表現の仕方に準じます。たとえば、SQL的にはデータテーブルとか呼ばれる概念のものでもデータフレームと表現します。</p>
+<p>基本的には、今回は初級編ということで、変数の指定の仕方とSELECT文とを扱います。それ以外のSQL上の処理については、僕が勉強するたびに新たに別の記事を追加していこうと思います。</p>
+<p>また、元々僕自身がRユーザーなので、今回の記事においても、今後の記事においても変数の型の表現はRでの表現の仕方に準じます。たとえば、SQL的にはデータテーブルとか呼ばれる概念のものでもデータフレームと表現します。</p>
+<div id="変数指定方法とか条件とか" class="section level4">
+<h4>変数指定方法とか条件とか</h4>
+<p>まずは、変数の指定の仕方を表にまとめまーす。</p>
+<p>完全一致とかの説明がしやすいので、以下の表で出てくるretsuという変数は、文字の型のデータが入っている配列を意味します。また、DFはそのretsuという変数を持っているデータフレームを意味します。文章で説明するより多分Rコード見たほうがわかりやすいでしょう。はい。</p>
+<pre class="r"><code>retsu &lt;- c(&quot;異常人間&quot;, &quot;正常人間&quot;, &quot;異常現象&quot;, &quot;異常性癖&quot;, &quot;超常現象&quot;, &#39;恒常現象&#39;)
+## 恒常現象が出てくるので多分僕心理学出身は嘘じゃない。
+
+DF &lt;- data.frame(retsu)</code></pre>
 <table>
 <colgroup>
-<col width="25%" />
-<col width="25%" />
-<col width="25%" />
-<col width="25%" />
+<col width="30%" />
+<col width="33%" />
+<col width="36%" />
 </colgroup>
 <thead>
 <tr class="header">
-<th>処理内容</th>
-<th>dplyr</th>
-<th>R上での扱い</th>
+<th>意味</th>
+<th>R</th>
 <th>SQL</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>データフレームから使う列を取り出す</td>
-<td>dplyr::select()</td>
-<td>dplyrの関数</td>
-<td>SELECT</td>
+<td>データフレーム(データテーブル)</td>
+<td>DF</td>
+<td>DF</td>
 </tr>
 <tr class="even">
-<td>使うデータフレームの指定</td>
-<td>data = 〇〇</td>
-<td>ただの引数(〇〇にはデータフレーム型を入れたいね)</td>
-<td>FROM</td>
+<td>変数名(列名)</td>
+<td>retsu</td>
+<td>retsu</td>
 </tr>
 <tr class="odd">
-<td>任意の列の値でフィルタリング</td>
-<td>dplyr::filter()</td>
-<td>dplyrの関数</td>
-<td>WHERE</td>
-</tr>
-<tr class="even">
-<td>任意の列の値でグループ化</td>
-<td>dplyr::group_by()</td>
-<td>dplyrの関数</td>
-<td>GROUP BY</td>
-</tr>
-<tr class="odd">
-<td>パイプ演算子</td>
-<td>dplyr::%&gt;%</td>
-<td>dplyrの関数</td>
-<td>存在しない。ただ、SQLがデータをどういう流れで処理してるかは意識したほうが良さげ。</td>
-</tr>
-<tr class="even">
-<td>降順・昇順に並び替え</td>
-<td>dplyr::arrange()</td>
-<td>dplyrの関数。こんなんあったんや。知らんかった。</td>
-<td>ORDER BY</td>
-</tr>
-<tr class="odd">
-<td>データフレーム(変数)の中の列(変数)を指定</td>
-<td>〇〇<strong>$</strong>列</td>
-<td>R標準のデータフレーム操作</td>
-<td>〇〇 <strong>.</strong> 列</td>
+<td>データフレームの中から列を取り出す</td>
+<td>DF $ retsu</td>
+<td>DF . retsu</td>
 </tr>
 <tr class="even">
 <td>完全一致</td>
-<td>==</td>
-<td>R標準演算子</td>
-<td>=‘異常人間’</td>
+<td>DF$retsu == “異常人間”</td>
+<td>DF.retsu = ‘異常人間’</td>
 </tr>
 <tr class="odd">
 <td>部分一致</td>
-<td>stringr::str_detect(“常人”)</td>
-<td>dplyrじゃないけどtidyverse内なので許せ</td>
-<td>LIKE ‘%常人%’</td>
+<td>stirngr::str_detect(DF$retsu, “常人”)</td>
+<td>DF.retsu RLIKE = ‘(%|^)異常人間 (%|$)’</td>
 </tr>
 <tr class="even">
 <td>前方一致</td>
-<td>stringr::str_starts(“異常”)</td>
-<td>dplyrじゃないけどtidyverse内なので許せ</td>
-<td>LIKE ‘異常%’</td>
+<td>stirngr::str_starts(DF$retsu, “異常”)</td>
+<td>DF.retsu LIKE = ‘異常%’</td>
 </tr>
 <tr class="odd">
 <td>後方一致</td>
-<td>stringr::str_ends(“人間”)</td>
-<td>dplyrじゃないけどtidyverse内なので許せ</td>
-<td>LIKE ‘%人間’</td>
-</tr>
-<tr class="even">
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="even">
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="even">
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="even">
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="even">
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="even">
-<td></td>
-<td></td>
-<td></td>
-<td></td>
+<td>stirngr::str_detect(DF$retsu, “常人”)</td>
+<td>DF.retsu LIKE = ‘%人間’</td>
 </tr>
 </tbody>
 </table>
+<p>参考程度に、〇〇一致のR上での動作。</p>
+<pre class="r"><code>print(DF$retsu)</code></pre>
+<pre><code>## [1] &quot;異常人間&quot; &quot;正常人間&quot; &quot;異常現象&quot; &quot;異常性癖&quot; &quot;超常現象&quot; &quot;恒常現象&quot;</code></pre>
+<pre class="r"><code>stringr::str_detect(DF$retsu, &quot;常人&quot;)</code></pre>
+<pre><code>## [1]  TRUE  TRUE FALSE FALSE FALSE FALSE</code></pre>
+<pre class="r"><code>stringr::str_starts(DF$retsu, &quot;異常&quot;)</code></pre>
+<pre><code>## [1]  TRUE FALSE  TRUE  TRUE FALSE FALSE</code></pre>
+<pre class="r"><code>stringr::str_detect(DF$retsu, &quot;常人&quot;)</code></pre>
+<pre><code>## [1]  TRUE  TRUE FALSE FALSE FALSE FALSE</code></pre>
+<p>一旦こんなもんにしときます。今後、「嗚呼嗚呼、Rやdplyr（ドピュリ!嗚呼ああぁぁ）ならこう指定したり書けたりするのに、SQLでどうやって変数指定したり、条件式書くねん！！！嗚呼嗚呼」って叫ぶイベントが僕の身に降りかかってきたら、上記表に行を追加していきます。頑張れ未来の僕！macを殴るな未来の僕！</p>
 <div id="refs" class="references csl-bib-body hanging-indent">
 <div id="ref-Wikipedia2022" class="csl-entry">
 Wikipedia, 様. 2022. <span>“<span>SQL - Wikipedia</span>.”</span> <a href="https://ja.wikipedia.org/wiki/SQL">https://ja.wikipedia.org/wiki/SQL</a>.
+</div>
 </div>
 </div>
 </div>
