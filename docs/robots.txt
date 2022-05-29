@@ -1,2 +1,2 @@
 User-agent: *
-Sitemap: https://takuto-psych.github.iositemap.xml
+Sitemap: https://takuto-psych.github.io/sitemap.xml
