@@ -128,9 +128,9 @@
 
                   
                   <span class="file-info-divider"></span>
-                  Modified <relative-time datetime="Sun, 29 May 2022 17:36:08 &#43;0900"
+                  Modified <relative-time datetime="Sun, 19 Jun 2022 12:55:08 &#43;0900"
                     class="no-wrap">
-                    Sun, 29 May 2022 17:36:08 &#43;0900</relative-time>
+                    Sun, 19 Jun 2022 12:55:08 &#43;0900</relative-time>
                   
                 </div>
               </div>
@@ -160,7 +160,7 @@
                         </div>
                       </div>
                     </details-menu>
-                      2487 Words
+                      3128 Words
                     
 
                   </div>
@@ -193,9 +193,10 @@
                 <article class="markdown-body entry-content container-lg">
 
 
-<p>大学（院）在学時に、実験や調査でデータを作って貯めたデータセットをイジイジして分析してたら、データを触るのが楽しくなってしまい、サーバに溜まったデータを分析する仕事を志し、立派なデータサイエンティストになろうとしている異常人間の皆様、元気ですか？僕は、そのような異常人間の一人であります。</p>
+<p>大学（院）在学時に、実験や調査でデータを作って貯めたデータセットをイジイジして分析してたら、データを触るのが楽しくなってしまい、サーバに溜まったデータを分析する仕事を志し、立派なデータサイエンティストになろうとしている異常人間の皆様、元気ですか？僕は、そのような異常人間の一人であり、とても元気です。</p>
 <p>さて、このような異常人間の皆様が学生時代に見ていたデータセットは元々csvなどの形式で、それをRに取り込んで、多分dplyrでデータフレームイジイジしてから、分析していくというようなことをしていたかと思います。僕はそうでした。というか、心理学卒業・修了後にデータイジイジ系の職に就く人はほとんどそんな感じの経験しかないんじゃないすかね？</p>
-<p>そんな感じで、学生時代にdplyrを先に触っていて、就職してからSQLを触ることになったあなたや僕に向けて、dplyrとSQLの対応した部分と異なる部分をまとめていきます。ほぼ同じだけど若干違くてイライラした結果、macの画面ぶん殴りそうになる未来の僕を救いたい、そんな一心で書いていきます。また、基本的には、dplyrだけはマスターしてる人に向けての記事なんで、dplyrの中でのその関数の説明の詳細は省略します。</p>
+<p>そんな感じで、学生時代にdplyrを先に触っていて、就職してからSQLを触ることになったあなたや僕に向けて、dplyrとSQLの対応した部分と異なる部分をまとめていきます。ほぼ同じだけど若干違くてイライラした結果、macの画面ぶん殴りそうになる未来の僕を救いたい、そんな一心で書いていきます。また、基本的には、Rやdplyrでのデータの処理に慣れている人に向けての記事になります。R?dplyr?何それおいしいの？状態の方はどうぞお帰りください。</p>
+<p>この記事の書き初めの頃は、サブクエリまで書いちゃおっかなと思っていましたが、とんでもない文量になることに書いてる途中で気づいたので、いくつかに記事を分けていきます。この記事は初級編です。具体的な内容は、Rにおいてデータフレームを処理する方法や論理演算の書き方をもとに、それをSQL上で表現するにはどうしたらいいか？というようなことを書いています。SELECT文はSQLのアウトプットで書くつもりだけど、それらについてのきちんとした書き方の解説は中級編で予定をしています。</p>
 <div id="dplyrとは" class="section level2">
 <h2>dplyrとは</h2>
 <p>R上でエレガントにデータフレーム処理を行うためのパッケージがdplyrです。まあ多分この記事に辿り着いている異常人間の皆様には説明不要な気がしますが。</p>
@@ -222,9 +223,9 @@
 DF &lt;- data.frame(retsu)</code></pre>
 <table>
 <colgroup>
-<col width="30%" />
-<col width="33%" />
-<col width="36%" />
+<col width="28%" />
+<col width="39%" />
+<col width="31%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -250,6 +251,26 @@ DF &lt;- data.frame(retsu)</code></pre>
 <td>DF . retsu</td>
 </tr>
 <tr class="even">
+<td>等号</td>
+<td>DF$retsu == “異常人間”</td>
+<td>DF.retsu = ‘異常人間’</td>
+</tr>
+<tr class="odd">
+<td>不等号</td>
+<td>DF$retsu != “異常人間”</td>
+<td>DF.retsu != ‘異常人間’</td>
+</tr>
+<tr class="even">
+<td>論理積</td>
+<td>&amp; (&amp;&amp;の時もある。いつ2個つけるかいまだにわからん)</td>
+<td>AND</td>
+</tr>
+<tr class="odd">
+<td>論理和</td>
+<td>|(||の時もある。同じくわからん)</td>
+<td>OR</td>
+</tr>
+<tr class="even">
 <td>完全一致</td>
 <td>DF$retsu == “異常人間”</td>
 <td>DF.retsu = ‘異常人間’</td>
@@ -257,30 +278,57 @@ DF &lt;- data.frame(retsu)</code></pre>
 <tr class="odd">
 <td>部分一致</td>
 <td>stirngr::str_detect(DF$retsu, “常人”)</td>
-<td>DF.retsu RLIKE = ‘(%|^)異常人間 (%|$)’</td>
+<td>DF.retsu RLIKE ‘(%|^)常人(%|$)’</td>
 </tr>
 <tr class="even">
 <td>前方一致</td>
 <td>stirngr::str_starts(DF$retsu, “異常”)</td>
-<td>DF.retsu LIKE = ‘異常%’</td>
+<td>DF.retsu LIKE ‘異常%’</td>
 </tr>
 <tr class="odd">
 <td>後方一致</td>
-<td>stirngr::str_detect(DF$retsu, “常人”)</td>
-<td>DF.retsu LIKE = ‘%人間’</td>
+<td>stirngr::str_detect(DF$retsu, “人間”)</td>
+<td>DF.retsu LIKE ‘%人間’</td>
 </tr>
 </tbody>
 </table>
-<p>参考程度に、〇〇一致のR上での動作。</p>
+<p>参考程度に、〇〇一致のR上での動作。SQLでの文字列の一致は正規表現を覚えなきゃいけなかったりしてめんどくさいので、今回の記事では深く触れないでおきます。余裕があればいつか正規表現書きます。きっと書きます。多分書きます。できたら書きます。</p>
 <pre class="r"><code>print(DF$retsu)</code></pre>
 <pre><code>## [1] &quot;異常人間&quot; &quot;正常人間&quot; &quot;異常現象&quot; &quot;異常性癖&quot; &quot;超常現象&quot; &quot;恒常現象&quot;</code></pre>
 <pre class="r"><code>stringr::str_detect(DF$retsu, &quot;常人&quot;)</code></pre>
 <pre><code>## [1]  TRUE  TRUE FALSE FALSE FALSE FALSE</code></pre>
 <pre class="r"><code>stringr::str_starts(DF$retsu, &quot;異常&quot;)</code></pre>
 <pre><code>## [1]  TRUE FALSE  TRUE  TRUE FALSE FALSE</code></pre>
-<pre class="r"><code>stringr::str_detect(DF$retsu, &quot;常人&quot;)</code></pre>
+<pre class="r"><code>stringr::str_ends(DF$retsu, &quot;人間&quot;)</code></pre>
 <pre><code>## [1]  TRUE  TRUE FALSE FALSE FALSE FALSE</code></pre>
-<p>一旦こんなもんにしときます。今後、「嗚呼嗚呼、Rやdplyr（ドピュリ!嗚呼ああぁぁ）ならこう指定したり書けたりするのに、SQLでどうやって変数指定したり、条件式書くねん！！！嗚呼嗚呼」って叫ぶイベントが僕の身に降りかかってきたら、上記表に行を追加していきます。頑張れ未来の僕！macを殴るな未来の僕！</p>
+<p>一旦こんなもんにしときます。</p>
+<p>じゃ、次はRでの動作の様子と、SQLでの動作の様子を見ていきます。<code>SELECT</code> とか<code>WHERE</code>って何じゃって思うかもしれませんが、それについてはこっちを確認してください。</p>
+<p>なんか知らんけど、<code>sqldf</code> というパッケージで、R上のデータフレームにsql処理できるそうです。すごい。</p>
+<pre class="r"><code>##sqldfなければインストールしやがれ
+if(!require(sqldf)) install.packages(&quot;sqldf&quot;)</code></pre>
+<pre><code>##  要求されたパッケージ sqldf をロード中です</code></pre>
+<pre><code>##  要求されたパッケージ gsubfn をロード中です</code></pre>
+<pre><code>##  要求されたパッケージ proto をロード中です</code></pre>
+<pre><code>##  要求されたパッケージ RSQLite をロード中です</code></pre>
+<pre class="r"><code>##おまじない
+library(sqldf)
+library(dplyr)</code></pre>
+<pre><code>## 
+##  次のパッケージを付け加えます: &#39;dplyr&#39;</code></pre>
+<pre><code>##  以下のオブジェクトは &#39;package:stats&#39; からマスクされています:
+## 
+##     filter, lag</code></pre>
+<pre><code>##  以下のオブジェクトは &#39;package:base&#39; からマスクされています:
+## 
+##     intersect, setdiff, setequal, union</code></pre>
+<pre class="sql"><code>SELECT
+  *
+
+FROM iris
+
+WHERE
+  species = &#39;satosa&#39;
+</code></pre>
 <div id="refs" class="references csl-bib-body hanging-indent">
 <div id="ref-Wikipedia2022" class="csl-entry">
 Wikipedia, 様. 2022. <span>“<span>SQL - Wikipedia</span>.”</span> <a href="https://ja.wikipedia.org/wiki/SQL">https://ja.wikipedia.org/wiki/SQL</a>.
