@@ -1,0 +1,281 @@
+---
+title: "LearningTask"
+author: "Takuto Yoshida"
+date: "5/15/2020"
+output: 
+  html_document:
+    css: jspsych-6.1.0/css/jspsych.css
+    highlight: null
+    mathjax: null
+    theme: null
+  pdf_document: default
+---
+
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, message=FALSE, warning=FALSE)
+```
+
+
+
+
+```{r}
+
+library(htmltools)
+tagList(
+tags$script(src='jspsych-6.1.0/jspsych.js'),
+tags$script(src='jspsych-6.1.0/plugins/jspsych-html-button-response.js'),
+
+tags$script(src='jspsych-6.1.0/plugins/jspsych-html-keyboard-response.js'))
+```
+
+
+
+
+```{r results='asis'}
+
+
+#####60試行で1ブロック作成
+
+##Aについて10まとまりの60個
+left_right_A <- NULL
+matomari <- 2
+
+for (i in 1:matomari) {
+left_right_A_10 <- rep(1:2, 5)
+left_right_A_10_shuffle <- sample(left_right_A_10, length(left_right_A_10))
+left_right_A <-c(left_right_A, left_right_A_10_shuffle)
+}
+
+# Bが右にでるか左にでるかはAと逆なので，left_right_Aを使って逆転処理する
+left_right_B <- 3-left_right_A
+
+# ifelseを使ってleft_right_A(とB)=1の時（1なのでつまりleft），"left"をそれ以外は"right"を入れたものを作成する
+left_right_A_text <- ifelse(left_right_A==1, "left", "right")
+left_right_B_text <- ifelse(left_right_B==1, "left", "right")
+
+correct_keypress <- ifelse(left_right_A==1, "37","39")
+
+
+######報酬の設定
+###空のオブジェクト
+reward_A <-NULL
+reward_B <-NULL
+##Aについて10まとまりの60個のフィードバック作成
+for(i in 1:matomari){
+    # 8:2=報酬:罰（つまり4:1=報酬:罰）のリストを作ってシャッフル
+    reward82 <- c(1,1,1,1,1,1,1,1,1,1)
+    reward82_shuffle <- sample(reward82, length(reward82))
+    # 2:8=報酬:罰（つまり1:4=報酬:罰）のリストを作ってシャッフル
+    reward28 <- c(0,0,0,0,0,0,0,0,0,0)
+    reward28_shuffle <- sample(reward28, length(reward28))
+# 全試行作る
+    reward_A <- c(reward_A,reward82_shuffle)
+    reward_B <- c(reward_B,reward28_shuffle)
+}
+
+
+
+
+
+#### 左右以外の上下の位置(topから50%の位置に刺激を呈示する)や使う画像のパスの情報（今回は全施行で以下は変わらない）
+# Aの設定
+top_bottom_A = "top"
+top_bottom_position_A = 40
+image_path_A = "preimg/A.png"
+image_width_A = 200
+left_right_position_A <- 20
+# Bの設定
+top_bottom_B = "top"
+top_bottom_position_B = 40
+image_path_B = "preimg/B.png"
+image_width_B = 200
+left_right_position_B <- 20
+#### 刺激リストの作成(HTML用に調整)
+stimulus <- paste("[\"<p style='position: absolute; ",
+                  top_bottom_A,": ",
+                  top_bottom_position_A,"%;",
+                  left_right_A_text,": ",
+                  left_right_position_A,"%'><img src='",
+                  image_path_A,"' width='",
+                  image_width_A,"px'/></p>\",",
+                  "\"<p style='position: absolute; ",
+                  top_bottom_B,": ",
+                  top_bottom_position_B,"%;",
+                  left_right_B_text,": ",
+                  left_right_position_B,"%'><img src='",
+                  image_path_B,"' width='",
+                  image_width_B,"px'/></p>\"]",sep="")
+
+block1 <- rep(1, 10)
+block2 <- rep(2,10)
+
+block <- c(block1, block2)
+
+
+
+
+
+
+#### 上記で作ったものをデータフレーム化しておく
+AB_stim <- data.frame(stimulus,
+                      block,
+                      left_right_A,
+                      left_right_B,
+                      reward_A,
+                      reward_B,
+                      correct_keypress)
+# どういう刺激リストを作成したのかの情報も残しておく
+write.csv(AB_stim,"AB_stim.csv")
+
+
+#### 上記で作ったデータフレームをJson形式で出力する
+for (i in 1:nrow(AB_stim)) {
+    if(i==1){cat("<script>", "var stimuli = [")}
+    cat("{stimulus:",as.character(AB_stim$stimulus[i]),",
+      data:{left_right_A:",AB_stim$left_right_A[i],
+        ", left_right_B:",AB_stim$left_right_B[i],
+        ", reward_A:",AB_stim$reward_A[i],
+        ", reward_B:",AB_stim$reward_B[i],
+        ", correct_keypress:", AB_stim$correct_keypress[i],"}}")
+    if(i==nrow(AB_stim)){
+        cat("]; </script>")
+    }else{
+        cat(",")
+    }
+}
+
+
+
+
+
+```
+
+
+
+
+
+```{js}
+
+
+
+
+/*教示文*/
+
+var PreLearnInstruction = {
+  type: "html-keyboard-response",
+  stimulus: "<p>潜在学習の教示文</p>"+
+  "<p>←キーもしくは→キーを押してください。</p>",
+  choices: ["leftarrow", "rightarrow"]
+};
+
+
+
+
+/////AB学習試行
+
+var PreLearnAB ={
+  timeline:[
+    {
+      type: "html-keyboard-response",
+      stimulus:'<p style="font-size: 48px">+</p>',
+      trial_duration:500,
+      response_ends_trial:false,
+      choices:jsPsych.NO_KEYS,
+    },{
+      type: "html-keyboard-response",
+      stimulus:jsPsych.timelineVariable("stimulus"),
+      choices: ["leftarrow","rightarrow"],
+      trial_duration:750,
+      data: jsPsych.timelineVariable("data"),
+      response_ends_trial: false,
+    },{
+      type: "html-keyboard-response",
+      trial_duration:350,
+      choices:jsPsych.NO_KEYS,
+      stimulus:function(){
+        var last_select = jsPsych.data.get().last(1).values()[0].key_press;
+        if(last_select==37){
+          return '<p style="font-size: 48px">+</p>'
+        }
+        else if(last_select==39){
+         return '<p style="font-size: 48px">+</p>'
+        }
+        else{
+          return "<p style='position: absolute; top: 40%;right: 45%'>時間内に選択を行ってください</p>"
+        }
+      },
+    },{
+      type: "html-keyboard-response",
+      trial_duration:600,
+      response_ends_trial: false,
+      stimulus:function(){
+        var last_select = jsPsych.data.get().last(2).values()[0].key_press;
+        var last_left_right_A = jsPsych.data.get().last(2).values()[0].left_right_A;
+        var last_reward_A = jsPsych.data.get().last(2).values()[0].reward_A;
+        var last_reward_B = jsPsych.data.get().last(2).values()[0].reward_B;
+        if(last_select==37 && last_left_right_A==1 && last_reward_A==0 ){
+          return "<p style='position: absolute; top: 40%;right: 45%'>10ポイント損失</p>"
+        }
+        else if(last_select==37 && last_left_right_A==1 && last_reward_A==1){
+          return "<p style='position: absolute; top: 40%;right: 45%'>10ポイント獲得</p>"
+        }
+        else if(last_select==37 && last_left_right_A==2 && last_reward_B==0){
+          return "<p style='position: absolute; top: 40%;right: 45%'>10ポイント損失</p>"
+        }
+        else if(last_select==37 && last_left_right_A==2 && last_reward_B==1){
+          return "<p style='position: absolute; top: 40%;right: 45%'>10ポイント獲得</p>"
+        }
+        else if(last_select==39 && last_left_right_A==1 && last_reward_B==0){
+          return "<p style='position: absolute; top: 40%;right: 45%'>10ポイント損失</p>"
+        }
+        else if(last_select==39 && last_left_right_A==1 && last_reward_B==1){
+          return "<p style='position: absolute; top: 40%;right: 45%'>10ポイント獲得</p>"
+        }
+        else if(last_select==39 && last_left_right_A==2 && last_reward_A==0){
+          return "<p style='position: absolute; top: 40%;right: 45%'>10ポイント損失</p>"
+        }
+        else if(last_select==39 && last_left_right_A==2 && last_reward_A==1){
+          return "<p style='position: absolute; top: 40%;right: 45%'>10ポイント獲得</p>"
+        }
+        else{
+          return "<p style='position: absolute; top: 40%;right: 45%'>時間内に選択を行ってください</p>"
+        }
+      },
+    },{
+      type: "html-keyboard-response",
+      trial_duration:500,
+      choices:jsPsych.NO_KEYS,
+      stimulus:'<p style="font-size: 48px">+</p>',
+      response_ends_trial: false,
+    }
+],
+  timeline_variables:stimuli
+};
+
+
+
+
+
+
+
+
+
+/*タイムライン*/
+
+var timeline= [];
+
+timeline.push(PreLearnInstruction);
+timeline.push(PreLearnAB);
+
+/*実行*/
+jsPsych.init({
+  timeline: timeline,
+  on_finish: function(){
+    jsPsych.data.displayData();
+  }
+})
+
+
+```
