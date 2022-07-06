@@ -3307,28 +3307,28 @@ var PreLearnAB ={
         var last_reward_A = jsPsych.data.get().last(2).values()[0].reward_A;
         var last_reward_B = jsPsych.data.get().last(2).values()[0].reward_B;
         if(last_select==37 && last_left_right_A==1 && last_reward_A==0 ){
-          return "<p style='position: absolute; top: 40%;right: 45%'>10ポイント損失</p>"
+          return "<p style='position: absolute; top: 40%;right: 45%'>ー１０円</p>"
         }
         else if(last_select==37 && last_left_right_A==1 && last_reward_A==1){
-          return "<p style='position: absolute; top: 40%;right: 45%'>10ポイント獲得</p>"
+          return "<p style='position: absolute; top: 40%;right: 45%'>＋１０円</p>"
         }
         else if(last_select==37 && last_left_right_A==2 && last_reward_B==0){
-          return "<p style='position: absolute; top: 40%;right: 45%'>10ポイント損失</p>"
+          return "<p style='position: absolute; top: 40%;right: 45%'>ー１０円</p>"
         }
         else if(last_select==37 && last_left_right_A==2 && last_reward_B==1){
-          return "<p style='position: absolute; top: 40%;right: 45%'>10ポイント獲得</p>"
+          return "<p style='position: absolute; top: 40%;right: 45%'>＋１０円</p>"
         }
         else if(last_select==39 && last_left_right_A==1 && last_reward_B==0){
-          return "<p style='position: absolute; top: 40%;right: 45%'>10ポイント損失</p>"
+          return "<p style='position: absolute; top: 40%;right: 45%'>ー１０円</p>"
         }
         else if(last_select==39 && last_left_right_A==1 && last_reward_B==1){
-          return "<p style='position: absolute; top: 40%;right: 45%'>10ポイント獲得</p>"
+          return "<p style='position: absolute; top: 40%;right: 45%'>＋１０円</p>"
         }
         else if(last_select==39 && last_left_right_A==2 && last_reward_A==0){
-          return "<p style='position: absolute; top: 40%;right: 45%'>10ポイント損失</p>"
+          return "<p style='position: absolute; top: 40%;right: 45%'>ー１０円</p>"
         }
         else if(last_select==39 && last_left_right_A==2 && last_reward_A==1){
-          return "<p style='position: absolute; top: 40%;right: 45%'>10ポイント獲得</p>"
+          return "<p style='position: absolute; top: 40%;right: 45%'>＋１０円</p>"
         }
         else{
           return "<p style='position: absolute; top: 40%;right: 45%'>時間内に選択を行ってください</p>"
