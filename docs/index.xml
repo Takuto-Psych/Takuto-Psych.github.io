@@ -6,7 +6,16 @@
     <description>Recent content on Takuto Psych Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Tue, 10 May 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://takuto-psych.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 14 Jul 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://takuto-psych.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>最近したいけどできてないこと</title>
+      <link>https://takuto-psych.github.io/post/2022-07-14-/</link>
+      <pubDate>Thu, 14 Jul 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://takuto-psych.github.io/post/2022-07-14-/</guid>
+      <description>未来の僕よ、後悔ないように頑張れ</description>
+    </item>
+    
     <item>
       <title>dplyrとSQLとの対応をまとめてみた（初級編）</title>
       <link>https://takuto-psych.github.io/post/2022-05-10-/</link>
