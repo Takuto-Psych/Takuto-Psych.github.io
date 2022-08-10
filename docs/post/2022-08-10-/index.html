@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <script type="application/javascript" src='https://takuto-psych.github.io/js/theme-mode.js'></script>
+    <link rel="stylesheet" href='https://takuto-psych.github.io/css/frameworks.min.css' />
+    <link rel="stylesheet" href='https://takuto-psych.github.io/css/github.min.css' />
+    <link rel="stylesheet" href='https://takuto-psych.github.io/css/github-style.css' />
+    <link rel="stylesheet" href='https://takuto-psych.github.io/css/light.css' />
+    <link rel="stylesheet" href='https://takuto-psych.github.io/css/dark.css' />
+    <link rel="stylesheet" href='https://takuto-psych.github.io/css/syntax.css' />
+    <title>NPS?何それ美味しいの？美味しかったよ - Takuto Psych Blog</title>
+    
+    <link rel="icon" type="image/x-icon" href='/images/avatar.png'>
+    
+    <meta name="theme-color" content="#1e2327">
+
+    
+    <meta name="description"
+  content="ヒストグラム描けや" />
+<meta name="keywords"
+  content=', ' />
+<meta name="robots" content="noodp" />
+<link rel="canonical" href="https://takuto-psych.github.io/post/2022-08-10-/" />
+
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="NPS?何それ美味しいの？美味しかったよ - Takuto Psych Blog" />
+<meta name="twitter:description"
+  content="ヒストグラム描けや" />
+<meta name="twitter:site" content="https://takuto-psych.github.io/" />
+<meta name="twitter:creator" content="R package build" />
+<meta name="twitter:image"
+  content="https://takuto-psych.github.io/">
+
+
+<meta property="og:type" content="article" />
+<meta property="og:title" content="NPS?何それ美味しいの？美味しかったよ - Takuto Psych Blog">
+<meta property="og:description"
+  content="ヒストグラム描けや" />
+<meta property="og:url" content="https://takuto-psych.github.io/post/2022-08-10-/" />
+<meta property="og:site_name" content="NPS?何それ美味しいの？美味しかったよ" />
+<meta property="og:image"
+  content="https://takuto-psych.github.io/">
+<meta property="og:image:width" content="2048">
+<meta property="og:image:height" content="1024">
+
+<meta property="article:published_time" content="2022-08-10 00:00:00 &#43;0000 UTC" />
+
+
+
+
+
+
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-0E1T9Y2XZS"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-0E1T9Y2XZS');
+</script>
+
+    
+    <meta name="google-site-verification" content="ZTJLaWcJsPiyOc11H0OSIjk1bYevn3VcRp4FNnJVpuw" />
+</head>
+
+<body>
+  <div style="position: relative">
+  <header class="Header js-details-container Details px-3 px-md-4 px-lg-5 flex-wrap flex-md-nowrap open Details--on">
+    <div class="Header-item mobile-none" style="margin-top: -4px; margin-bottom: -4px;">
+      <a class="Header-link " href="https://takuto-psych.github.io/">
+        <span style="margin-left: 8px;">
+          Takuto Psych Blog
+        </span>
+      </a>
+    </div>
+    
+    <div class="Header-item Header-item--full flex-justify-center d-md-none position-relative">
+      <a class="Header-link " href="https://takuto-psych.github.io/">
+        
+        <span style="margin-left: 8px;">
+          Takuto Psych Blog
+        </span>
+      </a>
+    </div>
+    <div class="Header-item" style="margin-left: auto;">
+      <a href="javascript:void(0)" class="Header-link no-select" onclick="switchTheme()">
+        <svg style="fill: var(--color-profile-color-modes-toggle-moon);" class="no-select" viewBox="0 0 16 16"
+          version="1.1" width="16" height="16">
+          <path fill-rule="evenodd" clip-rule="evenodd"
+            d="M4.52208 7.71754C7.5782 7.71754 10.0557 5.24006 10.0557 2.18394C10.0557 1.93498 10.0392 1.68986 10.0074 1.44961C9.95801 1.07727 10.3495 0.771159 10.6474 0.99992C12.1153 2.12716 13.0615 3.89999 13.0615 5.89383C13.0615 9.29958 10.3006 12.0605 6.89485 12.0605C3.95334 12.0605 1.49286 10.001 0.876728 7.24527C0.794841 6.87902 1.23668 6.65289 1.55321 6.85451C2.41106 7.40095 3.4296 7.71754 4.52208 7.71754Z">
+          </path>
+        </svg>
+      </a>
+    </div>
+  </header>
+</div>
+  
+<div>
+  <main>
+    <div class="gisthead pagehead bg-gray-light pb-0 pt-3 mb-4">
+      <div class="px-0">
+        <div class="mb-3 d-flex px-3 px-md-3 px-lg-5">
+          <div class="flex-auto min-width-0 width-fit mr-3">
+            <div class="d-flex">
+              <div class="d-none d-md-block">
+                <a class="avatar mr-2 flex-shrink-0" href="https://takuto-psych.github.io/">
+                  <img class=" avatar-user"
+                    src="https://takuto-psych.github.io/images/avatar.png"
+                    width="32" height="32"></a>
+              </div>
+              <div class="d-flex flex-column">
+                <h1 class="break-word f3 text-normal mb-md-0 mb-1">
+                  <span class="author">
+                    <a href="https://takuto-psych.github.io/">Takuto-Psych</a></span><span
+                    class="path-divider">/</span><strong class="css-truncate-target mr-1" style="max-width: 410px"><a
+                      href="https://takuto-psych.github.io/post/2022-08-10-/">NPS?何それ美味しいの？美味しかったよ</a></strong>
+                </h1>
+                <div class="note m-0">
+                  Created <relative-time datetime="Wed, 10 Aug 2022 00:00:00 &#43;0000"
+                    class="no-wrap">
+                    Wed, 10 Aug 2022 00:00:00 &#43;0000</relative-time>
+
+                  
+                  <span class="file-info-divider"></span>
+                  Modified <relative-time datetime="Wed, 10 Aug 2022 11:13:58 &#43;0900"
+                    class="no-wrap">
+                    Wed, 10 Aug 2022 11:13:58 &#43;0900</relative-time>
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-lg px-3 new-discussion-timeline">
+      <div class="repository-content gist-content">
+        <div>
+          <div class="js-gist-file-update-container js-task-list-container file-box">
+            <div id="file-pytest" class="file my-2">
+              <div id="post-header" class="file-header d-flex flex-md-items-center flex-items-start sticky-header" style="z-index: 2">
+                <div class="file-info d-flex flex-md-items-center flex-items-start flex-order-1 flex-auto">
+                  <div class="text-mono f6 flex-auto pr-3 flex-order-2 flex-md-order-1 mt-2 mt-md-0">
+                    
+                    <summary id="toc-toggle" onclick="clickToc()" class="btn btn-octicon m-0 mr-2 p-2">
+                      <svg aria-hidden="true" viewBox="0 0 16 16" height="16" width="16" class="octicon octicon-list-unordered">
+                        <path fill-rule="evenodd" d="M2 4a1 1 0 100-2 1 1 0 000 2zm3.75-1.5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zM3 8a1 1 0 11-2 0 1 1 0 012 0zm-1 6a1 1 0 100-2 1 1 0 000 2z"></path>
+                      </svg>
+                    </summary>
+                    <details-menu class="SelectMenu" id="toc-details" style="display: none;">
+                      <div class="SelectMenu-modal rounded-3 mt-1" style="max-height: 340px;">
+                        <div class="SelectMenu-list SelectMenu-list--borderless p-2" style="overscroll-behavior: contain;" id="toc-list">
+                        </div>
+                      </div>
+                    </details-menu>
+                      1358 Words
+                    
+
+                  </div>
+                  <div class="file-actions flex-order-2 pt-0">
+                    
+                    
+                    <a class="muted-link mr-3" href="/tags/%E3%83%87%E3%83%BC%E3%82%BF%E3%82%B5%E3%82%A4%E3%82%A8%E3%83%B3%E3%82%B9">
+                      <svg class="octicon octicon-tag" viewBox="0 0 16 16" version="1.1" width="16" height="16">
+                        <path fill-rule="evenodd"
+                          d="M2.5 7.775V2.75a.25.25 0 01.25-.25h5.025a.25.25 0 01.177.073l6.25 6.25a.25.25 0 010 .354l-5.025 5.025a.25.25 0 01-.354 0l-6.25-6.25a.25.25 0 01-.073-.177zm-1.5 0V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 010 2.474l-5.026 5.026a1.75 1.75 0 01-2.474 0l-6.25-6.25A1.75 1.75 0 011 7.775zM6 5a1 1 0 100 2 1 1 0 000-2z">
+                        </path>
+                      </svg>
+                      データサイエンス
+                    </a>
+                    
+                    <a class="muted-link mr-3" href="/tags/%E7%B5%B1%E8%A8%88%E5%AD%A6">
+                      <svg class="octicon octicon-tag" viewBox="0 0 16 16" version="1.1" width="16" height="16">
+                        <path fill-rule="evenodd"
+                          d="M2.5 7.775V2.75a.25.25 0 01.25-.25h5.025a.25.25 0 01.177.073l6.25 6.25a.25.25 0 010 .354l-5.025 5.025a.25.25 0 01-.354 0l-6.25-6.25a.25.25 0 01-.073-.177zm-1.5 0V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 010 2.474l-5.026 5.026a1.75 1.75 0 01-2.474 0l-6.25-6.25A1.75 1.75 0 011 7.775zM6 5a1 1 0 100 2 1 1 0 000-2z">
+                        </path>
+                      </svg>
+                      統計学
+                    </a>
+                    
+                    <a class="muted-link mr-3" href="/tags/%E3%83%9E%E3%83%BC%E3%82%B1%E3%83%86%E3%82%A3%E3%83%B3%E3%82%B0%E3%83%AA%E3%82%B5%E3%83%BC%E3%83%81">
+                      <svg class="octicon octicon-tag" viewBox="0 0 16 16" version="1.1" width="16" height="16">
+                        <path fill-rule="evenodd"
+                          d="M2.5 7.775V2.75a.25.25 0 01.25-.25h5.025a.25.25 0 01.177.073l6.25 6.25a.25.25 0 010 .354l-5.025 5.025a.25.25 0 01-.354 0l-6.25-6.25a.25.25 0 01-.073-.177zm-1.5 0V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 010 2.474l-5.026 5.026a1.75 1.75 0 01-2.474 0l-6.25-6.25A1.75 1.75 0 011 7.775zM6 5a1 1 0 100 2 1 1 0 000-2z">
+                        </path>
+                      </svg>
+                      マーケティングリサーチ
+                    </a>
+                    
+                    
+                  </div>
+                </div>
+              </div>
+              <div class="Box-body px-5 pb-5" style="z-index: 1">
+                <article class="markdown-body entry-content container-lg">
+
+
+<p>新卒で入った会社でマーケティングリサーチの部署にいて、日々ログデータなどなどの数値をSQL描いて抽出して、お絵描きしています。元気です。最近は、アンケートのデータもいじったりしています。そんな業務の中で名前を知って、何やお前ってなった概念NPSについての数理的（面積を求める程度）な理解をしたので、備忘録がてら説明しようかなと思いました。そんなわけで書いていきます。</p>
+<div id="npsとは" class="section level2">
+<h2>NPSとは</h2>
+<p>NPSとは、「Net Promoter Score（ネットプロモータスコア）」の略称です。この指標を用いると、顧客ロイヤリティが測れる指標だそうです。すごいですね。</p>
+<p>この指標は、なんか知らんけど顧客と企業との間の愛着や信頼が表現できて凄いらしいです。あと、企業の業績上昇と関連があるそうです。凄いですね。この指標のすごいところはの説明についての詳細は、<a href="https://www.nttcoms.com/service/nps/summary/">NTTコムオンラインの資料</a>を参照してください。なんか凄いそうです。</p>
+</div>
+<div id="npsの計測方法" class="section level2">
+<h2>NPSの計測方法</h2>
+<p>このNPSを計測するには、顧客に対して「あなたはこの企業(製品/サービス/ブランド)を友人や同僚に薦める可能性は、どのくらいありますか？」と質問して、『0（全くそう思わない）~　5(どちらでもない) ~ 10(非常にそう思う)』の11段階で回答してもらうのだそうです。簡単ですね。</p>
+<p>NPSでは、以上の質問の回答について、0点~6点の回答者に「批判者」、7 ~ 8点の回答者に「中立者」9 ~ 10 点の回答者に「推奨者」というラベルを貼ります。そして、全ての回答者に占める推奨者の割合から批判者の割合を引いたものをNPSスコアと呼ぶのだそうです。</p>
+<p>補足として、上の計算方法で書いた<strong>割合</strong>はパーセンテージで表現した0~100の値を利用します。だから、全員推奨者の場合の <code>100 % - 0 % = 100 %</code> の100から、全批判者の場合の <code>0% - 100 % = - 100 %</code> の-100というスコアの間を取るのだそうです。ビジネス場はパーセントが好かれているんですね。</p>
+<p>ただし、今回の記事では、パーセントで表現すると若干めんどくさいので、その<strong>割合</strong>を0以上1以下の少数で表すことにします。なので、本記事でのNPSは -1 ~ 1 の値を取ります。ビジネスライクな表現で理解したい人は、100掛けといてください。</p>
+<p>さて、上に書いた計測方法を見たときの最初に抱いた僕の感想を箇条書きにしておきます。</p>
+<ul>
+<li><p>11件法。。。無理矢理分散作ろうとしてる心理学の卒論みたいやな</p></li>
+<li><p>平均値と中央値と分散の代表値でよくないか</p></li>
+<li><p>ん？このNPSって、代表値みたいなもんと捉えて良いんか</p></li>
+</ul>
+<p>多分みんな似たような感覚を持つでしょう。特に生データじっくり見る系の人は。んで、多分この指標の価値や意味が全くわからなくなるでしょうね。実際僕も業務でNPS実際に出すまでこの指標の価値がわかりませんでした。</p>
+</div>
+<div id="仮想アンケートデータでnpsというものの振る舞いをチェック" class="section level2">
+<h2>仮想アンケートデータでNPSというものの振る舞いをチェック</h2>
+<pre class="r"><code>##おまじない
+rm(list = ls())
+library(tidyverse)
+library(DT)</code></pre>
+<p>ここからは乱数生成で模擬的なアンケート回答データを作成して、そのデータを見ながらNPSという指標の意味について解説していきます。</p>
+<p>ここからは、乱数さん10000人をお呼びして彼らが回答してくれたアンケートデータを作ります。まずは<code>DF1</code> では、一番考えやすい、平均値が5で標準偏差2の正規乱数を作ります。</p>
+<pre class="r"><code>rnorm(n = 10000, mean = 5, sd = 2) %&gt;% hist()</code></pre>
+<p><img src="https://takuto-psych.github.io/post/2022-08-10-/index_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<pre class="r"><code>rnorm(n = 10000, mean = 5, sd = 2) %&gt;% max()</code></pre>
+<pre><code>## [1] 11.88872</code></pre>
+<pre class="r"><code>rnorm(n = 10000, mean = 5, sd = 2) %&gt;% min()</code></pre>
+<pre><code>## [1] -3.087193</code></pre>
+</div>
+</article>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script type="application/javascript" src='https://takuto-psych.github.io/js/toc.js'></script>
+<link rel="stylesheet" href='https://takuto-psych.github.io/css/toc.css' />
+
+
+<div class="utterances">
+  <script>
+    if(currentTheme() == 'light'){
+      var utterancesTheme = 'github-light';
+    } else{
+      var utterancesTheme = 'github-dark';
+    }
+    var utterancesScript = document.createElement('script');
+    utterancesScript.src = 'https://utteranc.es/client.js';
+    utterancesScript.setAttribute('repo', 'Takuto-Psych\/Takuto-Psych.github.io');
+    utterancesScript.setAttribute('issue-term', 'title');
+    utterancesScript.setAttribute('theme', utterancesTheme);
+    utterancesScript.setAttribute('crossorigin', 'anonymous');
+    utterancesScript.setAttribute('async', '');
+    document.querySelector('.utterances').appendChild(utterancesScript);
+  </script>
+</div>
+
+
+  <div class="footer container-xl width-full p-responsive">
+  <div
+    class="position-relative d-flex flex-row-reverse flex-lg-row flex-wrap flex-lg-nowrap flex-justify-center flex-lg-justify-between flex-sm-items-center pt-6 pb-2 mt-6 f6 text-gray border-top border-gray-light ">
+    <a aria-label="Homepage" title="GitHub" class="footer-octicon d-none d-lg-block mr-lg-4" href="https://takuto-psych.github.io/">
+      <svg height="24" class="octicon octicon-mark-github" viewBox="0 0 16 16" version="1.1" width="24">
+        <path fill-rule="evenodd"
+          d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z">
+        </path>
+      </svg>
+    </a>
+    <ul class="list-style-none d-flex flex-wrap col-12 flex-justify-center flex-lg-justify-between mb-2 mb-lg-0">
+      
+      <li class="mr-3 mr-lg-0">Theme by <a href='https://github.com/MeiK2333/github-style'>github-style</a></li>
+      
+    </ul>
+  </div>
+  <div class="d-flex flex-justify-center pb-6">
+    <span class="f6 text-gray-light"></span>
+  </div>
+
+
+</div>
+</body>
+
+<script type="application/javascript" src="https://takuto-psych.github.io/js/github-style.js"></script>
+
+
+
+</html>
