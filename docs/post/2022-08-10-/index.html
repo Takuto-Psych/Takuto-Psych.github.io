@@ -128,9 +128,9 @@
 
                   
                   <span class="file-info-divider"></span>
-                  Modified <relative-time datetime="Wed, 10 Aug 2022 11:25:17 &#43;0900"
+                  Modified <relative-time datetime="Mon, 22 Aug 2022 01:26:07 &#43;0900"
                     class="no-wrap">
-                    Wed, 10 Aug 2022 11:25:17 &#43;0900</relative-time>
+                    Mon, 22 Aug 2022 01:26:07 &#43;0900</relative-time>
                   
                 </div>
               </div>
@@ -160,7 +160,7 @@
                         </div>
                       </div>
                     </details-menu>
-                      1358 Words
+                      3123 Words
                     
 
                   </div>
@@ -206,13 +206,13 @@
 <div id="npsとは" class="section level2">
 <h2>NPSとは</h2>
 <p>NPSとは、「Net Promoter Score（ネットプロモータスコア）」の略称です。この指標を用いると、顧客ロイヤリティが測れる指標だそうです。すごいですね。</p>
-<p>この指標は、なんか知らんけど顧客と企業との間の愛着や信頼が表現できて凄いらしいです。あと、企業の業績上昇と関連があるそうです。凄いですね。この指標のすごいところはの説明についての詳細は、<a href="https://www.nttcoms.com/service/nps/summary/">NTTコムオンラインの資料</a>を参照してください。なんか凄いそうです。</p>
+<p>この指標は、なんか知らんけど顧客と企業との間の愛着や信頼が表現できて凄いらしいです。あと、企業の業績上昇と関連があるそうです。凄いですね。この指標のすごいところの説明についての詳細は、<a href="https://www.nttcoms.com/service/nps/summary/">NTTコムオンラインの資料</a>を参照してください。なんか凄いそうです。</p>
 </div>
 <div id="npsの計測方法" class="section level2">
 <h2>NPSの計測方法</h2>
 <p>このNPSを計測するには、顧客に対して「あなたはこの企業(製品/サービス/ブランド)を友人や同僚に薦める可能性は、どのくらいありますか？」と質問して、『0（全くそう思わない）~　5(どちらでもない) ~ 10(非常にそう思う)』の11段階で回答してもらうのだそうです。簡単ですね。</p>
 <p>NPSでは、以上の質問の回答について、0点~6点の回答者に「批判者」、7 ~ 8点の回答者に「中立者」9 ~ 10 点の回答者に「推奨者」というラベルを貼ります。そして、全ての回答者に占める推奨者の割合から批判者の割合を引いたものをNPSスコアと呼ぶのだそうです。</p>
-<p>補足として、上の計算方法で書いた<strong>割合</strong>はパーセンテージで表現した0~100の値を利用します。だから、全員推奨者の場合の <code>100 % - 0 % = 100 %</code> の100から、全批判者の場合の <code>0% - 100 % = - 100 %</code> の-100というスコアの間を取るのだそうです。ビジネス場はパーセントが好かれているんですね。</p>
+<p>補足として、上の計算方法で書いた<strong>割合</strong>はパーセンテージで表現した0~100の値を利用します。だから、全員推奨者の場合の <code>100 % - 0 % = 100 %</code> の100から、全批判者の場合の <code>0% - 100 % = - 100 %</code> の-100というスコアの間を取るのだそうです。ビジネスの場ではパーセントが好かれているんですね。</p>
 <p>ただし、今回の記事では、パーセントで表現すると若干めんどくさいので、その<strong>割合</strong>を0以上1以下の少数で表すことにします。なので、本記事でのNPSは -1 ~ 1 の値を取ります。ビジネスライクな表現で理解したい人は、100掛けといてください。</p>
 <p>さて、上に書いた計測方法を見たときの最初に抱いた僕の感想を箇条書きにしておきます。</p>
 <ul>
@@ -227,15 +227,295 @@
 <pre class="r"><code>##おまじない
 rm(list = ls())
 library(tidyverse)
-library(DT)</code></pre>
+library(DT)
+library(SimMultiCorrData)
+## macユーザーの皆様に向けて
+set.seed(2525)</code></pre>
 <p>ここからは乱数生成で模擬的なアンケート回答データを作成して、そのデータを見ながらNPSという指標の意味について解説していきます。</p>
-<p>ここからは、乱数さん10000人をお呼びして彼らが回答してくれたアンケートデータを作ります。まずは<code>DF1</code> では、一番考えやすい、平均値が5で標準偏差2の正規乱数を作ります。</p>
-<pre class="r"><code>rnorm(n = 10000, mean = 5, sd = 2) %&gt;% hist()</code></pre>
-<p><img src="https://takuto-psych.github.io/post/2022-08-10-/index_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
-<pre class="r"><code>rnorm(n = 10000, mean = 5, sd = 2) %&gt;% max()</code></pre>
-<pre><code>## [1] 12.30149</code></pre>
-<pre class="r"><code>rnorm(n = 10000, mean = 5, sd = 2) %&gt;% min()</code></pre>
-<pre><code>## [1] -2.888874</code></pre>
+<p>ここからは、乱数さん11000人をお呼びして彼らが回答してくれたアンケートデータを作ります。今回のアンケートデータでは、生データとして、<code>company_id</code> 、<code>answer</code> 、の列を用意します。それぞれ、アンケートの実施会についてのid、実際に得られたアンケート結果とします。</p>
+<p>これから作るデータについて表にしてまとめておきます。</p>
+<table>
+<colgroup>
+<col width="19%" />
+<col width="19%" />
+<col width="61%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>company_id</th>
+<th>分布</th>
+<th>与えるパラメータ</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>A社</td>
+<td>一様分布</td>
+<td>ビヨーン。平均5</td>
+</tr>
+<tr class="even">
+<td>B社</td>
+<td>正規分布</td>
+<td>平均値5、SD1</td>
+</tr>
+<tr class="odd">
+<td>C社</td>
+<td>高得点者が多い分布</td>
+<td>平均5、SD1、歪度-0.8（分布を右寄りに）</td>
+</tr>
+<tr class="even">
+<td>D社</td>
+<td>低得点者が多い分布</td>
+<td>平均5、SD1、歪度 .08（分布を左寄りに）</td>
+</tr>
+<tr class="odd">
+<td>E社</td>
+<td>二山分布（双峰分布）</td>
+<td>平均5、SD1、歪度-0.8の乱数さん5500人と平均5、SD1、歪度0.8の乱数さん5500人をくっつけ</td>
+</tr>
+</tbody>
+</table>
+<div id="シミュレーション時のパラメータ付与" class="section level4">
+<h4>シミュレーション時のパラメータ付与</h4>
+<pre class="r"><code>sample_size &lt;- 11000
+mean &lt;- 5
+sd &lt;- 1.5
+skew &lt;- 0.8</code></pre>
+</div>
+<div id="乱数さんご回答ありがとうございます" class="section level3">
+<h3>乱数さんご回答ありがとうございます</h3>
+<pre class="r"><code>DF_a &lt;- data.frame(
+  company_id = &quot;A&quot;,
+  answer = floor( ## 0から11の一様乱数生成して、最後に小数点以下を切り捨て。
+    runif(sample_size, min=0, max=10+1)
+  )
+)
+
+DF_b &lt;- data.frame(
+  company_id = &quot;B&quot;,
+  answer = floor( ## 0から11の正規乱数生成して最後に小数点以下を切り捨て。
+    truncnorm::rtruncnorm(n = sample_size, a = 0, b = 10+1, mean = mean + 0.5, sd = sd)　## 小数点以下の切り捨ての関係で、0〜11の範囲で乱数作ってるので、その中心の5.5をmeanに設定。
+  )
+)
+
+
+c &lt;- nonnormvar1( ##歪度0.5尖度0平均5.5の乱数生成。リストが出来上がる。
+    method = &quot;Fleishman&quot;,
+    skews = - skew,
+    skurts = 0,
+    n = sample_size,
+    mean = mean + 0.5,
+    vars = sd^2
+  )
+
+
+DF_c &lt;- data.frame(
+  company_id = &quot;C&quot;,
+  answer = floor(
+    c[[&quot;continuous_variable&quot;]]$V1
+  )
+)
+
+
+
+
+d &lt;- nonnormvar1( ##歪度0.5尖度0平均5.5の乱数生成。リストが出来上がる。
+    method = &quot;Fleishman&quot;,
+    skews = skew,
+    skurts = 0,
+    n = sample_size,
+    mean = mean + 0.5,
+    vars = sd^2
+  )
+
+
+DF_d &lt;- data.frame(
+  company_id = &quot;D&quot;,
+  answer = floor(
+    d[[&quot;continuous_variable&quot;]]$V1
+  )
+)
+
+
+f &lt;- nonnormvar1( ##歪度0.5尖度0平均5.5の乱数生成。リストが出来上がる。
+    method = &quot;Fleishman&quot;,
+    skews = skew,
+    skurts = 0,
+    n = sample_size / 2,
+    mean = mean - 3.5,
+    vars = sd^2
+  )
+
+f &lt;- f[[&quot;continuous_variable&quot;]]$V1
+
+
+g &lt;- nonnormvar1( ##歪度0.5尖度0平均5.5の乱数生成。リストが出来上がる。
+    method = &quot;Fleishman&quot;,
+    skews = - skew,
+    skurts = 0,
+    n = sample_size / 2,
+    mean = mean + 3.5,
+    vars = sd^2
+  )
+
+g &lt;- g[[&quot;continuous_variable&quot;]]$V1
+
+e &lt;- c(f,g)
+
+DF_e &lt;- data.frame(
+  company_id = &quot;E&quot;,
+  answer = floor(e)
+)
+
+DF &lt;- rbind(DF_a, DF_b, DF_c, DF_d, DF_e)
+DF &lt;- DF %&gt;% mutate(
+  .,
+  NPS_label =  case_when(
+    answer &gt;= 9 ~ &quot;promoter&quot;,
+    answer &lt;= 6 ~ &quot;detractor&quot;,
+    answer &lt;= 8 ~ &quot;passive&quot;
+  )
+)</code></pre>
+</div>
+</div>
+<div id="シミュレーションされたデータを確認" class="section level2">
+<h2>シミュレーションされたデータを確認</h2>
+<div id="変なデータないかチェック" class="section level3">
+<h3>変なデータないかチェック</h3>
+<p>シミュレーションされたA社~E社についてそれぞれの記述統計量を確認してみます。</p>
+<p>まずは、想定外の値を出していないかの確認。</p>
+<pre class="r"><code>tapply(DF$answer, DF$company_id, min) ## 最小値確認</code></pre>
+<pre><code>##  A  B  C  D  E 
+##  0  0  0  3 -1</code></pre>
+<pre class="r"><code>tapply(DF$answer, DF$company_id, max) ## 最大値確認</code></pre>
+<pre><code>##  A  B  C  D  E 
+## 10 10  7 10 10</code></pre>
+<pre class="r"><code>table(DF$company_id)</code></pre>
+<pre><code>## 
+##     A     B     C     D     E 
+## 11000 11000 11000 11000 11000</code></pre>
+<p>質問紙の想定してる範囲からはみ出してる回答者はどの会社にもいませんね。あと、その想定してる範囲の回答者が設定した11000人いましたね。よかった。</p>
+<p>次は平均値の確認。</p>
+<pre class="r"><code>tapply(DF$answer, DF$company_id, mean) ## 平均値算出</code></pre>
+<pre><code>##        A        B        C        D        E 
+## 4.927455 4.999636 5.021909 4.975455 4.503273</code></pre>
+<p>まあ当然と言えば当然ですが、平均値については、想定した5という得点にまとまりました。</p>
+<p>次に標準偏差SDについては、</p>
+<pre class="r"><code>tapply(DF$answer, DF$company_id, sd) ## SD算出</code></pre>
+<pre><code>##        A        B        C        D        E 
+## 3.170061 1.514965 1.554353 1.557965 3.850486</code></pre>
+<p>乱数生成の際にパラメータとしてSD = sd（分散 = 1.5 ^ 2）を与えたB,C,D社については1.5になってくれました。ただし、パラメータを与えなかった一様分布のA社と二山分布のE社のそれは1.5になっていません。まあ当然のことですね。</p>
+<p>まあ変なデータはなさそうですね。よかったよかった。</p>
+</div>
+<div id="section" class="section level3">
+<h3></h3>
+</div>
+<div id="ヒストグラム確率密度関数の分布を見てみよう" class="section level3">
+<h3>ヒストグラム（確率密度関数の分布）を見てみよう</h3>
+<p>簡単に出せてありがとう、ggplot2様。</p>
+<pre class="r"><code>DF %&gt;% ggplot(
+  .,
+  aes(x = answer, color = company_id)
+) + geom_density(
+  adjust = 2
+)　+ xlim(-3, 13) </code></pre>
+<p><img src="https://takuto-psych.github.io/post/2022-08-10-/index_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<p>一応補足ですが、本来はデータは0~10敷かないのですが、確率密度の分布を滑らかにしているので、0未満10より大きいx軸も含められちゃってます。ヒストグラムも書いとくので、あんまりお気になさらず。</p>
+<pre class="r"><code>DF %&gt;% ggplot(
+  .,
+  aes(x = answer, fill = company_id)
+) + geom_histogram(
+  position = &quot;identity&quot;,
+  alpha = 0.8
+)　+ xlim(-3, 13) </code></pre>
+<pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+<pre><code>## Warning: Removed 10 rows containing missing values (geom_bar).</code></pre>
+<p><img src="https://takuto-psych.github.io/post/2022-08-10-/index_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+<p>さて、最後に、NPSをそれぞれの会社で出してみましょう。</p>
+<p>NPSの出し方は、<code>(0~6の回答をした人の人数 - 9と10の回答をした人の人数 ) / その会社のアンケートの回答者数</code> なので、それを計算しましょう</p>
+<pre class="r"><code>## その範囲に回答者がいなかった場合、tidyverse::coutでは0が入らないため、チェック用に全会社idを取り出す。
+
+company_ids &lt;- DF %&gt;% distinct(., company_id) %&gt;% unlist()
+
+## 批判者（detoractor）の数を数える。
+detractor_num &lt;- DF %&gt;% group_by(
+  .,
+  company_id
+) %&gt;% count(
+  .,
+  answer &lt;= 6
+) %&gt;% filter(
+  .,
+  `answer &lt;= 6` == TRUE
+) %&gt;% mutate(
+  .,
+  n = n /sample_size
+) %&gt;% select(
+  .,
+  company_id, n
+)
+
+add_detractor_num &lt;- data.frame(
+  company_id = company_ids[!company_ids %in% detractor_num$company_id],
+  n = ifelse(
+    is_empty(company_ids[!company_ids %in% detractor_num$company_id]), list(NULL),
+    0
+  )
+)
+
+detractor_num &lt;- rbind(detractor_num ,add_detractor_num)
+
+detractor_num &lt;- detractor_num %&gt;% arrange(
+  .,
+  company_id
+)
+
+
+
+
+## 推奨者（detoractor）の数を数える。
+promoter_num &lt;- DF %&gt;% group_by(
+  .,
+  company_id
+) %&gt;% count(
+  .,
+  answer &gt;= 9
+) %&gt;% filter(
+  .,
+  `answer &gt;= 9` == TRUE
+) %&gt;% mutate(
+  .,
+  n = n /sample_size
+) %&gt;% select(
+  .,
+  company_id, n
+)
+
+add_promoter_num &lt;- data.frame(
+  company_id = company_ids[!company_ids %in% promoter_num$company_id],
+  n = ifelse(
+    is_empty(company_ids[!company_ids %in% promoter_num$company_id]), list(NULL),
+    0
+  )
+)
+
+promoter_num &lt;- rbind(promoter_num, add_promoter_num)
+
+promoter_num &lt;- promoter_num %&gt;% arrange(
+  .,
+  company_id
+)
+
+
+DF_nps &lt;- full_join(promoter_num, detractor_num, by = &quot;company_id&quot;)
+
+colnames(DF_nps) &lt;- c(&quot;company_id&quot;, &quot;promoter_ratio&quot;, &quot;detractor_ratio&quot;)
+
+DF_nps &lt;- DF_nps %&gt;% mutate(
+  .,
+  nps_score = promoter_ratio - detractor_ratio
+)</code></pre>
+</div>
 </div>
 </article>
               </div>
