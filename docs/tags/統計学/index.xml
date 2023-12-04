@@ -6,7 +6,16 @@
     <description>Recent content in 統計学 on Takuto Psych Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Wed, 10 Aug 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://takuto-psych.github.io/tags/%E7%B5%B1%E8%A8%88%E5%AD%A6/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 22 Apr 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://takuto-psych.github.io/tags/%E7%B5%B1%E8%A8%88%E5%AD%A6/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>共起ネットワークを作る用のBIツールを作ったよ</title>
+      <link>https://takuto-psych.github.io/post/2023-04-22-bi/</link>
+      <pubDate>Sat, 22 Apr 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://takuto-psych.github.io/post/2023-04-22-bi/</guid>
+      <description>大量の文を真面目に読んでる時間はねえ</description>
+    </item>
+    
     <item>
       <title>NPS?何それ美味しいの？美味しかったよ</title>
       <link>https://takuto-psych.github.io/post/2022-08-10-/</link>

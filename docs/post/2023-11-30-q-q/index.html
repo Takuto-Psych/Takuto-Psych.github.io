@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <script type="application/javascript" src='https://takuto-psych.github.io/js/theme-mode.js'></script>
+    <link rel="stylesheet" href='https://takuto-psych.github.io/css/frameworks.min.css' />
+    <link rel="stylesheet" href='https://takuto-psych.github.io/css/github.min.css' />
+    <link rel="stylesheet" href='https://takuto-psych.github.io/css/github-style.css' />
+    <link rel="stylesheet" href='https://takuto-psych.github.io/css/light.css' />
+    <link rel="stylesheet" href='https://takuto-psych.github.io/css/dark.css' />
+    <link rel="stylesheet" href='https://takuto-psych.github.io/css/syntax.css' />
+    <title>人間がQ学習をして吐き出されるログで機械もQ学習をさせてみた - Takuto Psych Blog</title>
+    
+    <link rel="icon" type="image/x-icon" href='/images/avatar.png'>
+    
+    <meta name="theme-color" content="#1e2327">
+
+    
+    <meta name="description"
+  content="aaa" />
+<meta name="keywords"
+  content=', ' />
+<meta name="robots" content="noodp" />
+<link rel="canonical" href="https://takuto-psych.github.io/post/2023-11-30-q-q/" />
+
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="人間がQ学習をして吐き出されるログで機械もQ学習をさせてみた - Takuto Psych Blog" />
+<meta name="twitter:description"
+  content="aaa" />
+<meta name="twitter:site" content="https://takuto-psych.github.io/" />
+<meta name="twitter:creator" content="Takuto_Psych" />
+<meta name="twitter:image"
+  content="https://takuto-psych.github.io/">
+
+
+<meta property="og:type" content="article" />
+<meta property="og:title" content="人間がQ学習をして吐き出されるログで機械もQ学習をさせてみた - Takuto Psych Blog">
+<meta property="og:description"
+  content="aaa" />
+<meta property="og:url" content="https://takuto-psych.github.io/post/2023-11-30-q-q/" />
+<meta property="og:site_name" content="人間がQ学習をして吐き出されるログで機械もQ学習をさせてみた" />
+<meta property="og:image"
+  content="https://takuto-psych.github.io/">
+<meta property="og:image:width" content="2048">
+<meta property="og:image:height" content="1024">
+
+<meta property="article:published_time" content="2023-11-30 00:00:00 &#43;0000 UTC" />
+
+
+
+
+
+
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-0E1T9Y2XZS"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-0E1T9Y2XZS');
+</script>
+
+    
+    <meta name="google-site-verification" content="ZTJLaWcJsPiyOc11H0OSIjk1bYevn3VcRp4FNnJVpuw" />
+</head>
+
+<body>
+  <div style="position: relative">
+  <header class="Header js-details-container Details px-3 px-md-4 px-lg-5 flex-wrap flex-md-nowrap open Details--on">
+    <div class="Header-item mobile-none" style="margin-top: -4px; margin-bottom: -4px;">
+      <a class="Header-link " href="https://takuto-psych.github.io/">
+        <span style="margin-left: 8px;">
+          Takuto Psych Blog
+        </span>
+      </a>
+    </div>
+    
+    <div class="Header-item Header-item--full flex-justify-center d-md-none position-relative">
+      <a class="Header-link " href="https://takuto-psych.github.io/">
+        
+        <span style="margin-left: 8px;">
+          Takuto Psych Blog
+        </span>
+      </a>
+    </div>
+    <div class="Header-item" style="margin-left: auto;">
+      <a href="javascript:void(0)" class="Header-link no-select" onclick="switchTheme()">
+        <svg style="fill: var(--color-profile-color-modes-toggle-moon);" class="no-select" viewBox="0 0 16 16"
+          version="1.1" width="16" height="16">
+          <path fill-rule="evenodd" clip-rule="evenodd"
+            d="M4.52208 7.71754C7.5782 7.71754 10.0557 5.24006 10.0557 2.18394C10.0557 1.93498 10.0392 1.68986 10.0074 1.44961C9.95801 1.07727 10.3495 0.771159 10.6474 0.99992C12.1153 2.12716 13.0615 3.89999 13.0615 5.89383C13.0615 9.29958 10.3006 12.0605 6.89485 12.0605C3.95334 12.0605 1.49286 10.001 0.876728 7.24527C0.794841 6.87902 1.23668 6.65289 1.55321 6.85451C2.41106 7.40095 3.4296 7.71754 4.52208 7.71754Z">
+          </path>
+        </svg>
+      </a>
+    </div>
+  </header>
+</div>
+  
+<div>
+  <main>
+    <div class="gisthead pagehead bg-gray-light pb-0 pt-3 mb-4">
+      <div class="px-0">
+        <div class="mb-3 d-flex px-3 px-md-3 px-lg-5">
+          <div class="flex-auto min-width-0 width-fit mr-3">
+            <div class="d-flex">
+              <div class="d-none d-md-block">
+                <a class="avatar mr-2 flex-shrink-0" href="https://takuto-psych.github.io/">
+                  <img class=" avatar-user"
+                    src="https://takuto-psych.github.io/images/avatar.png"
+                    width="32" height="32"></a>
+              </div>
+              <div class="d-flex flex-column">
+                <h1 class="break-word f3 text-normal mb-md-0 mb-1">
+                  <span class="author">
+                    <a href="https://takuto-psych.github.io/">Takuto-Psych</a></span><span
+                    class="path-divider">/</span><strong class="css-truncate-target mr-1" style="max-width: 410px"><a
+                      href="https://takuto-psych.github.io/post/2023-11-30-q-q/">人間がQ学習をして吐き出されるログで機械もQ学習をさせてみた</a></strong>
+                </h1>
+                <div class="note m-0">
+                  Created <relative-time datetime="Thu, 30 Nov 2023 00:00:00 &#43;0000"
+                    class="no-wrap">
+                    Thu, 30 Nov 2023 00:00:00 &#43;0000</relative-time>
+
+                  
+                  <span class="file-info-divider"></span>
+                  Modified <relative-time datetime="Sun, 03 Dec 2023 14:21:54 &#43;0900"
+                    class="no-wrap">
+                    Sun, 03 Dec 2023 14:21:54 &#43;0900</relative-time>
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-lg px-3 new-discussion-timeline">
+      <div class="repository-content gist-content">
+        <div>
+          <div class="js-gist-file-update-container js-task-list-container file-box">
+            <div id="file-pytest" class="file my-2">
+              <div id="post-header" class="file-header d-flex flex-md-items-center flex-items-start sticky-header" style="z-index: 2">
+                <div class="file-info d-flex flex-md-items-center flex-items-start flex-order-1 flex-auto">
+                  <div class="text-mono f6 flex-auto pr-3 flex-order-2 flex-md-order-1 mt-2 mt-md-0">
+                    
+                    <summary id="toc-toggle" onclick="clickToc()" class="btn btn-octicon m-0 mr-2 p-2">
+                      <svg aria-hidden="true" viewBox="0 0 16 16" height="16" width="16" class="octicon octicon-list-unordered">
+                        <path fill-rule="evenodd" d="M2 4a1 1 0 100-2 1 1 0 000 2zm3.75-1.5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zM3 8a1 1 0 11-2 0 1 1 0 012 0zm-1 6a1 1 0 100-2 1 1 0 000 2z"></path>
+                      </svg>
+                    </summary>
+                    <details-menu class="SelectMenu" id="toc-details" style="display: none;">
+                      <div class="SelectMenu-modal rounded-3 mt-1" style="max-height: 340px;">
+                        <div class="SelectMenu-list SelectMenu-list--borderless p-2" style="overscroll-behavior: contain;" id="toc-list">
+                        </div>
+                      </div>
+                    </details-menu>
+                      4262 Words
+                    
+
+                  </div>
+                  <div class="file-actions flex-order-2 pt-0">
+                    
+                  </div>
+                </div>
+              </div>
+              <div class="Box-body px-5 pb-5" style="z-index: 1">
+                <article class="markdown-body entry-content container-lg">
+
+
+<div id="はじめに" class="section level2">
+<h2>はじめに</h2>
+<p>世の中にはさまざまなプラットフォームがありますよね。最近ではYouTubeなどの動画サイトがとても盛況なようです。動画を通したSNSとしては、TikTokなども存在します。また、Instagramなども動画を見れて暇つぶしができます。</p>
+<p>こういった時間泥棒のプラットフォームがさまざまな人間の時間を奪えるのは、レコメンドシステムのおかげです。レコメンドシステムとは、ユーザーの行動のログをもとに、そのユーザーが好むコンテンツを提示するというものです。レコメンドシステムでは色々なアルゴリズムが採用されています。僕はあんまり数学できないので深層学習はわからないです。だから、心理学出だからこそ比較的理解がしやすいQ学習を例にとってみます。Q学習の詳細はこちらの記事に任せます。</p>
+<p>このQ学習による行動の最適化はヒトもするし、なんならラットもすると考えられています。このQ学習のロジックはコンピュータサイエンスの中でも使われており、機械に動物っぽい行動をさせることにある程度成功しました。その結果、Q学習は今回のテーマであるレコメンドシステムにも組み込まれています。</p>
+<p>今回は、<strong>機械</strong>がQ学習のアルゴリズム<strong>だけ</strong>を使い人間に提供するコンテンツを取捨選択するというレコメンドシステムが採用されているプラットフォームで、<strong>人間</strong>もまたQ学習のアルゴリズムだけで自分の好きなコンテンツを視聴するという状態を考えてみたいと思います。Q学習の相互作用とでもいいましょうかね。</p>
+<div id="機械と人間のq学習の相互作用の具体例" class="section level3">
+<h3>機械と人間のQ学習の相互作用の具体例</h3>
+<p>上では動画共有サイトを例に挙げてみました。僕は仕事中作業BGMを流します。具体的には、Apple Musicを使っています。あなたにオススメという欄から音楽を自動で再生しています。その結果、甲斐バンド等々の古臭い音楽が流れ続けるようになりました。おそらく、甲斐バンドなどの古臭い曲をオススメされるたびに僕が好んで聴いているので、アップル側がおすすめをするようになったのだと思います。そして、そのオススメによって僕がまた甲斐バンドを聴くというループが発生しています。</p>
+<p>実際には、僕のような視聴履歴を持っている人（多分50代後半のおっさん）が他に聴いた曲を僕にレコメンドするというシステムや、さまざまな楽曲の音の成分を取り出して僕が好む曲に含まれている似ている成分（うっすらエフェクターが入っているエレキギターの音）があればレコメンドするというようなシステムをアップルは組み込んでいると思いますが、一旦そういうことは考えないでおきます。</p>
+</div>
+<div id="もう少し単純化して数字で表現をする" class="section level3">
+<h3>もう少し単純化して数字で表現をする</h3>
+<p>今回は、機械があるアーティスト自体を人間にオススメするという状態を考えます。各楽曲をオススメするという考え方ではなく、アーティスト自体をオススメするという考え方です。</p>
+</div>
+<div id="機械視点で得られるフィードバックの話" class="section level3">
+<h3>機械視点で得られるフィードバックの話</h3>
+<p>後でコード書いていくので必要なlibraryを使えるようにおまじないを書いておきます。</p>
+<pre class="r"><code>rm(list  = ls())
+library(tidyverse)</code></pre>
+<pre><code>## ── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+## ✔ dplyr     1.1.4     ✔ readr     2.1.4
+## ✔ forcats   1.0.0     ✔ stringr   1.5.1
+## ✔ ggplot2   3.4.4     ✔ tibble    3.2.1
+## ✔ lubridate 1.9.3     ✔ tidyr     1.3.0
+## ✔ purrr     1.0.2     
+## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+## ✖ dplyr::filter() masks stats::filter()
+## ✖ dplyr::lag()    masks stats::lag()
+## ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
+<p>まずは、みなさんが好きなアーティストを友人にオススメするという状態を考えてみましょう。これは、サザンオールスターズを例に取ると、『勝手にシンドバッド』と『いとしのエリー』を全く同じものとして扱って、友人にサザンオールスターズのオススメをするという状態です。</p>
+<p>この時、そのオススメを受け取る相手が桑田佳祐の声が好きだったとしても、アルバムごとにあるいは発表年代ごとに曲の雰囲気が違うため、曲ごとに好き嫌いが発生するかもしれません。</p>
+<p>たとえばオススメする相手の友人はロック調の曲は好きですが、バラード調の曲は嫌いです。だから『勝手にシンドバッド』は好きだけど『いとしのエリー』は嫌いという状態になると仮定します。もし友人の好きな『勝手にシンドバッド』をみなさんがオススメできたとすると、友人は最後まで聞いてくれます。一方、友人が嫌いな『いとしのエリー』をみなさんがオススメしてしまったら、友人は半分程度聴いてスキップします。</p>
+<p>サザンの全曲を流石に僕は把握していないのでわからないですが、全楽曲のうちの30%がロック調、残り70%がバラード調だと仮定します。その仮定で、サザンの楽曲１００曲をみなさんが友人にオススメした場合、仮に友人が全曲再生はしたとすると、30曲は全部聴いてもらえ、70曲は途中でスキップされるという経験をみなさんはすることになります。オススメしたアーティスト（の曲）を全部聴いてくれるという状態は、みなさんの視点に立つと、そのアーティストをオススメするという<strong>行動</strong>Qが正解だったという経験なので報酬になります。</p>
+<p>一方、オススメした曲を途中でスキップされるという経験は、みなさんの視点に立つとそのアーティストをオススメするという<strong>行動</strong>Qが不正解だったということなので罰（あるいは報酬なし）と捉えられるかと思います。</p>
+<p>今、ご友人に対してサザンを勧めるという行動を心の中でみなさんにしてもらいました。きっと、100曲勧めたらサザンを勧めるのはやめておいて他のアーティストを勧めようと思ったでしょう（厳密には、サザンのロック調の曲を勧めるでしょうが、今回は、アーティスト単位で勧めるので曲調の違いは考慮しません）。</p>
+<p>心の中で行っていた行動は、主体はみなさん一人一人で、その対象は友人でした。これがレコメンドシステムでは、主体を機械にその対象はみなさん一人一人として、行われています。</p>
+<p>さて、機械が11人分のアーティストを勧めるとします。それぞれのアーティストを刺激と捉えると、S<sub>1</sub> 〜S<sub>11</sub> の11個の刺激があると考えられます。このS<sub>1</sub> 〜S<sub>11</sub> をある人にオススメするとスキップされず最後まで聴いてもらえる（報酬を得られる）確率が、S<sub>1</sub> は100%、S<sub>2</sub> は90% … S<sub>10</sub> は10%、S<sub>11</sub>は0％だとします。</p>
+<p>これは、機械にとってS<sub>1</sub> 〜S<sub>11</sub>の中からある一つの刺激S<sub>i</sub>を選んでオススメすることをQ_COM<sub>i</sub> と表現することができます。Q_COMというのは、COMputerにとっての、S<sub>i</sub> を選択する行動価値Q<sub>i</sub>という意味です。</p>
+<p>仮に試行回数が10万回の、機械が人間にアーティストをオススメをしてそのアーティストを選ぶという状況があると各試行で機械が提示しうるアーティストが報酬（全部聴いてもらえる）を得られるかどうかは以下のようなRコードで表現ができます。</p>
+<pre class="r"><code>##刺激作り
+
+stimulus_num &lt;- 11
+trials &lt;- 100000
+
+
+##報酬が出てくる確率を設定する。（1 - S_n$s_nが報酬なしになる）
+STIMULUS &lt;- seq(
+  0,
+  1,
+  length.out = stimulus_num
+) %&gt;% t(
+  
+) %&gt;% data.frame(
+  
+) %&gt;% rename_with(
+  \(x) 
+  str_replace(x, &quot;X&quot;, &quot;s&quot;),
+  starts_with(&quot;X&quot;)
+)
+
+
+##その後、t試行分、実際の報酬と罰を設定する。報酬= 1 罰= 0
+STIMULUS_REWARD &lt;- STIMULUS  %&gt;% lapply(
+  .,
+  function(x){
+    ##上で設定した報酬確率*試行数だけ報酬を設定。
+    c(
+      rep(1, times =  round(x * trials, digits = 0)),
+      rep(0, times = round((1 - x) * trials, digits = 0)
+    )) %&gt;% sample(., length(.))
+  }
+) %&gt;% data.frame()
+
+STIMULUS_REWARD &lt;- STIMULUS_REWARD %&gt;% mutate(
+  .,
+  trial_num = c(1:trials)
+)</code></pre>
+<p>ちゃんと、各試行で各刺激が設定している報酬になっているかを確認します。</p>
+<pre class="r"><code>STIMULUS_REWARD %&gt;% select(
+  .,
+  - trial_num
+) %&gt;% lapply(
+  .,
+  sum
+)</code></pre>
+<pre><code>## $s1
+## [1] 0
+## 
+## $s2
+## [1] 10000
+## 
+## $s3
+## [1] 20000
+## 
+## $s4
+## [1] 30000
+## 
+## $s5
+## [1] 40000
+## 
+## $s6
+## [1] 50000
+## 
+## $s7
+## [1] 60000
+## 
+## $s8
+## [1] 70000
+## 
+## $s9
+## [1] 80000
+## 
+## $s10
+## [1] 90000
+## 
+## $s11
+## [1] 1e+05</code></pre>
+<p>問題なさそうですね。</p>
+<p>ついでにQ_COM<sub>i</sub> を入れる箱も作っておきましょう。</p>
+<pre class="r"><code>Q_COM &lt;- rep(
+  0,
+  stimulus_num
+) %&gt;% t(
+  .
+) %x% matrix(
+  0,
+  nrow = trials,
+  ncol = 1
+) %&gt;% data.frame(
+  .
+)
+
+Q_COM &lt;- Q_COM %&gt;% rename_with(
+  \(x)
+  str_replace(x, &quot;X&quot;, &quot;q_com&quot;),
+  starts_with(&quot;X&quot;)
+)
+Q_COM &lt;- Q_COM %&gt;% mutate(
+  .,
+  trial_num = 1:trials
+)</code></pre>
+<p>さて、ここまでで機械側の学習の話をしてきました。次からは人間側の学習を考えてみましょう。</p>
+</div>
+<div id="人間視点で得られるフィードバックの話" class="section level3">
+<h3>人間視点で得られるフィードバックの話</h3>
+<p>さて、レコメンドのシステムで機械からアーティストをオススメされた側の人間の行動を考えましょう。まずは、機械との相互作用で考えるのではなく、友人からアーティストの曲をオススメされたという状況を考えましょう。そうです、今度は先ほどの友人の視点になってみます。</p>
+<p>さて、あなたは友人からサザンオールスターズを勧められました。桑田さんのしゃがれ声がロック調の曲ではいい足を出して好きだなと思ったとします。しかし、如何せんバラード調の曲が嫌いです。そんなとき、アーティストを勧めてくれる友人に対してあなたはどうするでしょうか？おそらくこの3択の行動があると思います（曲ごとの評価ではなく、アーティスト単位での評価をします。だからロック調のサザンが聴きたいとは言ってはいけません）。</p>
+<ol style="list-style-type: decimal">
+<li><p>友人にオススメされたサザンの曲を最後まで聴く（好きな曲の時の反応）</p></li>
+<li><p>友人にオススメされたサザンの曲を聴いてみるけど途中で中断する（嫌いな曲の問いの反応）</p></li>
+<li><p>サザンの曲を全く再生せずに、友人に「サザン以外の曲を勧めてよ！ほら、甲斐バンドとか名前だけ知ってるんだ」と言ってみる。</p></li>
+</ol>
+<p>それぞれを行動選択と、その結果のフィードバックとして捉えると</p>
+<p>まず</p>
+<ol style="list-style-type: decimal">
+<li>友人にオススメされたサザンの曲を最後まで聴く（好きな曲の時の反応）</li>
+</ol>
+<p>は、（事前の経験でバラード曲が多くてサザンをあまり好きじゃないことがわかったけれど一定のランダムさで）試しに聴くという行動を選択した結果、報酬のフィードバックを得られたと捉えることができます。</p>
+<p>次の</p>
+<ol start="2" style="list-style-type: decimal">
+<li>友人にオススメされたサザンの曲を聴いてみるけど途中で中断する（嫌いな曲の問いの反応）</li>
+</ol>
+<p>は、（事前の経験でバラード曲が多くてサザンをあまり好きじゃないことがわかったけれど）聴くという行動を試しに選択した結果、案の定報酬のフィードバックを得られなかったと捉えることができます。</p>
+<p>最後の</p>
+<ol start="3" style="list-style-type: decimal">
+<li>サザンの曲を全く再生せずに、友人に「サザン以外の曲を勧めてよ！ほら、甲斐バンドとか名前だけ知ってるんだ」と言ってみる。</li>
+</ol>
+<p>は、（事前の経験でバラード曲が多くてサザンをあまり好きじゃないことがわかったので）その行動の選択をしなかった結果、何もフィードバックを得られなかったと捉えることができます。これは、２のような行動をした結果報酬を得られなかったのとは違いますね。</p>
+<p>この時t-1回目までに友人にオススメされて聴いてみて持っているサザンという刺激を選択する行動価値Q_HUM<sub>t-1</sub> を元にt回目の友人からのサザンのオススメに対して、実際にサザンという刺激を選択するかどうかを決めていると捉えることができます。もちろんこのt回目の経験によって、次のQ_HUM<sub>t</sub> を更新して次の行動選択を決めていきます。</p>
+</div>
+</div>
+</article>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script type="application/javascript" src='https://takuto-psych.github.io/js/toc.js'></script>
+<link rel="stylesheet" href='https://takuto-psych.github.io/css/toc.css' />
+
+
+<div class="utterances">
+  <script>
+    if(currentTheme() == 'light'){
+      var utterancesTheme = 'github-light';
+    } else{
+      var utterancesTheme = 'github-dark';
+    }
+    var utterancesScript = document.createElement('script');
+    utterancesScript.src = 'https://utteranc.es/client.js';
+    utterancesScript.setAttribute('repo', 'Takuto-Psych\/Takuto-Psych.github.io');
+    utterancesScript.setAttribute('issue-term', 'title');
+    utterancesScript.setAttribute('theme', utterancesTheme);
+    utterancesScript.setAttribute('crossorigin', 'anonymous');
+    utterancesScript.setAttribute('async', '');
+    document.querySelector('.utterances').appendChild(utterancesScript);
+  </script>
+</div>
+
+
+  <div class="footer container-xl width-full p-responsive">
+  <div
+    class="position-relative d-flex flex-row-reverse flex-lg-row flex-wrap flex-lg-nowrap flex-justify-center flex-lg-justify-between flex-sm-items-center pt-6 pb-2 mt-6 f6 text-gray border-top border-gray-light ">
+    <a aria-label="Homepage" title="GitHub" class="footer-octicon d-none d-lg-block mr-lg-4" href="https://takuto-psych.github.io/">
+      <svg height="24" class="octicon octicon-mark-github" viewBox="0 0 16 16" version="1.1" width="24">
+        <path fill-rule="evenodd"
+          d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z">
+        </path>
+      </svg>
+    </a>
+    <ul class="list-style-none d-flex flex-wrap col-12 flex-justify-center flex-lg-justify-between mb-2 mb-lg-0">
+      
+      <li class="mr-3 mr-lg-0">Theme by <a href='https://github.com/MeiK2333/github-style'>github-style</a></li>
+      
+    </ul>
+  </div>
+  <div class="d-flex flex-justify-center pb-6">
+    <span class="f6 text-gray-light"></span>
+  </div>
+
+
+</div>
+</body>
+
+<script type="application/javascript" src="https://takuto-psych.github.io/js/github-style.js"></script>
+
+
+
+</html>
