@@ -6,137 +6,77 @@
     <description>Recent content on Takuto Psych Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Thu, 30 Nov 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://takuto-psych.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 03 Dec 2023 14:21:54 +0900</lastBuildDate>
+    <atom:link href="https://takuto-psych.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>人間がQ学習をして吐き出されるログで機械もQ学習をさせてみた</title>
       <link>https://takuto-psych.github.io/post/2023-11-30-q-q/</link>
       <pubDate>Thu, 30 Nov 2023 00:00:00 +0000</pubDate>
-      
       <guid>https://takuto-psych.github.io/post/2023-11-30-q-q/</guid>
       <description>aaa</description>
     </item>
-    
     <item>
       <title>共起ネットワークを作る用のBIツールを作ったよ</title>
       <link>https://takuto-psych.github.io/post/2023-04-22-bi/</link>
       <pubDate>Sat, 22 Apr 2023 00:00:00 +0000</pubDate>
-      
       <guid>https://takuto-psych.github.io/post/2023-04-22-bi/</guid>
       <description>大量の文を真面目に読んでる時間はねえ</description>
     </item>
-    
     <item>
       <title>NPS?何それ美味しいの？美味しかったよ</title>
       <link>https://takuto-psych.github.io/post/2022-08-10-/</link>
       <pubDate>Wed, 10 Aug 2022 00:00:00 +0000</pubDate>
-      
       <guid>https://takuto-psych.github.io/post/2022-08-10-/</guid>
       <description>ヒストグラム描けや</description>
     </item>
-    
-    <item>
-      <title>最近したいけどできてないこと</title>
-      <link>https://takuto-psych.github.io/post/2022-07-14-/</link>
-      <pubDate>Thu, 14 Jul 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://takuto-psych.github.io/post/2022-07-14-/</guid>
-      <description>未来の僕よ、後悔ないように頑張れ</description>
-    </item>
-    
     <item>
       <title>dplyrとSQLとの対応をまとめてみた（初級編）</title>
       <link>https://takuto-psych.github.io/post/2022-05-10-/</link>
       <pubDate>Tue, 10 May 2022 00:00:00 +0000</pubDate>
-      
       <guid>https://takuto-psych.github.io/post/2022-05-10-/</guid>
       <description>ほぼ一緒！</description>
     </item>
-    
     <item>
       <title>確率選択課題におけるQ学習式のパラメータの役割</title>
       <link>https://takuto-psych.github.io/post/2022-03-15-/</link>
       <pubDate>Tue, 15 Mar 2022 00:00:00 +0000</pubDate>
-      
       <guid>https://takuto-psych.github.io/post/2022-03-15-/</guid>
       <description>Q学習の代表的なパラメータの説明をしました。数式よりも実際の行動選択の説明を頑張りました。みんな！強化しよう！！</description>
     </item>
-    
     <item>
       <title>報酬感受性のパラメータをイジって予測誤差大きくなるか確認してみたよ</title>
       <link>https://takuto-psych.github.io/post/2022-03-12-/</link>
       <pubDate>Sat, 12 Mar 2022 00:00:00 +0000</pubDate>
-      
       <guid>https://takuto-psych.github.io/post/2022-03-12-/</guid>
       <description>Qの上限が上がってるんやからそりゃ予測誤差deltaも上がるわな</description>
     </item>
-    
     <item>
       <title>博士後期課程に行くつもりだけど就職活動をした</title>
       <link>https://takuto-psych.github.io/post/2022-03-06-/</link>
       <pubDate>Sun, 06 Mar 2022 00:00:00 +0000</pubDate>
-      
       <guid>https://takuto-psych.github.io/post/2022-03-06-/</guid>
       <description>ゲームは趣味としてやりましょう</description>
     </item>
-    
     <item>
       <title>研究内容・興味関心</title>
       <link>https://takuto-psych.github.io/researchinterest/</link>
       <pubDate>Sun, 06 Mar 2022 00:00:00 +0000</pubDate>
-      
       <guid>https://takuto-psych.github.io/researchinterest/</guid>
-      <description> 研究テーマ・研究のモチベーション 依存症について 依存症を予測する環境因子の解明
-依存症の心理学的なメカニズムの解明
-依存症の神経科学的なメカニズムの解明
-上二つは、今心理学研究科でできる範囲です。
-最後の内容は将来神経科学のフィールドで研究ができたらいいなと思っています。
-痛みについて 社会的痛みと物理的痛みの共有点と相違点の解明
-社会的痛みの種類の分類
-学部生時代に、現在の指導教員の先生が社会心理学、特に対人関係についての授業を持っていました。その授業で先生に、社会的痛み(Eisenberger, Lieberman, and Williams 2003)という概念を教えてもらいました。それを聞いて本当に衝撃的で感動しました。授業後先生に「めちゃくちゃ面白い！絶対にこれを僕は研究をしたい！！」と伝えました。その授業以降、今までずっと社会的痛みに心が踊らされています。
-また、嗜癖について文献を読んでいたら、身体的痛みが嗜癖に影響を及ぼしていることがわかりました。なので、社会的痛みについてもより深く検討をしたいと考えてるようになりました。多分、僕のやってるとある視点で新しい社会的痛みの研究は、嗜癖患者の助けになると思います。
-引用文献 Eisenberger, Naomi I, Matthew Lieberman, and Kipling Williams. 2003. “Does Rejection Hurt? An fMRI Study of Social Exclusion.” Science (New York, N.Y.) 302 (November): 290–92. https://doi.org/10.1126/science.1089134. </description>
+      <description> 研究テーマ・研究のモチベーション 依存症について 依存症を予測する環境因子の解明&#xA;依存症の心理学的なメカニズムの解明&#xA;依存症の神経科学的なメカニズムの解明&#xA;上二つは、今心理学研究科でできる範囲です。&#xA;最後の内容は将来神経科学のフィールドで研究ができたらいいなと思っています。&#xA;痛みについて 社会的痛みと物理的痛みの共有点と相違点の解明&#xA;社会的痛みの種類の分類&#xA;学部生時代に、現在の指導教員の先生が社会心理学、特に対人関係についての授業を持っていました。その授業で先生に、社会的痛み(Eisenberger, Lieberman, and Williams 2003)という概念を教えてもらいました。それを聞いて本当に衝撃的で感動しました。授業後先生に「めちゃくちゃ面白い！絶対にこれを僕は研究をしたい！！」と伝えました。その授業以降、今までずっと社会的痛みに心が踊らされています。&#xA;また、嗜癖について文献を読んでいたら、身体的痛みが嗜癖に影響を及ぼしていることがわかりました。なので、社会的痛みについてもより深く検討をしたいと考えてるようになりました。多分、僕のやってるとある視点で新しい社会的痛みの研究は、嗜癖患者の助けになると思います。&#xA;引用文献 Eisenberger, Naomi I, Matthew Lieberman, and Kipling Williams. 2003. “Does Rejection Hurt? An fMRI Study of Social Exclusion.” Science (New York, N.Y.) 302 (November): 290–92. https://doi.org/10.1126/science.1089134. </description>
     </item>
-    
     <item>
       <title>研究業績</title>
       <link>https://takuto-psych.github.io/researchachievement/</link>
       <pubDate>Sun, 06 Mar 2022 00:00:00 +0000</pubDate>
-      
       <guid>https://takuto-psych.github.io/researchachievement/</guid>
       <description> 論文 査読あり論文 Yoshida, T., &amp;amp; Ura, M. (2021). Loss of Control over Addictive Behaviors Mediate the Effect of Social Exclusion in Addiction. International Journal of Psychological Studies, 13(1), 27. https://doi.org/10.5539/ijps.v13n1p27 </description>
     </item>
-    
     <item>
       <title>自己紹介</title>
       <link>https://takuto-psych.github.io/profile/</link>
       <pubDate>Sun, 06 Mar 2022 00:00:00 +0000</pubDate>
-      
       <guid>https://takuto-psych.github.io/profile/</guid>
-      <description>名前と年齢 吉田 拓人(よしだ たくと) 平成10年生まれ
-教育歴 2016 スポーツを頑張り脳震盪が繰り返される18年間
-2020 追手門学院大学心理学部心理学科卒業(学士)
-2022 追手門学院大学大学院心理学研究科社会環境犯罪心理学コース(修士修了予定)
-職歴 2016~現在 個別指導塾講師(アルバイト)
-2020~現在 追手門学院大学 心理学統計法 ティーチングアシスタント
-2021 追手門学院大学 リサーチアシスタント(英語質問紙の和訳補助)
-2022 某会社 マーケティングリサーチ部門(予定)
-趣味 悪意しかない長渕剛モノマネギター弾き語り。最近、悪意増し増し桑田佳祐の方が似ている気がしてきました。ビールぶっかけましょう。
-そこに投げた人がいるようにしか見えない一人での受け身
-総合格闘技・ブラジリアン柔術鑑賞
-特技 上司に投げられて綺麗な接待受け身をとること
-総合格闘技・ブラジリアン柔術の絞技・関節技
-資格・日常場面でのスキル 講道館柔道 初段
-心理学検定全領域合格(特一級の扱いですが、申請していないので特一級と表記していいのか不明)
-理不尽な場面に出会した際に、その理不尽を生み出す人間のことを脳内で三角絞めで絞め落とすことで心の平穏を保つスキル
-研究・分析スキル HAD
-SPSS
-R
-Stan
-javascript
-jsPsych
-研究テーマ 詳細は、研究内容をご確認ください。
-依存症を研究しています。 高校生の時にSid Vicious という教育上良くない人間を知ってしまい、依存症に興味を持ったためです。 今もなお首に南京錠ついていることもあります。 いい歳になったのでそろそろ鍵を外したいです。</description>
+      <description>名前と年齢 吉田 拓人(よしだ たくと) 平成10年生まれ&#xA;教育歴 2016 スポーツを頑張り脳震盪が繰り返される18年間&#xA;2020 追手門学院大学心理学部心理学科卒業(学士)&#xA;2022 追手門学院大学大学院心理学研究科社会環境犯罪心理学コース(修士修了予定)&#xA;職歴 2016~現在 個別指導塾講師(アルバイト)&#xA;2020~現在 追手門学院大学 心理学統計法 ティーチングアシスタント&#xA;2021 追手門学院大学 リサーチアシスタント(英語質問紙の和訳補助)&#xA;2022 某会社 マーケティングリサーチ部門(予定)&#xA;趣味 悪意しかない長渕剛モノマネギター弾き語り。最近、悪意増し増し桑田佳祐の方が似ている気がしてきました。ビールぶっかけましょう。&#xA;そこに投げた人がいるようにしか見えない一人での受け身&#xA;総合格闘技・ブラジリアン柔術鑑賞&#xA;特技 上司に投げられて綺麗な接待受け身をとること&#xA;総合格闘技・ブラジリアン柔術の絞技・関節技&#xA;資格・日常場面でのスキル 講道館柔道 初段&#xA;心理学検定全領域合格(特一級の扱いですが、申請していないので特一級と表記していいのか不明)&#xA;理不尽な場面に出会した際に、その理不尽を生み出す人間のことを脳内で三角絞めで絞め落とすことで心の平穏を保つスキル&#xA;研究・分析スキル HAD&#xA;SPSS&#xA;R&#xA;Stan&#xA;javascript&#xA;jsPsych&#xA;研究テーマ 詳細は、研究内容をご確認ください。&#xA;依存症を研究しています。 高校生の時にSid Vicious という教育上良くない人間を知ってしまい、依存症に興味を持ったためです。 今もなお首に南京錠ついていることもあります。 いい歳になったのでそろそろ鍵を外したいです。</description>
     </item>
-    
   </channel>
 </rss>
