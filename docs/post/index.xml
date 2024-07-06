@@ -2,59 +2,59 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on Takuto Psych Blog</title>
-    <link>http://localhost:4321/post/</link>
+    <link>https://takuto-psych.github.io/post/</link>
     <description>Recent content in Posts on Takuto Psych Blog</description>
     <generator>Hugo</generator>
     <language>ja</language>
     <lastBuildDate>Sat, 06 Jul 2024 15:53:35 +0900</lastBuildDate>
-    <atom:link href="http://localhost:4321/post/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://takuto-psych.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>人間がQ学習をして吐き出されるログで機械もQ学習をさせてみた</title>
-      <link>http://localhost:4321/post/2023-11-30-q-q/</link>
+      <link>https://takuto-psych.github.io/post/2023-11-30-q-q/</link>
       <pubDate>Thu, 30 Nov 2023 00:00:00 +0000</pubDate>
-      <guid>http://localhost:4321/post/2023-11-30-q-q/</guid>
+      <guid>https://takuto-psych.github.io/post/2023-11-30-q-q/</guid>
       <description>aaa</description>
     </item>
     <item>
       <title>共起ネットワークを作る用のBIツールを作ったよ</title>
-      <link>http://localhost:4321/post/2023-04-22-bi/</link>
+      <link>https://takuto-psych.github.io/post/2023-04-22-bi/</link>
       <pubDate>Sat, 22 Apr 2023 00:00:00 +0000</pubDate>
-      <guid>http://localhost:4321/post/2023-04-22-bi/</guid>
+      <guid>https://takuto-psych.github.io/post/2023-04-22-bi/</guid>
       <description>大量の文を真面目に読んでる時間はねえ</description>
     </item>
     <item>
       <title>NPS?何それ美味しいの？美味しかったよ</title>
-      <link>http://localhost:4321/post/2022-08-10-/</link>
+      <link>https://takuto-psych.github.io/post/2022-08-10-/</link>
       <pubDate>Wed, 10 Aug 2022 00:00:00 +0000</pubDate>
-      <guid>http://localhost:4321/post/2022-08-10-/</guid>
+      <guid>https://takuto-psych.github.io/post/2022-08-10-/</guid>
       <description>ヒストグラム描けや</description>
     </item>
     <item>
       <title>dplyrとSQLとの対応をまとめてみた（初級編）</title>
-      <link>http://localhost:4321/post/2022-05-10-/</link>
+      <link>https://takuto-psych.github.io/post/2022-05-10-/</link>
       <pubDate>Tue, 10 May 2022 00:00:00 +0000</pubDate>
-      <guid>http://localhost:4321/post/2022-05-10-/</guid>
+      <guid>https://takuto-psych.github.io/post/2022-05-10-/</guid>
       <description>ほぼ一緒！</description>
     </item>
     <item>
       <title>確率選択課題におけるQ学習式のパラメータの役割</title>
-      <link>http://localhost:4321/post/2022-03-15-/</link>
+      <link>https://takuto-psych.github.io/post/2022-03-15-/</link>
       <pubDate>Tue, 15 Mar 2022 00:00:00 +0000</pubDate>
-      <guid>http://localhost:4321/post/2022-03-15-/</guid>
+      <guid>https://takuto-psych.github.io/post/2022-03-15-/</guid>
       <description>Q学習の代表的なパラメータの説明をしました。数式よりも実際の行動選択の説明を頑張りました。みんな！強化しよう！！</description>
     </item>
     <item>
       <title>報酬感受性のパラメータをイジって予測誤差大きくなるか確認してみたよ</title>
-      <link>http://localhost:4321/post/2022-03-12-/</link>
+      <link>https://takuto-psych.github.io/post/2022-03-12-/</link>
       <pubDate>Sat, 12 Mar 2022 00:00:00 +0000</pubDate>
-      <guid>http://localhost:4321/post/2022-03-12-/</guid>
+      <guid>https://takuto-psych.github.io/post/2022-03-12-/</guid>
       <description>Qの上限が上がってるんやからそりゃ予測誤差deltaも上がるわな</description>
     </item>
     <item>
       <title>博士後期課程に行くつもりだけど就職活動をした</title>
-      <link>http://localhost:4321/post/2022-03-06-/</link>
+      <link>https://takuto-psych.github.io/post/2022-03-06-/</link>
       <pubDate>Sun, 06 Mar 2022 00:00:00 +0000</pubDate>
-      <guid>http://localhost:4321/post/2022-03-06-/</guid>
+      <guid>https://takuto-psych.github.io/post/2022-03-06-/</guid>
       <description>ゲームは趣味としてやりましょう</description>
     </item>
   </channel>
