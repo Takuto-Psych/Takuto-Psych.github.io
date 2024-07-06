@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>統計 on Takuto Psych Blog</title>
-    <link>https://takuto-psych.github.io/tags/%E7%B5%B1%E8%A8%88/</link>
+    <link>http://localhost:5760/tags/%E7%B5%B1%E8%A8%88/</link>
     <description>Recent content in 統計 on Takuto Psych Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>ja</language>
     <lastBuildDate>Thu, 27 Oct 2022 22:39:33 +0900</lastBuildDate>
-    <atom:link href="https://takuto-psych.github.io/tags/%E7%B5%B1%E8%A8%88/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:5760/tags/%E7%B5%B1%E8%A8%88/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>報酬感受性のパラメータをイジって予測誤差大きくなるか確認してみたよ</title>
-      <link>https://takuto-psych.github.io/post/2022-03-12-/</link>
+      <link>http://localhost:5760/post/2022-03-12-/</link>
       <pubDate>Sat, 12 Mar 2022 00:00:00 +0000</pubDate>
-      <guid>https://takuto-psych.github.io/post/2022-03-12-/</guid>
+      <guid>http://localhost:5760/post/2022-03-12-/</guid>
       <description>Qの上限が上がってるんやからそりゃ予測誤差deltaも上がるわな</description>
     </item>
   </channel>
