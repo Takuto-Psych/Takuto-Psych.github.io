@@ -128,9 +128,9 @@
 
                   
                   <span class="file-info-divider"></span>
-                  Modified <relative-time datetime="Mon, 22 Aug 2022 01:26:07 &#43;0900"
+                  Modified <relative-time datetime="Sat, 01 Feb 2025 15:14:09 &#43;0900"
                     class="no-wrap">
-                    Mon, 22 Aug 2022 01:26:07 &#43;0900</relative-time>
+                    Sat, 01 Feb 2025 15:14:09 &#43;0900</relative-time>
                   
                 </div>
               </div>
@@ -160,7 +160,7 @@
                         </div>
                       </div>
                     </details-menu>
-                      3123 Words
+                      3145 Words
                     
 
                   </div>
@@ -202,7 +202,8 @@
                 <article class="markdown-body entry-content container-lg">
 
 
-<p>新卒で入った会社でマーケティングリサーチの部署にいて、日々ログデータなどなどの数値をSQL描いて抽出して、お絵描きしています。元気です。最近は、アンケートのデータもいじったりしています。そんな業務の中で名前を知って、何やお前ってなった概念NPSについての数理的（面積を求める程度）な理解をしたので、備忘録がてら説明しようかなと思いました。そんなわけで書いていきます。</p>
+<p>新卒で入った会社でマーケティングリサーチの部署にいて、日々ログデータなどなどの数値をSQL描いて抽出して、お絵描きしています。元気です。最近は、アンケートのデータもいじったりしています。そんな業務の中で名前を知って、何やお前ってなった概念NPSについての数理的（面積を求める程度）な理解をしたので、備忘録がてら説明しようかなと思いました。そんなわけで書いていきます。
+書ききれていませんが。</p>
 <div id="npsとは" class="section level2">
 <h2>NPSとは</h2>
 <p>NPSとは、「Net Promoter Score（ネットプロモータスコア）」の略称です。この指標を用いると、顧客ロイヤリティが測れる指標だそうです。すごいですね。</p>
@@ -236,9 +237,9 @@ set.seed(2525)</code></pre>
 <p>これから作るデータについて表にしてまとめておきます。</p>
 <table>
 <colgroup>
-<col width="19%" />
-<col width="19%" />
-<col width="61%" />
+<col width="10%" />
+<col width="18%" />
+<col width="71%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -342,7 +343,7 @@ f &lt;- nonnormvar1( ##歪度0.5尖度0平均5.5の乱数生成。リストが�
     skews = skew,
     skurts = 0,
     n = sample_size / 2,
-    mean = mean - 3.5,
+    mean = mean  + 0.5 - 3,
     vars = sd^2
   )
 
@@ -354,7 +355,7 @@ g &lt;- nonnormvar1( ##歪度0.5尖度0平均5.5の乱数生成。リストが�
     skews = - skew,
     skurts = 0,
     n = sample_size / 2,
-    mean = mean + 3.5,
+    mean = mean + 0.5 + 3,
     vars = sd^2
   )
 
@@ -385,8 +386,8 @@ DF &lt;- DF %&gt;% mutate(
 <p>シミュレーションされたA社~E社についてそれぞれの記述統計量を確認してみます。</p>
 <p>まずは、想定外の値を出していないかの確認。</p>
 <pre class="r"><code>tapply(DF$answer, DF$company_id, min) ## 最小値確認</code></pre>
-<pre><code>##  A  B  C  D  E 
-##  0  0  0  3 -1</code></pre>
+<pre><code>## A B C D E 
+## 0 0 0 3 0</code></pre>
 <pre class="r"><code>tapply(DF$answer, DF$company_id, max) ## 最大値確認</code></pre>
 <pre><code>##  A  B  C  D  E 
 ## 10 10  7 10 10</code></pre>
@@ -398,12 +399,12 @@ DF &lt;- DF %&gt;% mutate(
 <p>次は平均値の確認。</p>
 <pre class="r"><code>tapply(DF$answer, DF$company_id, mean) ## 平均値算出</code></pre>
 <pre><code>##        A        B        C        D        E 
-## 4.927455 4.999636 5.021909 4.975455 4.503273</code></pre>
+## 4.927455 4.999636 5.021909 4.975455 5.003273</code></pre>
 <p>まあ当然と言えば当然ですが、平均値については、想定した5という得点にまとまりました。</p>
 <p>次に標準偏差SDについては、</p>
 <pre class="r"><code>tapply(DF$answer, DF$company_id, sd) ## SD算出</code></pre>
 <pre><code>##        A        B        C        D        E 
-## 3.170061 1.514965 1.554353 1.557965 3.850486</code></pre>
+## 3.170061 1.514965 1.554353 1.557965 3.399270</code></pre>
 <p>乱数生成の際にパラメータとしてSD = sd（分散 = 1.5 ^ 2）を与えたB,C,D社については1.5になってくれました。ただし、パラメータを与えなかった一様分布のA社と二山分布のE社のそれは1.5になっていません。まあ当然のことですね。</p>
 <p>まあ変なデータはなさそうですね。よかったよかった。</p>
 </div>
@@ -429,7 +430,8 @@ DF &lt;- DF %&gt;% mutate(
   alpha = 0.8
 )　+ xlim(-3, 13) </code></pre>
 <pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
-<pre><code>## Warning: Removed 10 rows containing missing values (geom_bar).</code></pre>
+<pre><code>## Warning: Removed 10 rows containing missing values or values outside the scale range
+## (`geom_bar()`).</code></pre>
 <p><img src="https://takuto-psych.github.io/post/2022-08-10-/index_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
 <p>さて、最後に、NPSをそれぞれの会社で出してみましょう。</p>
 <p>NPSの出し方は、<code>(0~6の回答をした人の人数 - 9と10の回答をした人の人数 ) / その会社のアンケートの回答者数</code> なので、それを計算しましょう</p>
