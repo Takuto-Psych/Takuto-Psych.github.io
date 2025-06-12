@@ -6,36 +6,8 @@
     <description>Recent content on Takuto Psych Blog</description>
     <generator>Hugo</generator>
     <language>ja</language>
-    <lastBuildDate>Sat, 01 Feb 2025 15:14:09 +0900</lastBuildDate>
+    <lastBuildDate>Thu, 27 Oct 2022 22:40:16 +0900</lastBuildDate>
     <atom:link href="https://takuto-psych.github.io/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>人間がQ学習をして吐き出されるログで機械もQ学習をさせてみた</title>
-      <link>https://takuto-psych.github.io/post/2023-11-30-q-q/</link>
-      <pubDate>Thu, 30 Nov 2023 00:00:00 +0000</pubDate>
-      <guid>https://takuto-psych.github.io/post/2023-11-30-q-q/</guid>
-      <description>aaa</description>
-    </item>
-    <item>
-      <title>共起ネットワークを作る用のBIツールを作ったよ</title>
-      <link>https://takuto-psych.github.io/post/2023-04-22-bi/</link>
-      <pubDate>Sat, 22 Apr 2023 00:00:00 +0000</pubDate>
-      <guid>https://takuto-psych.github.io/post/2023-04-22-bi/</guid>
-      <description>大量の文を真面目に読んでる時間はねえ</description>
-    </item>
-    <item>
-      <title>NPS?何それ美味しいの？美味しかったよ</title>
-      <link>https://takuto-psych.github.io/post/2022-08-10-/</link>
-      <pubDate>Wed, 10 Aug 2022 00:00:00 +0000</pubDate>
-      <guid>https://takuto-psych.github.io/post/2022-08-10-/</guid>
-      <description>ヒストグラム描けや</description>
-    </item>
-    <item>
-      <title>dplyrとSQLとの対応をまとめてみた（初級編）</title>
-      <link>https://takuto-psych.github.io/post/2022-05-10-/</link>
-      <pubDate>Tue, 10 May 2022 00:00:00 +0000</pubDate>
-      <guid>https://takuto-psych.github.io/post/2022-05-10-/</guid>
-      <description>ほぼ一緒！</description>
-    </item>
     <item>
       <title>確率選択課題におけるQ学習式のパラメータの役割</title>
       <link>https://takuto-psych.github.io/post/2022-03-15-/</link>
