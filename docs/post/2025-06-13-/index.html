@@ -18,12 +18,7 @@
 
     
     <meta name="description"
-  content="最近なぜかスケジュール学習の勉強をしています。具体的には、スケジュールでのそれぞれのスケジュールでの固有の動物の挙動を表現する強化学習モデルの式を探しています。今回は、そんな式を概念とともにご紹介。誰かのためというよりも、自分が理解をするために書いていきます。
-MPR: Mathmatical Principles of Reinforcement 日本語にするなら、強化の数学的原理（以下MPR）でしょうか。行動が増える強化という現象ですが、その現象を数式で表現したものになります。
-元の論文はこの二つです(Killeen 1994; Killeen and Sitomer 2003)。オープンアクセスでもないです。また、内容もなかなかにややこしいのでまだ全文通して読んでの理解が僕もできていないです。なので、今回はWikipediaの英語版ページの和訳をしてきます。
-さて、このMPRというのは、重要な要素が３つに分かれているそうです。arousal:覚醒、constraint:抑制、coupling:結合です。それぞれについて以下詳しく書いていきます。
-##記事内でコード書くので、なんのライブラリ使ってるかわかるようにおまじないは隠さないでおきます。 rm(list = ls()) library(tidyverse) ## ── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ── ## ✔ dplyr 1.1.4 ✔ readr 2.1.5 ## ✔ forcats 1.0.0 ✔ stringr 1.5.1 ## ✔ ggplot2 3.5.2 ✔ tibble 3.2.1 ## ✔ lubridate 1.9.4 ✔ tidyr 1.3.1 ## ✔ purrr 1.0.4 ## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ── ## ✖ dplyr::filter() masks stats::filter() ## ✖ dplyr::lag() masks stats::lag() ## ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors 1. Arousal:覚醒 MPRにおける一番最初の基本原理は、Arousal覚醒だそうです。興奮とは、誘因の提示によって行動が活性化されることだそうです。条件づけの最も根幹になる要素です。
-" />
+  content="hogehoge" />
 <meta name="keywords"
   content='MPR, 強化学習, スケジュール学習' />
 <meta name="robots" content="noodp" />
@@ -33,12 +28,7 @@ MPR: Mathmatical Principles of Reinforcement 日本語にするなら、強化�
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:title" content="Mathmatical Principles of Reinforcement 強化の数学的原理を訳してみようと思うよ - Takuto Psych Blog" />
 <meta name="twitter:description"
-  content="最近なぜかスケジュール学習の勉強をしています。具体的には、スケジュールでのそれぞれのスケジュールでの固有の動物の挙動を表現する強化学習モデルの式を探しています。今回は、そんな式を概念とともにご紹介。誰かのためというよりも、自分が理解をするために書いていきます。
-MPR: Mathmatical Principles of Reinforcement 日本語にするなら、強化の数学的原理（以下MPR）でしょうか。行動が増える強化という現象ですが、その現象を数式で表現したものになります。
-元の論文はこの二つです(Killeen 1994; Killeen and Sitomer 2003)。オープンアクセスでもないです。また、内容もなかなかにややこしいのでまだ全文通して読んでの理解が僕もできていないです。なので、今回はWikipediaの英語版ページの和訳をしてきます。
-さて、このMPRというのは、重要な要素が３つに分かれているそうです。arousal:覚醒、constraint:抑制、coupling:結合です。それぞれについて以下詳しく書いていきます。
-##記事内でコード書くので、なんのライブラリ使ってるかわかるようにおまじないは隠さないでおきます。 rm(list = ls()) library(tidyverse) ## ── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ── ## ✔ dplyr 1.1.4 ✔ readr 2.1.5 ## ✔ forcats 1.0.0 ✔ stringr 1.5.1 ## ✔ ggplot2 3.5.2 ✔ tibble 3.2.1 ## ✔ lubridate 1.9.4 ✔ tidyr 1.3.1 ## ✔ purrr 1.0.4 ## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ── ## ✖ dplyr::filter() masks stats::filter() ## ✖ dplyr::lag() masks stats::lag() ## ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors 1. Arousal:覚醒 MPRにおける一番最初の基本原理は、Arousal覚醒だそうです。興奮とは、誘因の提示によって行動が活性化されることだそうです。条件づけの最も根幹になる要素です。
-" />
+  content="hogehoge" />
 <meta name="twitter:site" content="https://takuto-psych.github.io/" />
 <meta name="twitter:creator" content="TakutoPsych" />
 <meta name="twitter:image"
@@ -48,12 +38,7 @@ MPR: Mathmatical Principles of Reinforcement 日本語にするなら、強化�
 <meta property="og:type" content="article" />
 <meta property="og:title" content="Mathmatical Principles of Reinforcement 強化の数学的原理を訳してみようと思うよ - Takuto Psych Blog">
 <meta property="og:description"
-  content="最近なぜかスケジュール学習の勉強をしています。具体的には、スケジュールでのそれぞれのスケジュールでの固有の動物の挙動を表現する強化学習モデルの式を探しています。今回は、そんな式を概念とともにご紹介。誰かのためというよりも、自分が理解をするために書いていきます。
-MPR: Mathmatical Principles of Reinforcement 日本語にするなら、強化の数学的原理（以下MPR）でしょうか。行動が増える強化という現象ですが、その現象を数式で表現したものになります。
-元の論文はこの二つです(Killeen 1994; Killeen and Sitomer 2003)。オープンアクセスでもないです。また、内容もなかなかにややこしいのでまだ全文通して読んでの理解が僕もできていないです。なので、今回はWikipediaの英語版ページの和訳をしてきます。
-さて、このMPRというのは、重要な要素が３つに分かれているそうです。arousal:覚醒、constraint:抑制、coupling:結合です。それぞれについて以下詳しく書いていきます。
-##記事内でコード書くので、なんのライブラリ使ってるかわかるようにおまじないは隠さないでおきます。 rm(list = ls()) library(tidyverse) ## ── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ── ## ✔ dplyr 1.1.4 ✔ readr 2.1.5 ## ✔ forcats 1.0.0 ✔ stringr 1.5.1 ## ✔ ggplot2 3.5.2 ✔ tibble 3.2.1 ## ✔ lubridate 1.9.4 ✔ tidyr 1.3.1 ## ✔ purrr 1.0.4 ## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ── ## ✖ dplyr::filter() masks stats::filter() ## ✖ dplyr::lag() masks stats::lag() ## ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors 1. Arousal:覚醒 MPRにおける一番最初の基本原理は、Arousal覚醒だそうです。興奮とは、誘因の提示によって行動が活性化されることだそうです。条件づけの最も根幹になる要素です。
-" />
+  content="hogehoge" />
 <meta property="og:url" content="https://takuto-psych.github.io/post/2025-06-13-/" />
 <meta property="og:site_name" content="Mathmatical Principles of Reinforcement 強化の数学的原理を訳してみようと思うよ" />
 <meta property="og:image"
@@ -143,9 +128,9 @@ MPR: Mathmatical Principles of Reinforcement 日本語にするなら、強化�
 
                   
                   <span class="file-info-divider"></span>
-                  Modified <relative-time datetime="Sun, 15 Jun 2025 17:28:46 &#43;0900"
+                  Modified <relative-time datetime="Mon, 23 Jun 2025 11:02:56 &#43;0900"
                     class="no-wrap">
-                    Sun, 15 Jun 2025 17:28:46 &#43;0900</relative-time>
+                    Mon, 23 Jun 2025 11:02:56 &#43;0900</relative-time>
                   
                 </div>
               </div>
@@ -175,7 +160,7 @@ MPR: Mathmatical Principles of Reinforcement 日本語にするなら、強化�
                         </div>
                       </div>
                     </details-menu>
-                      1277 Words
+                      1215 Words
                     
 
                   </div>
@@ -278,8 +263,6 @@ R = A × (e^{\frac{-t}C} - e^{\frac{-t}I})
 <p>A：覚醒</p>
 <p>I：時間的な抑制</p>
 <p>C：相反する他の行動</p>
-<p>グラフにするとこんな感じかな。</p>
-<p><span class="citation">(<a href="#ref-Schlinger2008">Schlinger, Derenne, and Baron 2008</a>)</span>aaa<span class="citation">(<a href="#ref-SkinnerC.B"><strong>SkinnerC.B?</strong></a>&amp;Ferster1957)</span></p>
 </div>
 <div id="引用文献" class="section level2 unnumbered">
 <h2>引用文献</h2>
@@ -289,9 +272,6 @@ Killeen, Peter R. 1994. <span>“<span class="nocase">Mathematical principles of
 </div>
 <div id="ref-Killeen2003" class="csl-entry">
 Killeen, Peter R, and Matthew T Sitomer. 2003. <span>“<span>MPR</span>.”</span> <em>Behavioural Processes</em> 62 (1): 49–64. https://doi.org/<a href="https://doi.org/10.1016/S0376-6357(03)00017-2">https://doi.org/10.1016/S0376-6357(03)00017-2</a>.
-</div>
-<div id="ref-Schlinger2008" class="csl-entry">
-Schlinger, Henry D., Adam Derenne, and Alan Baron. 2008. <span>“<span class="nocase">What 50 years of research tell us about pausing under ratio schedules of reinforcement</span>.”</span> <a href="https://doi.org/10.1007/BF03392160">https://doi.org/10.1007/BF03392160</a>.
 </div>
 </div>
 </div>
