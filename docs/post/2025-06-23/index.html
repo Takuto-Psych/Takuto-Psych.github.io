@@ -10,7 +10,7 @@
     <link rel="stylesheet" href='https://takuto-psych.github.io/css/light.css' />
     <link rel="stylesheet" href='https://takuto-psych.github.io/css/dark.css' />
     <link rel="stylesheet" href='https://takuto-psych.github.io/css/syntax.css' />
-    <title>確率選択課題におけるQ学習式のパラメータの役割 - Takuto Psych Blog</title>
+    <title>Mathmatical Principles of Reinforcement 強化の数学的原理におけるarousal興奮の意味を説明する - Takuto Psych Blog</title>
     
     <link rel="icon" type="image/x-icon" href='/images/avatar.png'>
     
@@ -18,17 +18,17 @@
 
     
     <meta name="description"
-  content="Q学習の代表的なパラメータの説明をしました。数式よりも実際の行動選択の説明を頑張りました。みんな！強化しよう！！" />
+  content="hogehoge" />
 <meta name="keywords"
-  content=', ' />
+  content='MPR, 強化学習, スケジュール学習' />
 <meta name="robots" content="noodp" />
-<link rel="canonical" href="https://takuto-psych.github.io/post/2022-03-15-/" />
+<link rel="canonical" href="https://takuto-psych.github.io/post/2025-06-23/" />
 
 
 <meta name="twitter:card" content="summary" />
-<meta name="twitter:title" content="確率選択課題におけるQ学習式のパラメータの役割 - Takuto Psych Blog" />
+<meta name="twitter:title" content="Mathmatical Principles of Reinforcement 強化の数学的原理におけるarousal興奮の意味を説明する - Takuto Psych Blog" />
 <meta name="twitter:description"
-  content="Q学習の代表的なパラメータの説明をしました。数式よりも実際の行動選択の説明を頑張りました。みんな！強化しよう！！" />
+  content="hogehoge" />
 <meta name="twitter:site" content="https://takuto-psych.github.io/" />
 <meta name="twitter:creator" content="TakutoPsych" />
 <meta name="twitter:image"
@@ -36,17 +36,17 @@
 
 
 <meta property="og:type" content="article" />
-<meta property="og:title" content="確率選択課題におけるQ学習式のパラメータの役割 - Takuto Psych Blog">
+<meta property="og:title" content="Mathmatical Principles of Reinforcement 強化の数学的原理におけるarousal興奮の意味を説明する - Takuto Psych Blog">
 <meta property="og:description"
-  content="Q学習の代表的なパラメータの説明をしました。数式よりも実際の行動選択の説明を頑張りました。みんな！強化しよう！！" />
-<meta property="og:url" content="https://takuto-psych.github.io/post/2022-03-15-/" />
-<meta property="og:site_name" content="確率選択課題におけるQ学習式のパラメータの役割" />
+  content="hogehoge" />
+<meta property="og:url" content="https://takuto-psych.github.io/post/2025-06-23/" />
+<meta property="og:site_name" content="Mathmatical Principles of Reinforcement 強化の数学的原理におけるarousal興奮の意味を説明する" />
 <meta property="og:image"
   content="https://takuto-psych.github.io/">
 <meta property="og:image:width" content="2048">
 <meta property="og:image:height" content="1024">
 
-<meta property="article:published_time" content="2022-03-15 00:00:00 &#43;0000 UTC" />
+<meta property="article:published_time" content="2025-06-23 00:00:00 &#43;0000 UTC" />
 
 
 
@@ -119,18 +119,18 @@
                   <span class="author">
                     <a href="https://takuto-psych.github.io/">Takuto-Psych</a></span><span
                     class="path-divider">/</span><strong class="css-truncate-target mr-1" style="max-width: 410px"><a
-                      href="https://takuto-psych.github.io/post/2022-03-15-/">確率選択課題におけるQ学習式のパラメータの役割</a></strong>
+                      href="https://takuto-psych.github.io/post/2025-06-23/">Mathmatical Principles of Reinforcement 強化の数学的原理におけるarousal興奮の意味を説明する</a></strong>
                 </h1>
                 <div class="note m-0">
-                  Created <relative-time datetime="Tue, 15 Mar 2022 00:00:00 &#43;0000"
+                  Created <relative-time datetime="Mon, 23 Jun 2025 00:00:00 &#43;0000"
                     class="no-wrap">
-                    Tue, 15 Mar 2022 00:00:00 &#43;0000</relative-time>
+                    Mon, 23 Jun 2025 00:00:00 &#43;0000</relative-time>
 
                   
                   <span class="file-info-divider"></span>
-                  Modified <relative-time datetime="Mon, 23 Jun 2025 23:27:55 &#43;0900"
+                  Modified <relative-time datetime="Mon, 23 Jun 2025 23:28:01 &#43;0900"
                     class="no-wrap">
-                    Mon, 23 Jun 2025 23:27:55 &#43;0900</relative-time>
+                    Mon, 23 Jun 2025 23:28:01 &#43;0900</relative-time>
                   
                 </div>
               </div>
@@ -160,12 +160,21 @@
                         </div>
                       </div>
                     </details-menu>
-                      2692 Words
+                      1859 Words
                     
 
                   </div>
                   <div class="file-actions flex-order-2 pt-0">
                     
+                    
+                    <a class="muted-link mr-3" href="/tags/r">
+                      <svg class="octicon octicon-tag" viewBox="0 0 16 16" version="1.1" width="16" height="16">
+                        <path fill-rule="evenodd"
+                          d="M2.5 7.775V2.75a.25.25 0 01.25-.25h5.025a.25.25 0 01.177.073l6.25 6.25a.25.25 0 010 .354l-5.025 5.025a.25.25 0 01-.354 0l-6.25-6.25a.25.25 0 01-.073-.177zm-1.5 0V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 010 2.474l-5.026 5.026a1.75 1.75 0 01-2.474 0l-6.25-6.25A1.75 1.75 0 011 7.775zM6 5a1 1 0 100 2 1 1 0 000-2z">
+                        </path>
+                      </svg>
+                      R
+                    </a>
                     
                     <a class="muted-link mr-3" href="/tags/%E5%BC%B7%E5%8C%96%E5%AD%A6%E7%BF%92">
                       <svg class="octicon octicon-tag" viewBox="0 0 16 16" version="1.1" width="16" height="16">
@@ -174,24 +183,6 @@
                         </path>
                       </svg>
                       強化学習
-                    </a>
-                    
-                    <a class="muted-link mr-3" href="/tags/%E7%A5%9E%E7%B5%8C%E7%A7%91%E5%AD%A6">
-                      <svg class="octicon octicon-tag" viewBox="0 0 16 16" version="1.1" width="16" height="16">
-                        <path fill-rule="evenodd"
-                          d="M2.5 7.775V2.75a.25.25 0 01.25-.25h5.025a.25.25 0 01.177.073l6.25 6.25a.25.25 0 010 .354l-5.025 5.025a.25.25 0 01-.354 0l-6.25-6.25a.25.25 0 01-.073-.177zm-1.5 0V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 010 2.474l-5.026 5.026a1.75 1.75 0 01-2.474 0l-6.25-6.25A1.75 1.75 0 011 7.775zM6 5a1 1 0 100 2 1 1 0 000-2z">
-                        </path>
-                      </svg>
-                      神経科学
-                    </a>
-                    
-                    <a class="muted-link mr-3" href="/tags/%E5%AD%A6%E7%BF%92%E5%BF%83%E7%90%86%E5%AD%A6">
-                      <svg class="octicon octicon-tag" viewBox="0 0 16 16" version="1.1" width="16" height="16">
-                        <path fill-rule="evenodd"
-                          d="M2.5 7.775V2.75a.25.25 0 01.25-.25h5.025a.25.25 0 01.177.073l6.25 6.25a.25.25 0 010 .354l-5.025 5.025a.25.25 0 01-.354 0l-6.25-6.25a.25.25 0 01-.073-.177zm-1.5 0V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 010 2.474l-5.026 5.026a1.75 1.75 0 01-2.474 0l-6.25-6.25A1.75 1.75 0 011 7.775zM6 5a1 1 0 100 2 1 1 0 000-2z">
-                        </path>
-                      </svg>
-                      学習心理学
                     </a>
                     
                     <a class="muted-link mr-3" href="/tags/%E5%8B%89%E5%BC%B7">
@@ -203,22 +194,13 @@
                       勉強
                     </a>
                     
-                    <a class="muted-link mr-3" href="/tags/%E8%AB%96%E6%96%87">
+                    <a class="muted-link mr-3" href="/tags/mpr">
                       <svg class="octicon octicon-tag" viewBox="0 0 16 16" version="1.1" width="16" height="16">
                         <path fill-rule="evenodd"
                           d="M2.5 7.775V2.75a.25.25 0 01.25-.25h5.025a.25.25 0 01.177.073l6.25 6.25a.25.25 0 010 .354l-5.025 5.025a.25.25 0 01-.354 0l-6.25-6.25a.25.25 0 01-.073-.177zm-1.5 0V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 010 2.474l-5.026 5.026a1.75 1.75 0 01-2.474 0l-6.25-6.25A1.75 1.75 0 011 7.775zM6 5a1 1 0 100 2 1 1 0 000-2z">
                         </path>
                       </svg>
-                      論文
-                    </a>
-                    
-                    <a class="muted-link mr-3" href="/tags/%E6%96%87%E7%8C%AE">
-                      <svg class="octicon octicon-tag" viewBox="0 0 16 16" version="1.1" width="16" height="16">
-                        <path fill-rule="evenodd"
-                          d="M2.5 7.775V2.75a.25.25 0 01.25-.25h5.025a.25.25 0 01.177.073l6.25 6.25a.25.25 0 010 .354l-5.025 5.025a.25.25 0 01-.354 0l-6.25-6.25a.25.25 0 01-.073-.177zm-1.5 0V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 010 2.474l-5.026 5.026a1.75 1.75 0 01-2.474 0l-6.25-6.25A1.75 1.75 0 011 7.775zM6 5a1 1 0 100 2 1 1 0 000-2z">
-                        </path>
-                      </svg>
-                      文献
+                      MPR
                     </a>
                     
                     
@@ -229,63 +211,138 @@
                 <article class="markdown-body entry-content container-lg">
 
 
-<p>本記事では、確率選択課題におけるQ学習式のパラメータの役割について解説をします。ただし、僕自身のバックボーンが実験社会心理学なので、機械学習やデータサイエンス寄りの解説というよりは、心理学、行動科学寄りの、また実際の行動選択にパラメータがどのように寄与するかを解説していきます。一応勉強はしていますが、間違いがあったらお気軽にコメントでご指摘していただけると幸いです。</p>
-<div id="確率選択課題とは" class="section level2">
-<h2>確率選択課題とは</h2>
-<p>確率選択課題とは、提示された2つの刺激のペア(AB)からどちらかの刺激(AもしくはB)を選択することを繰り返す課題です。ただし、刺激選択後の報酬や罰のフィードバックは異なる確率が付与されています。一方の刺激(A)を選択して報酬がフィードバックされる確率は80%、罰がフィードバックされる確率は20%となっています。また、もう片方の刺激(B)を選択して報酬がフィードバックされる確率は20%、罰がフィードバックされる確率は80%となっています。どちらかの刺激の方が報酬の確率が高くなっています。実際に人間や機械がこの課題をやると、不思議なことに段々と報酬の出やすい方の刺激を選択するようになります。また、この刺激ペアの数は増やすこともできます。たとえば、AB(80% : 20%)、CD(70% : 30%)、EF(60% : 40%)の刺激ペアをそれぞれ提示して選択させるなんてことも課題の目的によってはできます。上記の()内の数字は、報酬確率を高く設定した刺激(A、C、E)についての(報酬確率 : 罰確率)を意味します。報酬確率を低く設定した方の刺激(B、D、F)については(罰確率 : 報酬確率)になります。</p>
-<div class="float">
-<img src="images/only_gain_probablistic_selection_taskAB.jpeg" title="図1. 確率選択課題" alt="図1. 確率選択課題" />
-<div class="figcaption">図1. 確率選択課題</div>
+<p>MPRにおける一番最初の基本原理は、Arousal覚醒だそうです。興奮とは、強化子の提示によって行動が活性化されることだそうです。条件づけの最も根幹になる要素です。</p>
+<p>今回の記事では<span class="citation">(<a href="#ref-Killeen2003">Killeen and Sitomer 2003</a>)</span>の論文で行われた実験を段階的に見てどのように原理のモデルが作られたのかを確認してきます。</p>
+<div id="一日一回の食事" class="section level2">
+<h2>一日一回の食事</h2>
+<p>まずは、1日1回ハトに餌を与えてみましょう。その時の活動量を計測すると、給餌直後に最も活動が高まり、その後は急速に活動量が下がるそうです。wikiに載っている例だと、給餌後15分間の活動量を計測したそうです。そしてその様子はこんな式で表現できるそうです。</p>
+<p><span class="math display">\[
+b(t) = b_1 * e^ {\frac{-t}\alpha}
+\]</span></p>
+<p>ここで、それぞれの文字は以下のような意味を持ちます。</p>
+<ul>
+<li><p>b<sub>1</sub>：切片。切片というよりも感覚的には給餌直後の1分間の活動量ですね。</p></li>
+<li><p>t：給餌後の時間経過。単位は秒。</p></li>
+<li><p>α ：時間定数。時間の経過を調整する定数とでも捉えています。</p></li>
+<li><p>e：ネイピア数</p></li>
+</ul>
+<p>グラフにするとこんな感じ。給餌後は最も活動的で、その後段々と活動量が減衰していくんですね。図にするとこんな感じ。</p>
+<pre class="r"><code>##なんのパッケージ使ってるかを示すために、見えるようにしておきます。
+rm(list = ls())
+library(tidyverse)</code></pre>
+<pre><code>## ── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+## ✔ dplyr     1.1.4     ✔ readr     2.1.5
+## ✔ forcats   1.0.0     ✔ stringr   1.5.1
+## ✔ ggplot2   3.5.2     ✔ tibble    3.2.1
+## ✔ lubridate 1.9.4     ✔ tidyr     1.3.1
+## ✔ purrr     1.0.4     
+## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+## ✖ dplyr::filter() masks stats::filter()
+## ✖ dplyr::lag()    masks stats::lag()
+## ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
+<pre class="r"><code>activity_fun &lt;- function(alpha = 6, beta_1 = 9.7, t){
+  b_t &lt;- beta_1 * (exp(1) ^ (- t / alpha))
+  return(b_t)
+}
+DF_activity &lt;- data.frame(
+  time = seq(from = 0, to = 13, by = 0.1)
+  ,b_t = activity_fun(t = seq(from = 0, to = 13, by = 0.1))
+)
+DF_activity %&gt;% ggplot(
+  aes(x = time, y = b_t)
+) + geom_line() </code></pre>
+<p><img src="https://takuto-psych.github.io/post/2025-06-23/index_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<p>直感的にも納得いきます。毎日決まった時刻にご飯が出てくるだけの環境にいると、ご飯が出てきた直後にだけ活動レベルが高まり、その後、急激に活動レベルが減衰していくみたいです。特に飼ったことはないですが、人間とコミュニケーションを取るとは考えられていない愛玩動物を飼育したら、こんな挙動をしそうですね。カエルでも飼ってみようかな。</p>
 </div>
-<p>フィードバックされる報酬や罰は、お金を利用することが多いです。たとえば10円を設定したらどの刺激を選んでも報酬(+)であれ罰(-)であれその10円のフィードバックを与えることが多いように思います。僕の知っている限りは、この値の大きさが一貫していない課題を見たことはありません。まあ後述するアルゴリズムでのパラメータ推定をするのであれば、原理的にはフィードバックの値の大きさを変化させたり、あるいはその値の大きさをランダムにすることは、その研究の目的によってはとても有意義な気はします。また、社会心理学寄りの実験心理学の研究などでは、フィードバックにお金ではなく、顔文字（報酬 : 🙂 罰 : ☹️) を利用することもあります。</p>
-<p>文書で説明するのめんどくさいんで、こちらの<a href="https://takuto-psych.github.io/post/sample_learning_task/ABLearningTask.html">URL</a>から簡易な実験に参加してみてください。実際に実験を行ってみると、なんか知らんけどAを選びたくなりませんでしたか？なんか知らんけど、Bは嫌いだなって思いませんでしたか？なんか知らんけど。ちなみに、Aの報酬確率を90%、罰確率を10%、Bの報酬確率を10%、罰確率を90％に設定しています。なので、皆さんの直感は正しいです。Aを選ぶのが合理的です。</p>
-<p>そのような合理的な選択がなぜ行われるかを数理的に説明を試みたものがQ学習と呼ばれるものです。本記事では、Q学習とその関連するパラメータを説明していきます。</p>
+<div id="秒ごとに餌を与えてみる" class="section level2">
+<h2>〇〇秒ごとに餌を与えてみる</h2>
+<p>次に、給餌の頻度を上げてみたらどうなるでしょうか。給餌の頻度が上がると、これまでの給餌経験が増えるに従って段々と活動レベルが上がるそうです。</p>
+<p>wikiにも元の論文<span class="citation">(<a href="#ref-Killeen2003">Killeen and Sitomer 2003</a>)</span>にも特に式は触れられていないですが、多分こんな感じの式になっています。大元の実験の論文にあたるべきなのでしょうがちょっと今は読む余裕がない。後日読んでおきます。</p>
+<p><span class="math display">\[
+b(n) = b_1 * (1 - e^ {\frac{-n}\alpha})
+\]</span></p>
+<ul>
+<li><p>b<sub>1</sub>：切片。切片というよりも感覚的には給餌直後の上限ですね。</p></li>
+<li><p>t：これまでに連続で何回給餌されたか</p></li>
+<li><p>α ：何らかの定数。これまでの給餌履歴を調整する定数とでも捉えます。</p></li>
+<li><p>e：ネイピア数</p></li>
+</ul>
+<p>今回のこの給餌の頻度をあげるという操作は、あくまで固定時間経過後に何らかのオペラント行動を求めて、その行動に対しての強化というわけではないです。こういった行動とは独立したスケジュールをFixed Time（固定時間）スケジュールと呼ぶそうです。知らんかった。</p>
+<p>では、この関数に従って、給餌履歴を元にした活動量の推移を描いてみましょう。こんな感じになります。</p>
+<pre class="r"><code>##さっきの関数を流用する
+DF_reward_history &lt;- data.frame(
+  n = 1:30
+  ,FT30 = 60 - activity_fun(
+    alpha = 5
+    ,beta_1 =  60 
+    ,t = 1:30
+  )
+  ,FT50 = 60 * 3 / 5 - activity_fun( ##あとで出てくる原則に従って上限設定してるよ。
+    alpha = 5
+    ,beta_1 =  60 
+    ,t = 1:30
+  )
+) %&gt;% pivot_longer(
+  cols = - n
+  ,names_to = &quot;variable&quot;
+  ,values_to = &#39;value&#39;
+)
+
+DF_reward_history %&gt;% ggplot(
+  .
+  ,aes(x = n, y = value, colour = variable)
+) + geom_line()</code></pre>
+<p><img src="https://takuto-psych.github.io/post/2025-06-23/index_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<p>なるほど。</p>
+<p>固定時間で餌が出てくると時間間隔が狭い方が、活動量の上限は高いようです。まあこれは一番最後に式を書きますので、ここでは触れません。</p>
+<p>それよりも注目したいのは、これまでの給餌経験の回数の累積に対して、最初は急速に活動上昇が生じ、その後は上限が来てしまうという動きをするそうです。</p>
+<p>確かに、何となく理解はできます。仮に僕が禁固刑に行って毎食ご飯を</p>
+<p>また、全体的な活動に関しての時間経過の理論モデルは、次の式のようになっているそうです。</p>
+<p><span class="math display">\[
+R = A × (e^{\frac{-t}C} - e^{\frac{-t}I})
+\]</span></p>
+<p>A：覚醒</p>
+<p>I：時間的な抑制</p>
+<p>C：相反する他の行動</p>
+<pre class="r"><code>general_activity_fun &lt;- function(C = 25, TI = 5, A = 50, t){
+  R = A * (
+    (exp(1)^ (-t/C)) - (exp(1)^ (-t/TI)) 
+  )
+  return(R)
+}
+
+GENERAL_ACTIVIY_DF &lt;- data.frame(
+  time = seq(from = 0, to = 2 * 60, by = 0.1)
+  ,R = general_activity_fun(
+    t = seq(from = 0, to = 2 * 60, by = 0.1)
+  )
+  ,TI = activity_fun(
+    alpha = 25
+    ,beta_1 = 50
+    ,t = seq(from = 0, to = 2 * 60, by = 0.1)
+  )
+  ,C = 50 - activity_fun(
+    alpha = 5
+    ,beta_1 = 50
+    ,t = seq(from = 0, to = 2 * 60, by = 0.1)
+  )
+) %&gt;% pivot_longer(
+  cols = - time
+  ,names_to = &quot;variable&quot;
+  ,values_to = &#39;value&#39;
+)
+GENERAL_ACTIVIY_DF %&gt;% ggplot(
+  aes(x = time, y = value, colour = variable)
+) + geom_line() </code></pre>
+<p><img src="https://takuto-psych.github.io/post/2025-06-23/index_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<p>さて、このグラフを解釈するとですね</p>
 </div>
-<div id="q学習のパラメータ" class="section level2">
-<h2>Q学習のパラメータ</h2>
-<p>Q学習とは、いくつかの行動の選択肢からどのような行動を選択するかを学習していく過程を表現したものです。Q学習は、Q値と呼ばれるパラメータの更新が行われて表現されます。また、Q値の更新には、αやρ、またδと呼ばれるパラメータが利用されます。</p>
-<p>また、βというパラメータも関与しますが、これは、Q値の更新それ自体に関わるというよりも、Q値の利用に関わるパラメータだと僕は捉えているので、βについては最後に解説をします。</p>
-<p>詳細は後述しますが、一番単純な確率選択課題におけるQ学習は、以下の2つの式で表現ができます。</p>
-<p><span class="math display">\[
-δ(t) = FeedBack(t) · ρ - Q_i(t)
-\]</span></p>
-<p><span class="math display">\[
-Q_i (t+1) = Q_i (t) + α・δ(t)
-\]</span></p>
-<p>また、Q学習で得られたQ値を実際の選択に利用する意思決定過程は、以下の式で表現します。</p>
-<p><span class="math display">\[
-P_A(t) = \frac{1}{1 + exp( -β · (Q_A(t) - Q_B(t)))}
-\]</span></p>
-<div id="q値とは" class="section level3">
-<h3>Q値とは</h3>
-<p>先ほども書きましたが、Q学習はQ値と呼ばれるパラメータの更新によって表現がされます。</p>
-<p>Q値は、行動価値と呼ばれるパラメータです。行動価値とは、その名の通り、行動の価値を意味します。ここで表現される行動とは、過去に選択して学習してきた行動を意味しています。過去に学習した行動の価値に基づいて将来の行動選択の意思決定がなされるわけです。</p>
-<p>さて、確率選択課題といった課題の解析によくQ学習のアルゴリズムでの解析が行われます。この課題では、刺激を選択することが実験参加者に求められる行動です。そのため、行動価値であるQ値は、実際的には行動価値というよりも、刺激価値捉えた方がわかりやすいかもしれません。具体的にいうと、Q<sub>A</sub> は「刺激Aを選択する行動の価値」という意味になります。実際にこの課題に従事している人の視点に立ってみると、Q<sub>A</sub> を「刺激Aの価値」と捉えていることになります。</p>
-<p>詳細は、αやρのパラメータの説明のところで後述しますが、最初に書いた２つの式で刺激iについてQ値を更新できます。</p>
-<p><span class="math display">\[
-δ(t) = FeedBack(t) · ρ - Q_i(t)
-\]</span></p>
-<p><span class="math display">\[
-Q_i (t+1) = Q_i (t) + α・δ(t)
-\]</span></p>
-<p>これらの式は、t+1試行目の刺激iについてのQ値をt試行目の行動選択によって更新することを意味しています。また、FeedBack(t)には、t試行目の行動選択によって得られたフィードバックの値を代入してあげます。ただし、大抵の研究では、報酬が得られたら1を、報酬が得られなかったら0を符号化して付与しています。</p>
-<p>これらの式の詳細は後述しますが、とりあえず現段階では、t時点における刺激iの価値(厳密には刺激iを選択する行動の価値)であるQ<sub>i</sub>(t)は、なんか知らんけどパラメータを元に計算したら、t+1(次の)時点における刺激iについての価値であるQ<sub>i</sub>(t)を更新することができるようになるんだなあって考えてもらえたらそれだけで十分です。</p>
+<div id="引用文献" class="section level2 unnumbered">
+<h2>引用文献</h2>
+<div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
+<div id="ref-Killeen2003" class="csl-entry">
+Killeen, Peter R, and Matthew T Sitomer. 2003. <span>“<span>MPR</span>.”</span> <em>Behavioural Processes</em> 62 (1): 49–64. https://doi.org/<a href="https://doi.org/10.1016/S0376-6357(03)00017-2">https://doi.org/10.1016/S0376-6357(03)00017-2</a>.
 </div>
-<div id="ρとは" class="section level3">
-<h3>ρとは</h3>
-<p>ρとは報酬（罰）感受性と呼ばれるパラメータです。このパラメータは、</p>
-<p><span class="math display">\[
-δ(t) = FeedBack(t) ・ ρ - Q_A(t)
-\]</span></p>
-<p>という式で出てきます。</p>
-<p><strong>絶対的な</strong>報酬であるFeedBack(t)に掛け合わせることでそのフィードバックの値を修飾するパラメータです。</p>
-<p>パラメータとか修飾とか訳わかりませんね。大丈夫です。僕も最初の頃は訳わかりませんでした。だから簡単な言葉で表現してみましょう。ということで、<a href="https://takuto-psych.github.io/post/sample_learning_task/ABLearningTask.html">先ほどの実験URL</a>で実験をやってみてください。さてAとBどっちの刺激が嬉しかったですか？</p>
-<p><span class="math display">\[
-δ(t) = FeedBack(t) ・ ρ - Q_A(t)
-\]</span></p>
-<p>また、さらに言い換えると、<strong>Q値の上限を高める</strong>ことにも寄与します。<span class="math display">\[
-Q_i (t+1) = Q_i (t) + α・δ(t)
-\]</span></p>
 </div>
 </div>
 </article>

@@ -18,7 +18,7 @@
 
     
     <meta name="description"
-  content="hogehoge" />
+  content="この記事で一気に解説するつもりが、３つの重要な要素をそれぞれ分けて書かないと文量とんでもないことになることに気づいちゃった" />
 <meta name="keywords"
   content='MPR, 強化学習, スケジュール学習' />
 <meta name="robots" content="noodp" />
@@ -28,7 +28,7 @@
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:title" content="Mathmatical Principles of Reinforcement 強化の数学的原理を訳してみようと思うよ - Takuto Psych Blog" />
 <meta name="twitter:description"
-  content="hogehoge" />
+  content="この記事で一気に解説するつもりが、３つの重要な要素をそれぞれ分けて書かないと文量とんでもないことになることに気づいちゃった" />
 <meta name="twitter:site" content="https://takuto-psych.github.io/" />
 <meta name="twitter:creator" content="TakutoPsych" />
 <meta name="twitter:image"
@@ -38,7 +38,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:title" content="Mathmatical Principles of Reinforcement 強化の数学的原理を訳してみようと思うよ - Takuto Psych Blog">
 <meta property="og:description"
-  content="hogehoge" />
+  content="この記事で一気に解説するつもりが、３つの重要な要素をそれぞれ分けて書かないと文量とんでもないことになることに気づいちゃった" />
 <meta property="og:url" content="https://takuto-psych.github.io/post/2025-06-13-/" />
 <meta property="og:site_name" content="Mathmatical Principles of Reinforcement 強化の数学的原理を訳してみようと思うよ" />
 <meta property="og:image"
@@ -128,9 +128,9 @@
 
                   
                   <span class="file-info-divider"></span>
-                  Modified <relative-time datetime="Mon, 23 Jun 2025 11:02:56 &#43;0900"
+                  Modified <relative-time datetime="Mon, 23 Jun 2025 23:27:58 &#43;0900"
                     class="no-wrap">
-                    Mon, 23 Jun 2025 11:02:56 &#43;0900</relative-time>
+                    Mon, 23 Jun 2025 23:27:58 &#43;0900</relative-time>
                   
                 </div>
               </div>
@@ -160,7 +160,7 @@
                         </div>
                       </div>
                     </details-menu>
-                      1215 Words
+                      809 Words
                     
 
                   </div>
@@ -211,58 +211,19 @@
                 <article class="markdown-body entry-content container-lg">
 
 
-<p>最近なぜかスケジュール学習の勉強をしています。具体的には、スケジュールでのそれぞれのスケジュールでの固有の動物の挙動を表現する強化学習モデルの式を探しています。今回は、そんな式を概念とともにご紹介。誰かのためというよりも、自分が理解をするために書いていきます。</p>
+<p>最近なぜか部分強化スケジュールの勉強をしています。具体的には、スケジュールでのそれぞれのスケジュール固有の動物の挙動を表現する強化学習モデルの式を探しています。今回は、そんな式を理解するために記事にします。誰かのためというよりも、自分が理解をするために書いていきます。</p>
+<p>一個の記事で終わるかなと思っていたけど、覚醒だけでかなりの文字数になったので３つの大きな要素をそれぞれ分けて記事にしました。</p>
 <div id="mpr-mathmatical-principles-of-reinforcement" class="section level2">
 <h2>MPR: Mathmatical Principles of Reinforcement</h2>
 <p>日本語にするなら、強化の数学的原理（以下MPR）でしょうか。行動が増える強化という現象ですが、その現象を数式で表現したものになります。</p>
 <p>元の論文はこの二つです<span class="citation">(<a href="#ref-Killeen1994">Killeen 1994</a>; <a href="#ref-Killeen2003">Killeen and Sitomer 2003</a>)</span>。オープンアクセスでもないです。また、内容もなかなかにややこしいのでまだ全文通して読んでの理解が僕もできていないです。なので、今回は<a href="https://en.wikipedia.org/wiki/Mathematical_principles_of_reinforcement">Wikipedia</a>の英語版ページの和訳をしてきます。</p>
-<p>さて、このMPRというのは、重要な要素が３つに分かれているそうです。<strong>arousal:覚醒</strong>、<strong>constraint:抑制</strong>、<strong>coupling:結合</strong>です。それぞれについて以下詳しく書いていきます。</p>
-<pre class="r"><code>##記事内でコード書くので、なんのライブラリ使ってるかわかるようにおまじないは隠さないでおきます。
-rm(list = ls())
-library(tidyverse)</code></pre>
-<pre><code>## ── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
-## ✔ dplyr     1.1.4     ✔ readr     2.1.5
-## ✔ forcats   1.0.0     ✔ stringr   1.5.1
-## ✔ ggplot2   3.5.2     ✔ tibble    3.2.1
-## ✔ lubridate 1.9.4     ✔ tidyr     1.3.1
-## ✔ purrr     1.0.4     
-## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
-## ✖ dplyr::filter() masks stats::filter()
-## ✖ dplyr::lag()    masks stats::lag()
-## ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
+<p>さて、このMPRというのは、重要な要素が３つに分かれているそうです。<strong>arousal:覚醒</strong>、<strong>constraint:抑制</strong>、<strong>coupling:結合</strong>です。それぞれの内容について３個の記事に分けて書きました。ここでは、簡単にそれぞれの内容に触れておきます。</p>
 </div>
 <div id="arousal覚醒" class="section level2">
-<h2>1. Arousal:覚醒</h2>
-<p>MPRにおける一番最初の基本原理は、Arousal覚醒だそうです。興奮とは、誘因の提示によって行動が活性化されることだそうです。条件づけの最も根幹になる要素です。</p>
-<p>たとえば、1日1回エサを与えられたハトの活動量を計測すると、給餌直後に最も活動が高まり、徐々に活動量が下がるそうです。wikiに載っている例だと、給餌後15分間の活動量を計測したそうです。そしてその様子はこんな式で表現できるそうです。</p>
-<p><span class="math display">\[
-b(t) = b_1 * e^ {\frac{-t}\alpha}
-\]</span></p>
-<p>ここで、それぞれの文字は以下のような意味を持ちます。</p>
-<p>b<sub>1</sub>：切片。切片というよりも感覚的には給餌直後の1分間の反応率ですね。</p>
-<p>t：給餌後の時間経過。単位は秒。</p>
-<p>α ：時間定数。時間の経過を調整する定数とでも捉えています。</p>
-<p>e：ネイピア数</p>
-<p>グラフにするとこんな感じ。給餌後は最も活動的で、その後段々と活動量が減衰しているんでしょうね。先に書いた説明通りの図。</p>
-<pre class="r"><code>arousal_fun &lt;- function(alpha = 200, beta_1 = 100, t){
-  b_t &lt;- beta_1 * (exp(1) ^ (- t / alpha))
-  return(b_t)
-}
-arousal_DF &lt;- data.frame(
-  time = seq(from = 0, to = 15 * 60, by = 0.1)
-  ,b_t = arousal_fun(t = seq(from = 0, to = 15 * 60, by = 0.1))
-)
-arousal_DF %&gt;% ggplot(
-  aes(x = time, y = b_t)
-) + geom_line() </code></pre>
-<p><img src="https://takuto-psych.github.io/post/2025-06-13-/index_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
-<p>また、全体的な活動に関しての時間経過の理論モデルは、次の式のようになっているそうです。</p>
-<p><span class="math display">\[
-R = A × (e^{\frac{-t}C} - e^{\frac{-t}I})
-\]</span></p>
-<p>A：覚醒</p>
-<p>I：時間的な抑制</p>
-<p>C：相反する他の行動</p>
+<h2>Arousal：覚醒</h2>
+<p>覚醒とは、強化子が提示されることによって引き起こされる自発的な活動の増加を指します。ここでの活動というのは、レバーを押すというような実験的に強化したいオペラント行動というよりも、飼育小屋ん中を徘徊したりというような一般的な活動性の増加を指します。</p>
+<p>この一般的な活動は、強化子の出現頻度が上がると線形に増加するそうです。</p>
+<p>詳しくは<a href="https://takuto-psych.github.io/post/2025-06-23-/">Mathmatical Principles of Reinforcement 強化の数学的原理におけるarousal興奮の意味を説明する</a>をどうぞ。</p>
 </div>
 <div id="引用文献" class="section level2 unnumbered">
 <h2>引用文献</h2>

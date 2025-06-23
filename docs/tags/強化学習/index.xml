@@ -6,14 +6,21 @@
     <description>Recent content in 強化学習 on Takuto Psych Blog</description>
     <generator>Hugo</generator>
     <language>ja</language>
-    <lastBuildDate>Mon, 23 Jun 2025 11:02:56 +0900</lastBuildDate>
+    <lastBuildDate>Mon, 23 Jun 2025 23:28:01 +0900</lastBuildDate>
     <atom:link href="https://takuto-psych.github.io/tags/%E5%BC%B7%E5%8C%96%E5%AD%A6%E7%BF%92/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Mathmatical Principles of Reinforcement 強化の数学的原理におけるarousal興奮の意味を説明する</title>
+      <link>https://takuto-psych.github.io/post/2025-06-23/</link>
+      <pubDate>Mon, 23 Jun 2025 00:00:00 +0000</pubDate>
+      <guid>https://takuto-psych.github.io/post/2025-06-23/</guid>
+      <description>hogehoge</description>
+    </item>
     <item>
       <title>Mathmatical Principles of Reinforcement 強化の数学的原理を訳してみようと思うよ</title>
       <link>https://takuto-psych.github.io/post/2025-06-13-/</link>
       <pubDate>Fri, 13 Jun 2025 00:00:00 +0000</pubDate>
       <guid>https://takuto-psych.github.io/post/2025-06-13-/</guid>
-      <description>hogehoge</description>
+      <description>この記事で一気に解説するつもりが、３つの重要な要素をそれぞれ分けて書かないと文量とんでもないことになることに気づいちゃった</description>
     </item>
     <item>
       <title>確率選択課題におけるQ学習式のパラメータの役割</title>
