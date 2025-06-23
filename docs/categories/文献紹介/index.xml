@@ -6,8 +6,15 @@
     <description>Recent content in 文献紹介 on Takuto Psych Blog</description>
     <generator>Hugo</generator>
     <language>ja</language>
-    <lastBuildDate>Fri, 13 Jun 2025 01:14:59 +0900</lastBuildDate>
+    <lastBuildDate>Sun, 15 Jun 2025 17:28:46 +0900</lastBuildDate>
     <atom:link href="https://takuto-psych.github.io/categories/%E6%96%87%E7%8C%AE%E7%B4%B9%E4%BB%8B/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Mathmatical Principles of Reinforcement 強化の数学的原理を訳してみようと思うよ</title>
+      <link>https://takuto-psych.github.io/post/2025-06-13-/</link>
+      <pubDate>Fri, 13 Jun 2025 00:00:00 +0000</pubDate>
+      <guid>https://takuto-psych.github.io/post/2025-06-13-/</guid>
+      <description>&lt;p&gt;最近なぜかスケジュール学習の勉強をしています。具体的には、スケジュールでのそれぞれのスケジュールでの固有の動物の挙動を表現する強化学習モデルの式を探しています。今回は、そんな式を概念とともにご紹介。誰かのためというよりも、自分が理解をするために書いていきます。&lt;/p&gt;&#xA;&lt;div id=&#34;mpr-mathmatical-principles-of-reinforcement&#34; class=&#34;section level2&#34;&gt;&#xA;&lt;h2&gt;MPR: Mathmatical Principles of Reinforcement&lt;/h2&gt;&#xA;&lt;p&gt;日本語にするなら、強化の数学的原理（以下MPR）でしょうか。行動が増える強化という現象ですが、その現象を数式で表現したものになります。&lt;/p&gt;&#xA;&lt;p&gt;元の論文はこの二つです&lt;span class=&#34;citation&#34;&gt;(&lt;a href=&#34;#ref-Killeen1994&#34;&gt;Killeen 1994&lt;/a&gt;; &lt;a href=&#34;#ref-Killeen2003&#34;&gt;Killeen and Sitomer 2003&lt;/a&gt;)&lt;/span&gt;。オープンアクセスでもないです。また、内容もなかなかにややこしいのでまだ全文通して読んでの理解が僕もできていないです。なので、今回は&lt;a href=&#34;https://en.wikipedia.org/wiki/Mathematical_principles_of_reinforcement&#34;&gt;Wikipedia&lt;/a&gt;の英語版ページの和訳をしてきます。&lt;/p&gt;&#xA;&lt;p&gt;さて、このMPRというのは、重要な要素が３つに分かれているそうです。&lt;strong&gt;arousal:覚醒&lt;/strong&gt;、&lt;strong&gt;constraint:抑制&lt;/strong&gt;、&lt;strong&gt;coupling:結合&lt;/strong&gt;です。それぞれについて以下詳しく書いていきます。&lt;/p&gt;&#xA;&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;##記事内でコード書くので、なんのライブラリ使ってるかわかるようにおまじないは隠さないでおきます。&#xA;rm(list = ls())&#xA;library(tidyverse)&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;pre&gt;&lt;code&gt;## ── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──&#xA;## ✔ dplyr     1.1.4     ✔ readr     2.1.5&#xA;## ✔ forcats   1.0.0     ✔ stringr   1.5.1&#xA;## ✔ ggplot2   3.5.2     ✔ tibble    3.2.1&#xA;## ✔ lubridate 1.9.4     ✔ tidyr     1.3.1&#xA;## ✔ purrr     1.0.4     &#xA;## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──&#xA;## ✖ dplyr::filter() masks stats::filter()&#xA;## ✖ dplyr::lag()    masks stats::lag()&#xA;## ℹ Use the conflicted package (&amp;lt;http://conflicted.r-lib.org/&amp;gt;) to force all conflicts to become errors&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;/div&gt;&#xA;&lt;div id=&#34;arousal覚醒&#34; class=&#34;section level2&#34;&gt;&#xA;&lt;h2&gt;1. Arousal:覚醒&lt;/h2&gt;&#xA;&lt;p&gt;MPRにおける一番最初の基本原理は、Arousal覚醒だそうです。興奮とは、誘因の提示によって行動が活性化されることだそうです。条件づけの最も根幹になる要素です。&lt;/p&gt;</description>
+    </item>
     <item>
       <title>確率選択課題におけるQ学習式のパラメータの役割</title>
       <link>https://takuto-psych.github.io/post/2022-03-15-/</link>

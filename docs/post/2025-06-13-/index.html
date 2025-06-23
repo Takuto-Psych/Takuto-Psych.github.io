@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <script type="application/javascript" src='https://takuto-psych.github.io/js/theme-mode.js'></script>
+    <link rel="stylesheet" href='https://takuto-psych.github.io/css/frameworks.min.css' />
+    <link rel="stylesheet" href='https://takuto-psych.github.io/css/github.min.css' />
+    <link rel="stylesheet" href='https://takuto-psych.github.io/css/github-style.css' />
+    <link rel="stylesheet" href='https://takuto-psych.github.io/css/light.css' />
+    <link rel="stylesheet" href='https://takuto-psych.github.io/css/dark.css' />
+    <link rel="stylesheet" href='https://takuto-psych.github.io/css/syntax.css' />
+    <title>Mathmatical Principles of Reinforcement 強化の数学的原理を訳してみようと思うよ - Takuto Psych Blog</title>
+    
+    <link rel="icon" type="image/x-icon" href='/images/avatar.png'>
+    
+    <meta name="theme-color" content="#1e2327">
+
+    
+    <meta name="description"
+  content="最近なぜかスケジュール学習の勉強をしています。具体的には、スケジュールでのそれぞれのスケジュールでの固有の動物の挙動を表現する強化学習モデルの式を探しています。今回は、そんな式を概念とともにご紹介。誰かのためというよりも、自分が理解をするために書いていきます。
+MPR: Mathmatical Principles of Reinforcement 日本語にするなら、強化の数学的原理（以下MPR）でしょうか。行動が増える強化という現象ですが、その現象を数式で表現したものになります。
+元の論文はこの二つです(Killeen 1994; Killeen and Sitomer 2003)。オープンアクセスでもないです。また、内容もなかなかにややこしいのでまだ全文通して読んでの理解が僕もできていないです。なので、今回はWikipediaの英語版ページの和訳をしてきます。
+さて、このMPRというのは、重要な要素が３つに分かれているそうです。arousal:覚醒、constraint:抑制、coupling:結合です。それぞれについて以下詳しく書いていきます。
+##記事内でコード書くので、なんのライブラリ使ってるかわかるようにおまじないは隠さないでおきます。 rm(list = ls()) library(tidyverse) ## ── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ── ## ✔ dplyr 1.1.4 ✔ readr 2.1.5 ## ✔ forcats 1.0.0 ✔ stringr 1.5.1 ## ✔ ggplot2 3.5.2 ✔ tibble 3.2.1 ## ✔ lubridate 1.9.4 ✔ tidyr 1.3.1 ## ✔ purrr 1.0.4 ## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ── ## ✖ dplyr::filter() masks stats::filter() ## ✖ dplyr::lag() masks stats::lag() ## ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors 1. Arousal:覚醒 MPRにおける一番最初の基本原理は、Arousal覚醒だそうです。興奮とは、誘因の提示によって行動が活性化されることだそうです。条件づけの最も根幹になる要素です。
+" />
+<meta name="keywords"
+  content='MPR, 強化学習, スケジュール学習' />
+<meta name="robots" content="noodp" />
+<link rel="canonical" href="https://takuto-psych.github.io/post/2025-06-13-/" />
+
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Mathmatical Principles of Reinforcement 強化の数学的原理を訳してみようと思うよ - Takuto Psych Blog" />
+<meta name="twitter:description"
+  content="最近なぜかスケジュール学習の勉強をしています。具体的には、スケジュールでのそれぞれのスケジュールでの固有の動物の挙動を表現する強化学習モデルの式を探しています。今回は、そんな式を概念とともにご紹介。誰かのためというよりも、自分が理解をするために書いていきます。
+MPR: Mathmatical Principles of Reinforcement 日本語にするなら、強化の数学的原理（以下MPR）でしょうか。行動が増える強化という現象ですが、その現象を数式で表現したものになります。
+元の論文はこの二つです(Killeen 1994; Killeen and Sitomer 2003)。オープンアクセスでもないです。また、内容もなかなかにややこしいのでまだ全文通して読んでの理解が僕もできていないです。なので、今回はWikipediaの英語版ページの和訳をしてきます。
+さて、このMPRというのは、重要な要素が３つに分かれているそうです。arousal:覚醒、constraint:抑制、coupling:結合です。それぞれについて以下詳しく書いていきます。
+##記事内でコード書くので、なんのライブラリ使ってるかわかるようにおまじないは隠さないでおきます。 rm(list = ls()) library(tidyverse) ## ── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ── ## ✔ dplyr 1.1.4 ✔ readr 2.1.5 ## ✔ forcats 1.0.0 ✔ stringr 1.5.1 ## ✔ ggplot2 3.5.2 ✔ tibble 3.2.1 ## ✔ lubridate 1.9.4 ✔ tidyr 1.3.1 ## ✔ purrr 1.0.4 ## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ── ## ✖ dplyr::filter() masks stats::filter() ## ✖ dplyr::lag() masks stats::lag() ## ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors 1. Arousal:覚醒 MPRにおける一番最初の基本原理は、Arousal覚醒だそうです。興奮とは、誘因の提示によって行動が活性化されることだそうです。条件づけの最も根幹になる要素です。
+" />
+<meta name="twitter:site" content="https://takuto-psych.github.io/" />
+<meta name="twitter:creator" content="TakutoPsych" />
+<meta name="twitter:image"
+  content="https://takuto-psych.github.io/">
+
+
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Mathmatical Principles of Reinforcement 強化の数学的原理を訳してみようと思うよ - Takuto Psych Blog">
+<meta property="og:description"
+  content="最近なぜかスケジュール学習の勉強をしています。具体的には、スケジュールでのそれぞれのスケジュールでの固有の動物の挙動を表現する強化学習モデルの式を探しています。今回は、そんな式を概念とともにご紹介。誰かのためというよりも、自分が理解をするために書いていきます。
+MPR: Mathmatical Principles of Reinforcement 日本語にするなら、強化の数学的原理（以下MPR）でしょうか。行動が増える強化という現象ですが、その現象を数式で表現したものになります。
+元の論文はこの二つです(Killeen 1994; Killeen and Sitomer 2003)。オープンアクセスでもないです。また、内容もなかなかにややこしいのでまだ全文通して読んでの理解が僕もできていないです。なので、今回はWikipediaの英語版ページの和訳をしてきます。
+さて、このMPRというのは、重要な要素が３つに分かれているそうです。arousal:覚醒、constraint:抑制、coupling:結合です。それぞれについて以下詳しく書いていきます。
+##記事内でコード書くので、なんのライブラリ使ってるかわかるようにおまじないは隠さないでおきます。 rm(list = ls()) library(tidyverse) ## ── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ── ## ✔ dplyr 1.1.4 ✔ readr 2.1.5 ## ✔ forcats 1.0.0 ✔ stringr 1.5.1 ## ✔ ggplot2 3.5.2 ✔ tibble 3.2.1 ## ✔ lubridate 1.9.4 ✔ tidyr 1.3.1 ## ✔ purrr 1.0.4 ## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ── ## ✖ dplyr::filter() masks stats::filter() ## ✖ dplyr::lag() masks stats::lag() ## ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors 1. Arousal:覚醒 MPRにおける一番最初の基本原理は、Arousal覚醒だそうです。興奮とは、誘因の提示によって行動が活性化されることだそうです。条件づけの最も根幹になる要素です。
+" />
+<meta property="og:url" content="https://takuto-psych.github.io/post/2025-06-13-/" />
+<meta property="og:site_name" content="Mathmatical Principles of Reinforcement 強化の数学的原理を訳してみようと思うよ" />
+<meta property="og:image"
+  content="https://takuto-psych.github.io/">
+<meta property="og:image:width" content="2048">
+<meta property="og:image:height" content="1024">
+
+<meta property="article:published_time" content="2025-06-13 00:00:00 &#43;0000 UTC" />
+
+
+
+
+
+
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-N1GWYLJZ1D"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-N1GWYLJZ1D');
+</script>
+
+    
+    <meta name="google-site-verification" content="ZTJLaWcJsPiyOc11H0OSIjk1bYevn3VcRp4FNnJVpuw" />
+</head>
+
+<body>
+  <div style="position: relative">
+  <header class="Header js-details-container Details px-3 px-md-4 px-lg-5 flex-wrap flex-md-nowrap open Details--on">
+    <div class="Header-item mobile-none" style="margin-top: -4px; margin-bottom: -4px;">
+      <a class="Header-link " href="https://takuto-psych.github.io/">
+        <span style="margin-left: 8px;">
+          Takuto Psych Blog
+        </span>
+      </a>
+    </div>
+    
+    <div class="Header-item Header-item--full flex-justify-center d-md-none position-relative">
+      <a class="Header-link " href="https://takuto-psych.github.io/">
+        
+        <span style="margin-left: 8px;">
+          Takuto Psych Blog
+        </span>
+      </a>
+    </div>
+    <div class="Header-item" style="margin-left: auto;">
+      <a href="javascript:void(0)" class="Header-link no-select" onclick="switchTheme()">
+        <svg style="fill: var(--color-profile-color-modes-toggle-moon);" class="no-select" viewBox="0 0 16 16"
+          version="1.1" width="16" height="16">
+          <path fill-rule="evenodd" clip-rule="evenodd"
+            d="M4.52208 7.71754C7.5782 7.71754 10.0557 5.24006 10.0557 2.18394C10.0557 1.93498 10.0392 1.68986 10.0074 1.44961C9.95801 1.07727 10.3495 0.771159 10.6474 0.99992C12.1153 2.12716 13.0615 3.89999 13.0615 5.89383C13.0615 9.29958 10.3006 12.0605 6.89485 12.0605C3.95334 12.0605 1.49286 10.001 0.876728 7.24527C0.794841 6.87902 1.23668 6.65289 1.55321 6.85451C2.41106 7.40095 3.4296 7.71754 4.52208 7.71754Z">
+          </path>
+        </svg>
+      </a>
+    </div>
+  </header>
+</div>
+  
+<div>
+  <main>
+    <div class="gisthead pagehead bg-gray-light pb-0 pt-3 mb-4">
+      <div class="px-0">
+        <div class="mb-3 d-flex px-3 px-md-3 px-lg-5">
+          <div class="flex-auto min-width-0 width-fit mr-3">
+            <div class="d-flex">
+              <div class="d-none d-md-block">
+                <a class="avatar mr-2 flex-shrink-0" href="https://takuto-psych.github.io/">
+                  <img class=" avatar-user"
+                    src="https://takuto-psych.github.io/images/avatar.png"
+                    width="32" height="32"></a>
+              </div>
+              <div class="d-flex flex-column">
+                <h1 class="break-word f3 text-normal mb-md-0 mb-1">
+                  <span class="author">
+                    <a href="https://takuto-psych.github.io/">Takuto-Psych</a></span><span
+                    class="path-divider">/</span><strong class="css-truncate-target mr-1" style="max-width: 410px"><a
+                      href="https://takuto-psych.github.io/post/2025-06-13-/">Mathmatical Principles of Reinforcement 強化の数学的原理を訳してみようと思うよ</a></strong>
+                </h1>
+                <div class="note m-0">
+                  Created <relative-time datetime="Fri, 13 Jun 2025 00:00:00 &#43;0000"
+                    class="no-wrap">
+                    Fri, 13 Jun 2025 00:00:00 &#43;0000</relative-time>
+
+                  
+                  <span class="file-info-divider"></span>
+                  Modified <relative-time datetime="Sun, 15 Jun 2025 17:28:46 &#43;0900"
+                    class="no-wrap">
+                    Sun, 15 Jun 2025 17:28:46 &#43;0900</relative-time>
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-lg px-3 new-discussion-timeline">
+      <div class="repository-content gist-content">
+        <div>
+          <div class="js-gist-file-update-container js-task-list-container file-box">
+            <div id="file-pytest" class="file my-2">
+              <div id="post-header" class="file-header d-flex flex-md-items-center flex-items-start sticky-header" style="z-index: 2">
+                <div class="file-info d-flex flex-md-items-center flex-items-start flex-order-1 flex-auto">
+                  <div class="text-mono f6 flex-auto pr-3 flex-order-2 flex-md-order-1 mt-2 mt-md-0">
+                    
+                    <summary id="toc-toggle" onclick="clickToc()" class="btn btn-octicon m-0 mr-2 p-2">
+                      <svg aria-hidden="true" viewBox="0 0 16 16" height="16" width="16" class="octicon octicon-list-unordered">
+                        <path fill-rule="evenodd" d="M2 4a1 1 0 100-2 1 1 0 000 2zm3.75-1.5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zM3 8a1 1 0 11-2 0 1 1 0 012 0zm-1 6a1 1 0 100-2 1 1 0 000 2z"></path>
+                      </svg>
+                    </summary>
+                    <details-menu class="SelectMenu" id="toc-details" style="display: none;">
+                      <div class="SelectMenu-modal rounded-3 mt-1" style="max-height: 340px;">
+                        <div class="SelectMenu-list SelectMenu-list--borderless p-2" style="overscroll-behavior: contain;" id="toc-list">
+                        </div>
+                      </div>
+                    </details-menu>
+                      1277 Words
+                    
+
+                  </div>
+                  <div class="file-actions flex-order-2 pt-0">
+                    
+                    
+                    <a class="muted-link mr-3" href="/tags/r">
+                      <svg class="octicon octicon-tag" viewBox="0 0 16 16" version="1.1" width="16" height="16">
+                        <path fill-rule="evenodd"
+                          d="M2.5 7.775V2.75a.25.25 0 01.25-.25h5.025a.25.25 0 01.177.073l6.25 6.25a.25.25 0 010 .354l-5.025 5.025a.25.25 0 01-.354 0l-6.25-6.25a.25.25 0 01-.073-.177zm-1.5 0V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 010 2.474l-5.026 5.026a1.75 1.75 0 01-2.474 0l-6.25-6.25A1.75 1.75 0 011 7.775zM6 5a1 1 0 100 2 1 1 0 000-2z">
+                        </path>
+                      </svg>
+                      R
+                    </a>
+                    
+                    <a class="muted-link mr-3" href="/tags/%E5%BC%B7%E5%8C%96%E5%AD%A6%E7%BF%92">
+                      <svg class="octicon octicon-tag" viewBox="0 0 16 16" version="1.1" width="16" height="16">
+                        <path fill-rule="evenodd"
+                          d="M2.5 7.775V2.75a.25.25 0 01.25-.25h5.025a.25.25 0 01.177.073l6.25 6.25a.25.25 0 010 .354l-5.025 5.025a.25.25 0 01-.354 0l-6.25-6.25a.25.25 0 01-.073-.177zm-1.5 0V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 010 2.474l-5.026 5.026a1.75 1.75 0 01-2.474 0l-6.25-6.25A1.75 1.75 0 011 7.775zM6 5a1 1 0 100 2 1 1 0 000-2z">
+                        </path>
+                      </svg>
+                      強化学習
+                    </a>
+                    
+                    <a class="muted-link mr-3" href="/tags/%E5%8B%89%E5%BC%B7">
+                      <svg class="octicon octicon-tag" viewBox="0 0 16 16" version="1.1" width="16" height="16">
+                        <path fill-rule="evenodd"
+                          d="M2.5 7.775V2.75a.25.25 0 01.25-.25h5.025a.25.25 0 01.177.073l6.25 6.25a.25.25 0 010 .354l-5.025 5.025a.25.25 0 01-.354 0l-6.25-6.25a.25.25 0 01-.073-.177zm-1.5 0V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 010 2.474l-5.026 5.026a1.75 1.75 0 01-2.474 0l-6.25-6.25A1.75 1.75 0 011 7.775zM6 5a1 1 0 100 2 1 1 0 000-2z">
+                        </path>
+                      </svg>
+                      勉強
+                    </a>
+                    
+                    <a class="muted-link mr-3" href="/tags/mpr">
+                      <svg class="octicon octicon-tag" viewBox="0 0 16 16" version="1.1" width="16" height="16">
+                        <path fill-rule="evenodd"
+                          d="M2.5 7.775V2.75a.25.25 0 01.25-.25h5.025a.25.25 0 01.177.073l6.25 6.25a.25.25 0 010 .354l-5.025 5.025a.25.25 0 01-.354 0l-6.25-6.25a.25.25 0 01-.073-.177zm-1.5 0V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 010 2.474l-5.026 5.026a1.75 1.75 0 01-2.474 0l-6.25-6.25A1.75 1.75 0 011 7.775zM6 5a1 1 0 100 2 1 1 0 000-2z">
+                        </path>
+                      </svg>
+                      MPR
+                    </a>
+                    
+                    
+                  </div>
+                </div>
+              </div>
+              <div class="Box-body px-5 pb-5" style="z-index: 1">
+                <article class="markdown-body entry-content container-lg">
+
+
+<p>最近なぜかスケジュール学習の勉強をしています。具体的には、スケジュールでのそれぞれのスケジュールでの固有の動物の挙動を表現する強化学習モデルの式を探しています。今回は、そんな式を概念とともにご紹介。誰かのためというよりも、自分が理解をするために書いていきます。</p>
+<div id="mpr-mathmatical-principles-of-reinforcement" class="section level2">
+<h2>MPR: Mathmatical Principles of Reinforcement</h2>
+<p>日本語にするなら、強化の数学的原理（以下MPR）でしょうか。行動が増える強化という現象ですが、その現象を数式で表現したものになります。</p>
+<p>元の論文はこの二つです<span class="citation">(<a href="#ref-Killeen1994">Killeen 1994</a>; <a href="#ref-Killeen2003">Killeen and Sitomer 2003</a>)</span>。オープンアクセスでもないです。また、内容もなかなかにややこしいのでまだ全文通して読んでの理解が僕もできていないです。なので、今回は<a href="https://en.wikipedia.org/wiki/Mathematical_principles_of_reinforcement">Wikipedia</a>の英語版ページの和訳をしてきます。</p>
+<p>さて、このMPRというのは、重要な要素が３つに分かれているそうです。<strong>arousal:覚醒</strong>、<strong>constraint:抑制</strong>、<strong>coupling:結合</strong>です。それぞれについて以下詳しく書いていきます。</p>
+<pre class="r"><code>##記事内でコード書くので、なんのライブラリ使ってるかわかるようにおまじないは隠さないでおきます。
+rm(list = ls())
+library(tidyverse)</code></pre>
+<pre><code>## ── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+## ✔ dplyr     1.1.4     ✔ readr     2.1.5
+## ✔ forcats   1.0.0     ✔ stringr   1.5.1
+## ✔ ggplot2   3.5.2     ✔ tibble    3.2.1
+## ✔ lubridate 1.9.4     ✔ tidyr     1.3.1
+## ✔ purrr     1.0.4     
+## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+## ✖ dplyr::filter() masks stats::filter()
+## ✖ dplyr::lag()    masks stats::lag()
+## ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
+</div>
+<div id="arousal覚醒" class="section level2">
+<h2>1. Arousal:覚醒</h2>
+<p>MPRにおける一番最初の基本原理は、Arousal覚醒だそうです。興奮とは、誘因の提示によって行動が活性化されることだそうです。条件づけの最も根幹になる要素です。</p>
+<p>たとえば、1日1回エサを与えられたハトの活動量を計測すると、給餌直後に最も活動が高まり、徐々に活動量が下がるそうです。wikiに載っている例だと、給餌後15分間の活動量を計測したそうです。そしてその様子はこんな式で表現できるそうです。</p>
+<p><span class="math display">\[
+b(t) = b_1 * e^ {\frac{-t}\alpha}
+\]</span></p>
+<p>ここで、それぞれの文字は以下のような意味を持ちます。</p>
+<p>b<sub>1</sub>：切片。切片というよりも感覚的には給餌直後の1分間の反応率ですね。</p>
+<p>t：給餌後の時間経過。単位は秒。</p>
+<p>α ：時間定数。時間の経過を調整する定数とでも捉えています。</p>
+<p>e：ネイピア数</p>
+<p>グラフにするとこんな感じ。給餌後は最も活動的で、その後段々と活動量が減衰しているんでしょうね。先に書いた説明通りの図。</p>
+<pre class="r"><code>arousal_fun &lt;- function(alpha = 200, beta_1 = 100, t){
+  b_t &lt;- beta_1 * (exp(1) ^ (- t / alpha))
+  return(b_t)
+}
+arousal_DF &lt;- data.frame(
+  time = seq(from = 0, to = 15 * 60, by = 0.1)
+  ,b_t = arousal_fun(t = seq(from = 0, to = 15 * 60, by = 0.1))
+)
+arousal_DF %&gt;% ggplot(
+  aes(x = time, y = b_t)
+) + geom_line() </code></pre>
+<p><img src="https://takuto-psych.github.io/post/2025-06-13-/index_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<p>また、全体的な活動に関しての時間経過の理論モデルは、次の式のようになっているそうです。</p>
+<p><span class="math display">\[
+R = A × (e^{\frac{-t}C} - e^{\frac{-t}I})
+\]</span></p>
+<p>A：覚醒</p>
+<p>I：時間的な抑制</p>
+<p>C：相反する他の行動</p>
+<p>グラフにするとこんな感じかな。</p>
+<p><span class="citation">(<a href="#ref-Schlinger2008">Schlinger, Derenne, and Baron 2008</a>)</span>aaa<span class="citation">(<a href="#ref-SkinnerC.B"><strong>SkinnerC.B?</strong></a>&amp;Ferster1957)</span></p>
+</div>
+<div id="引用文献" class="section level2 unnumbered">
+<h2>引用文献</h2>
+<div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
+<div id="ref-Killeen1994" class="csl-entry">
+Killeen, Peter R. 1994. <span>“<span class="nocase">Mathematical principles of reinforcement</span>.”</span> <em>Behavioral and Brain Sciences</em> 17 (1): 105–35. <a href="https://doi.org/DOI:%2010.1017/S0140525X00033628">https://doi.org/DOI: 10.1017/S0140525X00033628</a>.
+</div>
+<div id="ref-Killeen2003" class="csl-entry">
+Killeen, Peter R, and Matthew T Sitomer. 2003. <span>“<span>MPR</span>.”</span> <em>Behavioural Processes</em> 62 (1): 49–64. https://doi.org/<a href="https://doi.org/10.1016/S0376-6357(03)00017-2">https://doi.org/10.1016/S0376-6357(03)00017-2</a>.
+</div>
+<div id="ref-Schlinger2008" class="csl-entry">
+Schlinger, Henry D., Adam Derenne, and Alan Baron. 2008. <span>“<span class="nocase">What 50 years of research tell us about pausing under ratio schedules of reinforcement</span>.”</span> <a href="https://doi.org/10.1007/BF03392160">https://doi.org/10.1007/BF03392160</a>.
+</div>
+</div>
+</div>
+</article>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script type="application/javascript" src='https://takuto-psych.github.io/js/toc.js'></script>
+<link rel="stylesheet" href='https://takuto-psych.github.io/css/toc.css' />
+
+
+<div class="utterances">
+  <script>
+    if(currentTheme() == 'light'){
+      var utterancesTheme = 'github-light';
+    } else{
+      var utterancesTheme = 'github-dark';
+    }
+    var utterancesScript = document.createElement('script');
+    utterancesScript.src = 'https://utteranc.es/client.js';
+    utterancesScript.setAttribute('repo', 'Takuto-Psych\/Takuto-Psych.github.io');
+    utterancesScript.setAttribute('issue-term', 'title');
+    utterancesScript.setAttribute('theme', utterancesTheme);
+    utterancesScript.setAttribute('crossorigin', 'anonymous');
+    utterancesScript.setAttribute('async', '');
+    document.querySelector('.utterances').appendChild(utterancesScript);
+  </script>
+</div>
+
+
+  <div class="footer container-xl width-full p-responsive">
+  <div
+    class="position-relative d-flex flex-row-reverse flex-lg-row flex-wrap flex-lg-nowrap flex-justify-center flex-lg-justify-between flex-sm-items-center pt-6 pb-2 mt-6 f6 text-gray border-top border-gray-light ">
+    <a aria-label="Homepage" title="GitHub" class="footer-octicon d-none d-lg-block mr-lg-4" href="https://takuto-psych.github.io/">
+      <svg height="24" class="octicon octicon-mark-github" viewBox="0 0 16 16" version="1.1" width="24">
+        <path fill-rule="evenodd"
+          d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z">
+        </path>
+      </svg>
+    </a>
+    <ul class="list-style-none d-flex flex-wrap col-12 flex-justify-center flex-lg-justify-between mb-2 mb-lg-0">
+      
+      <li class="mr-3 mr-lg-0">Theme by <a href='https://github.com/MeiK2333/github-style'>github-style</a></li>
+      
+    </ul>
+  </div>
+  <div class="d-flex flex-justify-center pb-6">
+    <span class="f6 text-gray-light"></span>
+  </div>
+
+
+</div>
+</body>
+
+<script type="application/javascript" src="https://takuto-psych.github.io/js/github-style.js"></script>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"
+  integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"
+  integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"
+  integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
+  onload="renderMathInElement(document.body);"></script>
+
+
+
+</html>

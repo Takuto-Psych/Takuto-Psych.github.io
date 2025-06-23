@@ -132,7 +132,7 @@
                 </path>
               </svg>
               Posts
-              <span class="Counter">3</span>
+              <span class="Counter">4</span>
             </a>
             <a class='UnderlineNav-item mr-0 mr-md-1 mr-lg-3 ' href='https://takuto-psych.github.io/categories/'>
               Categories
@@ -140,7 +140,7 @@
             <a class='UnderlineNav-item mr-0 mr-md-1 mr-lg-3 ' href='https://takuto-psych.github.io/tags/'>
               Tags
               <span class="Counter hide-lg hide-md hide-sm">
-                  10
+                  11
               </span>
             </a>
             <a class='UnderlineNav-item mr-0 mr-md-1 mr-lg-3 ' href='https://takuto-psych.github.io/profile'>
@@ -443,7 +443,7 @@
         </path>
       </svg>
       Posts
-      <span class="Counter ">3</span>
+      <span class="Counter ">4</span>
     </a>
     <a class='UnderlineNav-item mr-0 mr-md-1 mr-lg-3 ' href='https://takuto-psych.github.io/categories/'>
       Categories
@@ -451,7 +451,7 @@
     <a class='UnderlineNav-item mr-0 mr-md-1 mr-lg-3 ' href='https://takuto-psych.github.io/tags/'>
       Tags
       <span class="Counter hide-lg hide-md hide-sm">
-          10
+          11
       </span>
     </a>
     <a class='UnderlineNav-item mr-0 mr-md-1 mr-lg-3 ' href='https://takuto-psych.github.io/profile'>
@@ -474,7 +474,7 @@
       
       <div class="TableObject border-bottom border-gray-light py-3">
         <div class="user-repo-search-results-summary TableObject-item TableObject-item--primary v-align-top">
-          <strong>1</strong>
+          <strong>2</strong>
           results
           for <strong></strong>
         </div>
@@ -492,6 +492,92 @@
       </div>
       
       <ul>
+        
+        <li class="col-12 d-flex width-full py-4 border-bottom color-border-secondary public source">
+          <div class="col-12 d-inline-block">
+            <div class="d-inline-block mb-1">
+              <h3 class="wb-break-all">
+                <a href="https://takuto-psych.github.io/post/2025-06-13-/">Mathmatical Principles of Reinforcement 強化の数学的原理を訳してみようと思うよ</a>
+              </h3>
+            </div>
+
+            <div>
+              <div class="col-12 d-inline-block text-gray mb-2 pr-4">
+                <p>最近なぜかスケジュール学習の勉強をしています。具体的には、スケジュールでのそれぞれのスケジュールでの固有の動物の挙動を表現する強化学習モデルの式を探しています。今回は、そんな式を概念とともにご紹介。誰かのためというよりも、自分が理解をするために書いていきます。</p>
+<div id="mpr-mathmatical-principles-of-reinforcement" class="section level2">
+<h2>MPR: Mathmatical Principles of Reinforcement</h2>
+<p>日本語にするなら、強化の数学的原理（以下MPR）でしょうか。行動が増える強化という現象ですが、その現象を数式で表現したものになります。</p>
+<p>元の論文はこの二つです<span class="citation">(<a href="#ref-Killeen1994">Killeen 1994</a>; <a href="#ref-Killeen2003">Killeen and Sitomer 2003</a>)</span>。オープンアクセスでもないです。また、内容もなかなかにややこしいのでまだ全文通して読んでの理解が僕もできていないです。なので、今回は<a href="https://en.wikipedia.org/wiki/Mathematical_principles_of_reinforcement">Wikipedia</a>の英語版ページの和訳をしてきます。</p>
+<p>さて、このMPRというのは、重要な要素が３つに分かれているそうです。<strong>arousal:覚醒</strong>、<strong>constraint:抑制</strong>、<strong>coupling:結合</strong>です。それぞれについて以下詳しく書いていきます。</p>
+<pre class="r"><code>##記事内でコード書くので、なんのライブラリ使ってるかわかるようにおまじないは隠さないでおきます。
+rm(list = ls())
+library(tidyverse)</code></pre>
+<pre><code>## ── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+## ✔ dplyr     1.1.4     ✔ readr     2.1.5
+## ✔ forcats   1.0.0     ✔ stringr   1.5.1
+## ✔ ggplot2   3.5.2     ✔ tibble    3.2.1
+## ✔ lubridate 1.9.4     ✔ tidyr     1.3.1
+## ✔ purrr     1.0.4     
+## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+## ✖ dplyr::filter() masks stats::filter()
+## ✖ dplyr::lag()    masks stats::lag()
+## ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
+</div>
+<div id="arousal覚醒" class="section level2">
+<h2>1. Arousal:覚醒</h2>
+<p>MPRにおける一番最初の基本原理は、Arousal覚醒だそうです。興奮とは、誘因の提示によって行動が活性化されることだそうです。条件づけの最も根幹になる要素です。</p>
+              </div>
+            </div>
+
+            <div class="f6 text-gray mt-2">
+              
+              
+              <a class="muted-link mr-3" href="/tags/r">
+                <svg class="octicon octicon-tag" viewBox="0 0 16 16" version="1.1" width="16" height="16">
+                  <path fill-rule="evenodd"
+                    d="M2.5 7.775V2.75a.25.25 0 01.25-.25h5.025a.25.25 0 01.177.073l6.25 6.25a.25.25 0 010 .354l-5.025 5.025a.25.25 0 01-.354 0l-6.25-6.25a.25.25 0 01-.073-.177zm-1.5 0V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 010 2.474l-5.026 5.026a1.75 1.75 0 01-2.474 0l-6.25-6.25A1.75 1.75 0 011 7.775zM6 5a1 1 0 100 2 1 1 0 000-2z">
+                  </path>
+                </svg>
+                R
+              </a>
+              
+              <a class="muted-link mr-3" href="/tags/%E5%BC%B7%E5%8C%96%E5%AD%A6%E7%BF%92">
+                <svg class="octicon octicon-tag" viewBox="0 0 16 16" version="1.1" width="16" height="16">
+                  <path fill-rule="evenodd"
+                    d="M2.5 7.775V2.75a.25.25 0 01.25-.25h5.025a.25.25 0 01.177.073l6.25 6.25a.25.25 0 010 .354l-5.025 5.025a.25.25 0 01-.354 0l-6.25-6.25a.25.25 0 01-.073-.177zm-1.5 0V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 010 2.474l-5.026 5.026a1.75 1.75 0 01-2.474 0l-6.25-6.25A1.75 1.75 0 011 7.775zM6 5a1 1 0 100 2 1 1 0 000-2z">
+                  </path>
+                </svg>
+                強化学習
+              </a>
+              
+              <a class="muted-link mr-3" href="/tags/%E5%8B%89%E5%BC%B7">
+                <svg class="octicon octicon-tag" viewBox="0 0 16 16" version="1.1" width="16" height="16">
+                  <path fill-rule="evenodd"
+                    d="M2.5 7.775V2.75a.25.25 0 01.25-.25h5.025a.25.25 0 01.177.073l6.25 6.25a.25.25 0 010 .354l-5.025 5.025a.25.25 0 01-.354 0l-6.25-6.25a.25.25 0 01-.073-.177zm-1.5 0V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 010 2.474l-5.026 5.026a1.75 1.75 0 01-2.474 0l-6.25-6.25A1.75 1.75 0 011 7.775zM6 5a1 1 0 100 2 1 1 0 000-2z">
+                  </path>
+                </svg>
+                勉強
+              </a>
+              
+              <a class="muted-link mr-3" href="/tags/mpr">
+                <svg class="octicon octicon-tag" viewBox="0 0 16 16" version="1.1" width="16" height="16">
+                  <path fill-rule="evenodd"
+                    d="M2.5 7.775V2.75a.25.25 0 01.25-.25h5.025a.25.25 0 01.177.073l6.25 6.25a.25.25 0 010 .354l-5.025 5.025a.25.25 0 01-.354 0l-6.25-6.25a.25.25 0 01-.073-.177zm-1.5 0V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 010 2.474l-5.026 5.026a1.75 1.75 0 01-2.474 0l-6.25-6.25A1.75 1.75 0 011 7.775zM6 5a1 1 0 100 2 1 1 0 000-2z">
+                  </path>
+                </svg>
+                MPR
+              </a>
+              
+              
+
+              Created
+              <relative-time datetime=" Fri, 13 Jun 2025 00:00:00 &#43;0000" class="no-wrap"
+                title=" Fri, 13 Jun 2025 00:00:00 &#43;0000">
+                Fri, 13 Jun 2025 00:00:00 &#43;0000
+              </relative-time>
+            </div>
+          </div>
+        </li>
         
         <li class="col-12 d-flex width-full py-4 border-bottom color-border-secondary public source">
           <div class="col-12 d-inline-block">
