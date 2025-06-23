@@ -128,9 +128,9 @@
 
                   
                   <span class="file-info-divider"></span>
-                  Modified <relative-time datetime="Mon, 23 Jun 2025 23:31:20 &#43;0900"
+                  Modified <relative-time datetime="Mon, 23 Jun 2025 23:52:54 &#43;0900"
                     class="no-wrap">
-                    Mon, 23 Jun 2025 23:31:20 &#43;0900</relative-time>
+                    Mon, 23 Jun 2025 23:52:54 &#43;0900</relative-time>
                   
                 </div>
               </div>
@@ -160,7 +160,7 @@
                         </div>
                       </div>
                     </details-menu>
-                      2091 Words
+                      2339 Words
                     
 
                   </div>
@@ -245,11 +245,11 @@ library(tidyverse)</code></pre>
   return(b_t)
 }
 DF_activity &lt;- data.frame(
-  time = seq(from = 0, to = 13, by = 0.1)
+  time_sec = seq(from = 0, to = 13, by = 0.1)
   ,b_t = activity_fun(t = seq(from = 0, to = 13, by = 0.1))
 )
 DF_activity %&gt;% ggplot(
-  aes(x = time, y = b_t)
+  aes(x = time_sec, y = b_t)
 ) + geom_line() </code></pre>
 <p><img src="https://takuto-psych.github.io/post/2025-06-23/index_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
 <p>直感的にも納得いきます。毎日決まった時刻にご飯が出てくるだけの環境にいると、ご飯が出てきた直後にだけ活動レベルが高まり、その後、急激に活動レベルが減衰していくみたいです。特に飼ったことはないですが、人間とコミュニケーションを取るとは考えられていない愛玩動物を飼育したら、こんな挙動をしそうですね。カエルでも飼ってみようかな。</p>
@@ -298,10 +298,15 @@ DF_reward_history %&gt;% ggplot(
 <p>それよりも注目したいのは、これまでの給餌経験の回数の累積に対して、最初は急速に活動上昇が生じ、その後は上限が来てしまうという動きをするそうです。</p>
 <p>確かに、何となく理解はできます。仮に僕が禁固刑に行って決まった時刻に（だいたい5時間おきかな）にご飯もらえたとしたら、ご飯もらう回数が増えていくに従って室内徘徊頻度上がりそうですね。どっかで上限があるでしょうが。</p>
 <p>さて、何となく直感的にこんなグラフになりそうだなというのは納得できたのですが、Killeenさんはこの結果には問題があるという指摘をして追加の実験をしました。</p>
+<p>給餌をすることで自発的な活動が上昇することはは、実は迷信的な行動の学習かもしれません。</p>
+<p>本来FTスケジュールなので、被験者は動こうが動かなかろうが、それに関係なく餌が出てきます。にもかかわらず、被験者が何か動いた後に餌が出てきてしまったとしたら、その餌は謎の動きを迷信的に引き起こす強化子になってしまうかもしれません。ちなみに、僕もそんな環境にいたら服を脱いだ後にサイドロールとエビを永遠にすると思います。</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/tI_x5r-qPkY?si=Y9Vg5eRyII_rvsTQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+</iframe>
+<p>人間に当てはめてみたら笑えますが、動物とは会話ができないので迷信的に行動が増えているのかどうかを実験デザインの工夫で検証しなくてはなりません。</p>
 </div>
 <div id="秒ごとに餌を与えるただし給餌前に反応したら待てだ" class="section level2">
 <h2>〇〇秒ごとに餌を与える。ただし、給餌前に反応したら「待て」だ</h2>
-<p>Killeenさんは、給餌をすることで自発的な活動が上昇することを確認しましたが、これは、迷信学習</p>
+<p>Killeenさんは、そんな迷信的な行動の増加を</p>
 <p>また、全体的な活動に関しての時間経過の理論モデルは、次の式のようになっているそうです。</p>
 <p><span class="math display">\[
 R = A × (e^{\frac{-t}C} - e^{\frac{-t}I})
