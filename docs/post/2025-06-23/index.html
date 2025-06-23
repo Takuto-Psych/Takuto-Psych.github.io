@@ -128,9 +128,9 @@
 
                   
                   <span class="file-info-divider"></span>
-                  Modified <relative-time datetime="Mon, 23 Jun 2025 23:52:54 &#43;0900"
+                  Modified <relative-time datetime="Tue, 24 Jun 2025 00:39:33 &#43;0900"
                     class="no-wrap">
-                    Mon, 23 Jun 2025 23:52:54 &#43;0900</relative-time>
+                    Tue, 24 Jun 2025 00:39:33 &#43;0900</relative-time>
                   
                 </div>
               </div>
@@ -160,7 +160,7 @@
                         </div>
                       </div>
                     </details-menu>
-                      2339 Words
+                      3345 Words
                     
 
                   </div>
@@ -215,7 +215,8 @@
 <p>今回の記事では<span class="citation">(<a href="#ref-Killeen2003">Killeen and Sitomer 2003</a>)</span>の論文で行われた実験を段階的に見てどのように原理のモデルが作られたのかを確認してきます。</p>
 <div id="一日一回の食事" class="section level2">
 <h2>一日一回の食事</h2>
-<p>まずは、1日1回ハトに餌を与えてみましょう。その時の活動量を計測すると、給餌直後に最も活動が高まり、その後は急速に活動量が下がるそうです。wikiに載っている例だと、給餌後15分間の活動量を計測したそうです。そしてその様子はこんな式で表現できるそうです。</p>
+<p>まずは、1日1回ハトに餌を与えてみましょう。その時の活動量を計測すると、給餌直後に最も活動が高まり、その後は急速に活動量が下がるそうです。ここでいう活動というのは、オペラント条件づけの対象になるようなレバー押しといった行動ではなく飼育小屋やスキナー箱の内部での徘徊といった行動を指します。</p>
+<p>そしてその活動の様子はこんな式で表現できるそうです。</p>
 <p><span class="math display">\[
 b(t) = b_1 * e^ {\frac{-t}\alpha}
 \]</span></p>
@@ -226,7 +227,7 @@ b(t) = b_1 * e^ {\frac{-t}\alpha}
 <li><p>α ：時間定数。時間の経過を調整する定数とでも捉えています。</p></li>
 <li><p>e：ネイピア数</p></li>
 </ul>
-<p>グラフにするとこんな感じ。給餌後は最も活動的で、その後段々と活動量が減衰していくんですね。図にするとこんな感じ。</p>
+<p>グラフにするとこんな感じ。給餌後は最も活動的で、その後段々と活動量が減衰していくんですね。</p>
 <pre class="r"><code>##なんのパッケージ使ってるかを示すために、見えるようにしておきます。
 rm(list = ls())
 library(tidyverse)</code></pre>
@@ -246,13 +247,13 @@ library(tidyverse)</code></pre>
 }
 DF_activity &lt;- data.frame(
   time_sec = seq(from = 0, to = 13, by = 0.1)
-  ,b_t = activity_fun(t = seq(from = 0, to = 13, by = 0.1))
+  ,responses_per_minute = activity_fun(t = seq(from = 0, to = 13, by = 0.1))
 )
 DF_activity %&gt;% ggplot(
-  aes(x = time_sec, y = b_t)
+  aes(x = time_sec, y = responses_per_minute)
 ) + geom_line() </code></pre>
 <p><img src="https://takuto-psych.github.io/post/2025-06-23/index_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
-<p>直感的にも納得いきます。毎日決まった時刻にご飯が出てくるだけの環境にいると、ご飯が出てきた直後にだけ活動レベルが高まり、その後、急激に活動レベルが減衰していくみたいです。特に飼ったことはないですが、人間とコミュニケーションを取るとは考えられていない愛玩動物を飼育したら、こんな挙動をしそうですね。カエルでも飼ってみようかな。</p>
+<p>直感的にも納得いきます。毎日決まった時刻にご飯が出てくるだけの環境にいると、ご飯が出てきた直後にだけ活動レベルが高まり、その後、急激に活動レベルが減衰していく。特に飼ったことはないですが、人間とコミュニケーションを取るとは考えられていない愛玩動物を飼育したら、こんな挙動をしそうですね。カエルでも飼ってみようかな。</p>
 </div>
 <div id="秒ごとに餌を与えてみる" class="section level2">
 <h2>〇〇秒ごとに餌を与えてみる</h2>
@@ -263,11 +264,11 @@ b(n) = b_1 * (1 - e^ {\frac{-n}\alpha})
 \]</span></p>
 <ul>
 <li><p>b<sub>1</sub>：切片。切片というよりも感覚的には給餌直後の上限ですね。</p></li>
-<li><p>t：これまでに連続で何回給餌されたか</p></li>
+<li><p>n：これまでに連続で何回給餌されたか</p></li>
 <li><p>α ：何らかの定数。これまでの給餌履歴を調整する定数とでも捉えます。</p></li>
 <li><p>e：ネイピア数</p></li>
 </ul>
-<p>今回のこの給餌の頻度をあげるという操作は、あくまで固定時間経過後に何らかのオペラント行動を求めて、その行動に対しての強化というわけではないです。こういった行動とは独立したスケジュールをFixed Time（固定時間）スケジュールと呼ぶそうです。知らんかった。</p>
+<p>今回のこの給餌の頻度をあげるという環境側の操作は、あくまで固定時間を操作して、その時間が経過した後に勝手に餌が出てくるようにするというだけです。そのため、何らかのオペラント行動を求めた望ましい行動に対しての強化という性質のものではないです。こういった被験者の行動とは独立したスケジュールをFixed Time（固定時間）スケジュールと呼ぶそうです。知らんかった。</p>
 <p>では、この関数に従って、給餌履歴を元にした活動量の推移を描いてみましょう。こんな感じになります。</p>
 <pre class="r"><code>##さっきの関数を流用する
 DF_reward_history &lt;- data.frame(
@@ -285,43 +286,56 @@ DF_reward_history &lt;- data.frame(
 ) %&gt;% pivot_longer(
   cols = - n
   ,names_to = &quot;variable&quot;
-  ,values_to = &#39;value&#39;
+  ,values_to = &#39;responses_per_minute&#39;
 )
 
 DF_reward_history %&gt;% ggplot(
   .
-  ,aes(x = n, y = value, colour = variable)
+  ,aes(x = n, y = responses_per_minute, colour = variable)
 ) + geom_line()</code></pre>
 <p><img src="https://takuto-psych.github.io/post/2025-06-23/index_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
 <p>なるほど。</p>
 <p>固定時間で餌が出てくると時間間隔が狭い方が、活動量の上限は高いようです。まあこれは一番最後に式を書きますので、ここでは触れません。</p>
-<p>それよりも注目したいのは、これまでの給餌経験の回数の累積に対して、最初は急速に活動上昇が生じ、その後は上限が来てしまうという動きをするそうです。</p>
-<p>確かに、何となく理解はできます。仮に僕が禁固刑に行って決まった時刻に（だいたい5時間おきかな）にご飯もらえたとしたら、ご飯もらう回数が増えていくに従って室内徘徊頻度上がりそうですね。どっかで上限があるでしょうが。</p>
+<p>また、これまでの給餌経験の回数の累積に対して、最初は急速に活動上昇が生じ、その後は上限が来てしまうという動きをするそうです。</p>
+<p>確かに、何となく理解はできます。仮に僕が禁固刑に行って決まった時刻に（だいたい5時間おきかな）にご飯もらえたとしたら、ご飯もらった回数が増えていくに従って室内徘徊頻度上がりそうですね。どっかで上限があるでしょうが。</p>
 <p>さて、何となく直感的にこんなグラフになりそうだなというのは納得できたのですが、Killeenさんはこの結果には問題があるという指摘をして追加の実験をしました。</p>
-<p>給餌をすることで自発的な活動が上昇することはは、実は迷信的な行動の学習かもしれません。</p>
-<p>本来FTスケジュールなので、被験者は動こうが動かなかろうが、それに関係なく餌が出てきます。にもかかわらず、被験者が何か動いた後に餌が出てきてしまったとしたら、その餌は謎の動きを迷信的に引き起こす強化子になってしまうかもしれません。ちなみに、僕もそんな環境にいたら服を脱いだ後にサイドロールとエビを永遠にすると思います。</p>
+<p>その問題とは、給餌をすることで自発的な活動が上昇することは、実は迷信的な行動を学習した結果かもしれないというものです。</p>
+<p>本来FTスケジュールなので、被験者が動こうが動かなかろうが、それに関係なく餌が出てきます。にもかかわらず、被験者が何か動いた後に餌が出てきてしまったとしたら、その餌は謎の動きを迷信的に引き起こす強化子になってしまうかもしれません。ちなみに、僕もそんな環境にいたら服を脱いだ後にサイドロールとエビを永遠にすると思います。異常独身男性の完成です。</p>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/tI_x5r-qPkY?si=Y9Vg5eRyII_rvsTQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
 </iframe>
 <p>人間に当てはめてみたら笑えますが、動物とは会話ができないので迷信的に行動が増えているのかどうかを実験デザインの工夫で検証しなくてはなりません。</p>
 </div>
 <div id="秒ごとに餌を与えるただし給餌前に反応したら待てだ" class="section level2">
 <h2>〇〇秒ごとに餌を与える。ただし、給餌前に反応したら「待て」だ</h2>
-<p>Killeenさんは、そんな迷信的な行動の増加を</p>
-<p>また、全体的な活動に関しての時間経過の理論モデルは、次の式のようになっているそうです。</p>
-<p><span class="math display">\[
-R = A × (e^{\frac{-t}C} - e^{\frac{-t}I})
-\]</span></p>
-<p>A：覚醒</p>
-<p>I：時間的な抑制</p>
-<p>C：相反する他の行動</p>
-<pre class="r"><code>general_activity_fun &lt;- function(C = 25, TI = 5, A = 50, t){
+<p>Killeenさんは、そんな迷信的な行動の増加を「待て」を使って制御しました。</p>
+<p>具体的には、FT〇〇secの〇〇秒経過時点で被験者が動いていた場合には5秒間餌を与えないことにしたそうです。こういった手続きをDROというそうです。</p>
+<p>この操作により、餌の提示直前に被験者は自発的な活動をしなくなります。もしこの制御が完璧に効いたとしたら、活動が完全になくなるかもしれません。結果はどうだったでしょうか。</p>
+<p>結果はこんなグラフになりました。</p>
+<pre class="r"><code>##式の説明の前に関数書いているので順番は逆だけど、図が欲しいので
+general_activity_fun &lt;- function(C = 25, TI = 5, A = 50, t){
   R = A * (
     (exp(1)^ (-t/C)) - (exp(1)^ (-t/TI)) 
   )
   return(R)
 }
 
-GENERAL_ACTIVIY_DF &lt;- data.frame(
+DF_general_activity &lt;- data.frame(
+  time = seq(from = 0, to = 2 * 60, by = 0.1)
+  ,responses_per_min = general_activity_fun(
+    t = seq(from = 0, to = 2 * 60, by = 0.1)
+  )
+
+) 
+DF_general_activity %&gt;% ggplot(
+  aes(x = time, y = responses_per_min)
+) + geom_line(
+)</code></pre>
+<p><img src="https://takuto-psych.github.io/post/2025-06-23/index_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<p>このグラフの横軸は、直前に給餌されてから何秒経ったかを意味します。一方、縦軸は、1分間の平均活動量。また、ここで計測している活動というのは、（元論文に当たっていないので多分ですが）床の上での徘徊を指しています。</p>
+<p>さて、給餌直後には活動の現象が見られます。なぜなら、ここではホッパー（餌の受け皿）の周りを探すといったような餌に対しての目標志向的な行動が現れるためです。このような行動を行うと、スキナー箱の中での徘徊というような活動は減少し、その記録は床の感圧板には記録されません。だから、「活動」は減っているわけですね。</p>
+<p>一方、少し経ってからは、活動は上がります。これは、そういった目標志向的な行動が時間経過で減ってきて、「活動」に移行したことを示します。その後は活動は下がっていきます。これは、待て（DRO）によって、要らない動きをしてしまうと、給餌をお預けされてしまうために生じるわけです。</p>
+<p>さて、この時間と活動のグラフは実は、餌が持っている活動性を高めるという効果と、待て（DRO）による活動低下の効果を合わせた結果だと考えられます。それを表現したのが以下のグラフです。</p>
+<pre class="r"><code>DF_general_activity &lt;- data.frame(
   time = seq(from = 0, to = 2 * 60, by = 0.1)
   ,R = general_activity_fun(
     t = seq(from = 0, to = 2 * 60, by = 0.1)
@@ -341,11 +355,22 @@ GENERAL_ACTIVIY_DF &lt;- data.frame(
   ,names_to = &quot;variable&quot;
   ,values_to = &#39;value&#39;
 )
-GENERAL_ACTIVIY_DF %&gt;% ggplot(
+DF_general_activity %&gt;% ggplot(
   aes(x = time, y = value, colour = variable)
 ) + geom_line() </code></pre>
-<p><img src="https://takuto-psych.github.io/post/2025-06-23/index_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
-<p>さて、このグラフを解釈するとですね</p>
+<p><img src="https://takuto-psych.github.io/post/2025-06-23/index_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<p>先ほどのグラフは緑の線です。赤は、活動に対しての競合の行動（ホッパーを漁ったり）、青は時間によって生じる活動レベルの減衰です。この赤と青のグラフを合わせたものとして、緑のグラフが出来上がると<span class="citation">(<a href="#ref-Killeen2003">Killeen and Sitomer 2003</a>)</span>は表現しました。僕はこのセンテンスと式を論文で見て理解ができた時にかなりテンションが上がりました。まあ理解するのに20hかかりましたけども。</p>
+<p>それがこの式</p>
+<p><span class="math display">\[
+R = A × (e^{\frac{-t}C} - e^{\frac{-t}I})
+\]</span></p>
+<p>R：活動量</p>
+<p>A：覚醒</p>
+<p>I：時間的な抑制</p>
+<p>C：競合する他の行動</p>
+</div>
+<div id="活動の量の上限は給餌の頻度に対して線形に増加する" class="section level2">
+<h2>活動の量の上限は給餌の頻度に対して線形に増加する</h2>
 </div>
 <div id="引用文献" class="section level2 unnumbered">
 <h2>引用文献</h2>
