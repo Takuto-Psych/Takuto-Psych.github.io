@@ -128,9 +128,9 @@
 
                   
                   <span class="file-info-divider"></span>
-                  Modified <relative-time datetime="Tue, 24 Jun 2025 22:56:05 &#43;0900"
+                  Modified <relative-time datetime="Wed, 09 Jul 2025 12:34:25 &#43;0900"
                     class="no-wrap">
-                    Tue, 24 Jun 2025 22:56:05 &#43;0900</relative-time>
+                    Wed, 09 Jul 2025 12:34:25 &#43;0900</relative-time>
                   
                 </div>
               </div>
@@ -160,7 +160,7 @@
                         </div>
                       </div>
                     </details-menu>
-                      3879 Words
+                      3979 Words
                     
 
                   </div>
@@ -234,7 +234,7 @@ library(tidyverse)</code></pre>
 <pre><code>## ── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
 ## ✔ dplyr     1.1.4     ✔ readr     2.1.5
 ## ✔ forcats   1.0.0     ✔ stringr   1.5.1
-## ✔ ggplot2   3.5.2     ✔ tibble    3.2.1
+## ✔ ggplot2   3.5.2     ✔ tibble    3.3.0
 ## ✔ lubridate 1.9.4     ✔ tidyr     1.3.1
 ## ✔ purrr     1.0.4     
 ## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
@@ -417,7 +417,20 @@ A_∞ = A_1 \alpha r
 <p><span class="math display">\[
 A = a r
 \]</span></p>
+<p>この式でグラフを描くと以下のようになります。まあ、指揮の通りですね。綺麗な線形だ。</p>
+<p>元の論文を読んでもらっても、この図は綺麗な線形で感動できます。</p>
+<pre class="r"><code>DF_upper_limit &lt;- data.frame(
+  reinforces_per_min = 0:12
+  ,responses_per_min = 50 * (0:12)
+)
+
+DF_upper_limit %&gt;% ggplot(
+  .
+  ,aes(x = reinforces_per_min, y = responses_per_min)
+) + geom_point()</code></pre>
+<p><img src="https://takuto-psych.github.io/post/2025-06-23/index_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
 <p>この給餌（強化）の頻度を上げるという操作によって、覚醒の度合いが線形に上がるというのは、MPRにおける一番初めの重要な原理だそうです。</p>
+<p>次は、</p>
 </div>
 <div id="引用文献" class="section level2 unnumbered">
 <h2>引用文献</h2>
