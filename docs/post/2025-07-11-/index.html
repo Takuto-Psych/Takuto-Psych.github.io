@@ -18,7 +18,7 @@
 
     
     <meta name="description"
-  content="aaa" />
+  content="クロロの手刀ですら「俺でなきゃ見逃しちゃうね」が発生するんだから、反応時間によって反応回数に制約があるのは当然と言えば当然だよね" />
 <meta name="keywords"
   content='MPR, 強化学習, スケジュール学習' />
 <meta name="robots" content="noodp" />
@@ -28,7 +28,7 @@
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:title" content="Mathmatical Principles of Reinforcement 強化の数学的原理(MPR)におけるConstraint 制約の意味を説明する - Takuto Psych Blog" />
 <meta name="twitter:description"
-  content="aaa" />
+  content="クロロの手刀ですら「俺でなきゃ見逃しちゃうね」が発生するんだから、反応時間によって反応回数に制約があるのは当然と言えば当然だよね" />
 <meta name="twitter:site" content="https://takuto-psych.github.io/" />
 <meta name="twitter:creator" content="TakutoPsych" />
 <meta name="twitter:image"
@@ -38,7 +38,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:title" content="Mathmatical Principles of Reinforcement 強化の数学的原理(MPR)におけるConstraint 制約の意味を説明する - Takuto Psych Blog">
 <meta property="og:description"
-  content="aaa" />
+  content="クロロの手刀ですら「俺でなきゃ見逃しちゃうね」が発生するんだから、反応時間によって反応回数に制約があるのは当然と言えば当然だよね" />
 <meta property="og:url" content="https://takuto-psych.github.io/post/2025-07-11-/" />
 <meta property="og:site_name" content="Mathmatical Principles of Reinforcement 強化の数学的原理(MPR)におけるConstraint 制約の意味を説明する" />
 <meta property="og:image"
@@ -128,9 +128,9 @@
 
                   
                   <span class="file-info-divider"></span>
-                  Modified <relative-time datetime="Sun, 13 Jul 2025 09:05:14 &#43;0900"
+                  Modified <relative-time datetime="Sun, 13 Jul 2025 10:16:26 &#43;0900"
                     class="no-wrap">
-                    Sun, 13 Jul 2025 09:05:14 &#43;0900</relative-time>
+                    Sun, 13 Jul 2025 10:16:26 &#43;0900</relative-time>
                   
                 </div>
               </div>
@@ -160,7 +160,7 @@
                         </div>
                       </div>
                     </details-menu>
-                      3792 Words
+                      5058 Words
                     
 
                   </div>
@@ -212,7 +212,8 @@
 
 
 <p>MPRの2つ目の原理、Constraint 制約について説明していきます。</p>
-<p>今回の記事では、IRTについての説明の後に、Constraintについて理解を深めていきます。</p>
+<p><a href="https://takuto-psych.github.io/post/2025-06-23/">前回の記事</a>では、強化の頻度によって覚醒の度合いが上がるということと、覚醒の度合いと反応の度合いには線形の関係性があるということを書きました。しかしながら、実際の生体の動きを見てみると、どんなに覚醒をしたとしても、反応の度合いには天井が生じてしまいます。そんな天井、つまりConstraint 制約がどのように生まれるかを説明していきます。</p>
+<p>まずはIRTについての説明の後に、Constraintについて理解を深めていきます。</p>
 <div id="irt-反応間間隔とresponse-rate反応率の関係性" class="section level2">
 <h2>IRT 反応間間隔とresponse rate反応率の関係性</h2>
 <div id="irt-反応間間隔" class="section level3">
@@ -262,7 +263,7 @@ b_{max} = \frac{1}{\delta}
 <p><span class="math display">\[
 b = \frac{1}{\delta + \tau}
 \]</span></p>
-<p>には、一つ重大な問題が生じます。それは、高頻度に行動が行われている状態を考えようとしても、bには必ず1/δという上限が必ず付き纏ってしまうということです。訓練を積んだラットの例だと、反応率の上限は必ず10回になってしまうということですね。</p>
+<p>には、一つ重大な問題が生じます。それは、高頻度に行動が行われている状態を考えようとしても、bには必ず1/δという上限が必ず付き纏ってしまうということです。訓練を積んだラットの例だと、反応率の上限は必ず10回になってしまうということですね。この上限がConstraintになります。</p>
 <p>問題とは言っていますが、学問として反応率を考えない場合には、僕もこの定義で良い気はします。「反応に要する時間」δが反応率の上限を決めてしまうというだけの話ですからね。</p>
 <p>一方、τを使って反応率bを以下の式で定義してみたと考えてみましょう。</p>
 <p><span class="math display">\[
@@ -296,13 +297,13 @@ b = \frac{1}{\tau}
 <li><p>レバーを押し込んでスイッチがオンになる（0.30秒点）</p></li>
 </ul>
 <p>というような挙動をラットが示したとしましょう。この時、τというのは0です。となると、b = 1/τで表現した反応率であれば、<strong>bは無限大にすることができるようになります。つまり、反応率の上限がなくなるんですね。</strong></p>
-<p><span class="citation">Killeen and Sitomer (<a href="#ref-Killeen2003">2003</a>)</span> 曰く、1/τで表現した反応率の方が、上限がなくなるからより良い測定方法である可能性があるとのことです。</p>
+<p><span class="citation">Peter R. Killeen and Sitomer (<a href="#ref-Killeen2003">2003</a>)</span> 曰く、1/τで表現した反応率の方が、上限がなくなるからより良い測定方法である可能性があるとのことです。</p>
 </div>
 </div>
 <div id="arousal-覚醒と反応率の関連性" class="section level2">
 <h2>arousal 覚醒と反応率の関連性</h2>
 <p>さて、<a href="mailto:arousal%E3%81%A8%E5%8F%8D%E5%BF%9C%E7%8E%87%E3%81%AE%E9%96%A2%E4%BF%82%E6%80%A7%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6@Killeen2002" class="email">arousalと反応率の関係性について@Killeen2002</a> は以下の関係性を発見しました。</p>
-<p>1/τ は、覚醒レベルAと相関するということでした。また、<a href="https://takuto-psych.github.io/post/2025-06-23/">前回の記事</a>の最後に書いたように覚醒レベルは、A = arという式で表現されます。これらから以下の式が得られます。aは特定の強化子に対する活性度になるspecific activation、rは、強化子の出現頻度です。</p>
+<p>1/τ は、覚醒レベルAと相関するということでした。また、<a href="https://takuto-psych.github.io/post/2025-06-23/">前回の記事</a>の最後に書いたように覚醒レベルは、A = arという式で表現されます。これらから以下の式が得られます。aは特定の強化子に対する活性度であるspecific activation、rは、強化子の出現頻度です。</p>
 <p><span class="math display">\[
 \frac{1}{\tau} = ar
 \]</span></p>
@@ -344,18 +345,18 @@ library(tidyverse)</code></pre>
   return(b)
 }
 ##deltaは生物がマックスの速度で動いているものと捉えるために、固定の0.1秒に設定
-DF &lt;- data.frame(
+DF_rate &lt;- data.frame(
   r = rep(1:10, 100)
   ,a = rep(c(1:10), each = 100)
   ,delta = 0.1
 )
 
-DF &lt;- DF %&gt;% mutate(
+DF_rate &lt;- DF_rate %&gt;% mutate(
   .
-  ,b = rate_get(delta = DF$delta, r = DF$r, a = DF$a)
+  ,b = rate_get(delta = DF_rate$delta, r = DF_rate$r, a = DF_rate$a)
 )
 
-DF %&gt;% ggplot(
+DF_rate %&gt;% ggplot(
   .
   ,aes(x = a, y = b, colour = r)
 ) + geom_point()</code></pre>
@@ -365,8 +366,88 @@ DF %&gt;% ggplot(
 <p><span class="math display">\[
 b = \frac{r}{\delta r + \frac{1}{a}}
 \]</span></p>
-<p>この式で示されるMPRの第二の重要な原理を再度説明します。それは、反応率bは、「反応に要する時間」δによって制御されるということです。</p>
+<p>この式で示されるMPRの第二の重要な原理を再度説明します。それは、反応率bは、「反応に要する時間」δという制約が課されるということです。</p>
+</div>
+<div id="おまけ-irtの分布を描いてみる" class="section level2">
+<h2>おまけ IRTの分布を描いてみる</h2>
+<p>ちなみに、<span class="citation">Peter R. Killeen et al. (<a href="#ref-Killeen2002">2002</a>)</span> では、FRスケジュール下での生物の反応についてのIRTの分布を出しています。今手元にラットくんがいないので、Rコードでその分布を描いてみたいと思います。</p>
+<p><span class="math display">\[
+IRT = \delta + \tau
+\]</span></p>
+<p>という式ですが、<span class="citation">Peter R. Killeen et al. (<a href="#ref-Killeen2002">2002</a>)</span> の実験では、δの値は0.07秒で固定されていますが、その後のτの時間というのは平均的には、0.22秒だったそうです。ただし、τは右の裾野が広いような分布になっていました。つまり、指数関数的な分布になっていたということです。</p>
+<p>これらを設定して作図しましょう。</p>
+<pre class="r"><code>n_resp &lt;- 1e4       # 反応数
+delta &lt;- 0.07      # 反応に要する時間 (s)
+lambda &lt;- 1/0.22     # delta後の発生率
+tau &lt;- rexp(n_resp, rate = lambda)
+
+irt &lt;- delta + tau
+
+# ビンごとに相対頻度を集計 
+bin_width &lt;- 0.10
+breaks &lt;- seq(0, ceiling(max(irt)/bin_width)*bin_width, by = bin_width)
+
+
+DF_IRT &lt;- data.frame(
+  IRT = irt
+) %&gt;% mutate(
+  .
+  ,bin = cut(IRT, breaks = breaks, right = FALSE)
+) %&gt;% count(# 各ビンの度数 
+  bin
+  ,.drop = FALSE
+) %&gt;% mutate(
+  rel_freq = n / sum(n) # 相対頻度
+  ,bin_center = (as.numeric(bin) - 0.5) * bin_width # ビン中央
+  )  
+
+##理論的な指数分布の値を追加しとく。
+DF_IRT &lt;- DF_IRT %&gt;% mutate(
+  .
+  ,theory = ifelse(
+    bin_center &lt; delta, 0
+    ,lambda * exp(-lambda * (bin_center - delta)) * bin_width
+  )
+)
+
+ggplot(
+  DF_IRT
+  ,aes(x = bin_center, y = rel_freq)
+) + geom_col(
+  fill = &quot;grey80&quot;
+  ,colour = &quot;black&quot;
+  ,width = bin_width
+) + geom_line(
+  aes(y = theory)
+  ,colour = &quot;red&quot;
+  ,size = 1
+) +
+  scale_x_continuous(
+    &quot;IRT (s)&quot;
+    ,breaks = seq(0, max(breaks), 0.1)
+  ) +
+  scale_y_continuous(&quot;Relative frequency&quot;) +
+  labs(title = &quot;Simulated IRT distribution &quot;,
+       subtitle = paste(&quot;delta =&quot;, delta, &quot;s ; tau = &quot;, round(mean(tau), 2), &quot;/s&quot;)) +
+  theme_bw(base_size = 14)</code></pre>
+<pre><code>## Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
+## ℹ Please use `linewidth` instead.
+## This warning is displayed once every 8 hours.
+## Call `lifecycle::last_lifecycle_warnings()` to see where this warning was
+## generated.</code></pre>
+<p><img src="https://takuto-psych.github.io/post/2025-07-11-/index_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<p>グラフの説明をしておきます。横軸はIRTの長さです。縦軸は、そのIRTの相対的な出現頻度です。</p>
+<p>ヒストグラムのbin達は、実際に観測される頻度です。</p>
+<p>一方、赤色の線は、τの指数関数的な出現確率に基づいた、理論的な線です。τは、δの時間内に出現するはずがないので、δを超える（このグラフなら0.1を超える）までは生じ得ないため、0.2秒以降に赤色の線が出現します。面白いのが元の論文では、このδのことをrefractory periodと記述しています。まるで神経が反応できないかのような表現ですね。</p>
+<p>さて、ヒストグラムのbin達を改めてみましょう。このグラフを見てみるとよくわかりますが、IRTの出現は、δの秒数の近くに集まります。これが、反応率bは、「反応に要する時間」δという制約が課されるということを行動の観察レベルで確認できるということですね。</p>
+<p>まだこの先は読めていませんが、FRは休止が起きやすいわけですが、VRやRRでは休止が起きにくいとされていますよね。環境側のランダムさによって、この指数関数の分布を調整するような操作が効いてきたら、休止が起きにくくなったりしそうですね。</p>
+</div>
+<div id="引用文献" class="section level2 unnumbered">
+<h2>引用文献</h2>
 <div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
+<div id="ref-Killeen2002" class="csl-entry">
+Killeen, Peter R., Scott S. Hall, Mark P. Reilly, and Lauren C. Kettle. 2002. <span>“<span>MOLECULAR ANALYSES OF THE PRINCIPAL COMPONENTS OF RESPONSE STRENGTH</span>.”</span> <em>Journal of the Experimental Analysis of Behavior</em> 78 (2). <a href="https://doi.org/10.1901/jeab.2002.78-127">https://doi.org/10.1901/jeab.2002.78-127</a>.
+</div>
 <div id="ref-Killeen2003" class="csl-entry">
 Killeen, Peter R, and Matthew T Sitomer. 2003. <span>“<span>MPR</span>.”</span> <em>Behavioural Processes</em> 62 (1): 49–64. https://doi.org/<a href="https://doi.org/10.1016/S0376-6357(03)00017-2">https://doi.org/10.1016/S0376-6357(03)00017-2</a>.
 </div>
