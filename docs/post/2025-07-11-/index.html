@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <script type="application/javascript" src='https://takuto-psych.github.io/js/theme-mode.js'></script>
+    <link rel="stylesheet" href='https://takuto-psych.github.io/css/frameworks.min.css' />
+    <link rel="stylesheet" href='https://takuto-psych.github.io/css/github.min.css' />
+    <link rel="stylesheet" href='https://takuto-psych.github.io/css/github-style.css' />
+    <link rel="stylesheet" href='https://takuto-psych.github.io/css/light.css' />
+    <link rel="stylesheet" href='https://takuto-psych.github.io/css/dark.css' />
+    <link rel="stylesheet" href='https://takuto-psych.github.io/css/syntax.css' />
+    <title>Mathmatical Principles of Reinforcement 強化の数学的原理(MPR)におけるConstraint 制約の意味を説明する - Takuto Psych Blog</title>
+    
+    <link rel="icon" type="image/x-icon" href='/images/avatar.png'>
+    
+    <meta name="theme-color" content="#1e2327">
+
+    
+    <meta name="description"
+  content="aaa" />
+<meta name="keywords"
+  content='MPR, 強化学習, スケジュール学習' />
+<meta name="robots" content="noodp" />
+<link rel="canonical" href="https://takuto-psych.github.io/post/2025-07-11-/" />
+
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Mathmatical Principles of Reinforcement 強化の数学的原理(MPR)におけるConstraint 制約の意味を説明する - Takuto Psych Blog" />
+<meta name="twitter:description"
+  content="aaa" />
+<meta name="twitter:site" content="https://takuto-psych.github.io/" />
+<meta name="twitter:creator" content="TakutoPsych" />
+<meta name="twitter:image"
+  content="https://takuto-psych.github.io/">
+
+
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Mathmatical Principles of Reinforcement 強化の数学的原理(MPR)におけるConstraint 制約の意味を説明する - Takuto Psych Blog">
+<meta property="og:description"
+  content="aaa" />
+<meta property="og:url" content="https://takuto-psych.github.io/post/2025-07-11-/" />
+<meta property="og:site_name" content="Mathmatical Principles of Reinforcement 強化の数学的原理(MPR)におけるConstraint 制約の意味を説明する" />
+<meta property="og:image"
+  content="https://takuto-psych.github.io/">
+<meta property="og:image:width" content="2048">
+<meta property="og:image:height" content="1024">
+
+<meta property="article:published_time" content="2025-07-11 00:00:00 &#43;0000 UTC" />
+
+
+
+
+
+
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-N1GWYLJZ1D"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-N1GWYLJZ1D');
+</script>
+
+    
+    <meta name="google-site-verification" content="ZTJLaWcJsPiyOc11H0OSIjk1bYevn3VcRp4FNnJVpuw" />
+</head>
+
+<body>
+  <div style="position: relative">
+  <header class="Header js-details-container Details px-3 px-md-4 px-lg-5 flex-wrap flex-md-nowrap open Details--on">
+    <div class="Header-item mobile-none" style="margin-top: -4px; margin-bottom: -4px;">
+      <a class="Header-link " href="https://takuto-psych.github.io/">
+        <span style="margin-left: 8px;">
+          Takuto Psych Blog
+        </span>
+      </a>
+    </div>
+    
+    <div class="Header-item Header-item--full flex-justify-center d-md-none position-relative">
+      <a class="Header-link " href="https://takuto-psych.github.io/">
+        
+        <span style="margin-left: 8px;">
+          Takuto Psych Blog
+        </span>
+      </a>
+    </div>
+    <div class="Header-item" style="margin-left: auto;">
+      <a href="javascript:void(0)" class="Header-link no-select" onclick="switchTheme()">
+        <svg style="fill: var(--color-profile-color-modes-toggle-moon);" class="no-select" viewBox="0 0 16 16"
+          version="1.1" width="16" height="16">
+          <path fill-rule="evenodd" clip-rule="evenodd"
+            d="M4.52208 7.71754C7.5782 7.71754 10.0557 5.24006 10.0557 2.18394C10.0557 1.93498 10.0392 1.68986 10.0074 1.44961C9.95801 1.07727 10.3495 0.771159 10.6474 0.99992C12.1153 2.12716 13.0615 3.89999 13.0615 5.89383C13.0615 9.29958 10.3006 12.0605 6.89485 12.0605C3.95334 12.0605 1.49286 10.001 0.876728 7.24527C0.794841 6.87902 1.23668 6.65289 1.55321 6.85451C2.41106 7.40095 3.4296 7.71754 4.52208 7.71754Z">
+          </path>
+        </svg>
+      </a>
+    </div>
+  </header>
+</div>
+  
+<div>
+  <main>
+    <div class="gisthead pagehead bg-gray-light pb-0 pt-3 mb-4">
+      <div class="px-0">
+        <div class="mb-3 d-flex px-3 px-md-3 px-lg-5">
+          <div class="flex-auto min-width-0 width-fit mr-3">
+            <div class="d-flex">
+              <div class="d-none d-md-block">
+                <a class="avatar mr-2 flex-shrink-0" href="https://takuto-psych.github.io/">
+                  <img class=" avatar-user"
+                    src="https://takuto-psych.github.io/images/avatar.png"
+                    width="32" height="32"></a>
+              </div>
+              <div class="d-flex flex-column">
+                <h1 class="break-word f3 text-normal mb-md-0 mb-1">
+                  <span class="author">
+                    <a href="https://takuto-psych.github.io/">Takuto-Psych</a></span><span
+                    class="path-divider">/</span><strong class="css-truncate-target mr-1" style="max-width: 410px"><a
+                      href="https://takuto-psych.github.io/post/2025-07-11-/">Mathmatical Principles of Reinforcement 強化の数学的原理(MPR)におけるConstraint 制約の意味を説明する</a></strong>
+                </h1>
+                <div class="note m-0">
+                  Created <relative-time datetime="Fri, 11 Jul 2025 00:00:00 &#43;0000"
+                    class="no-wrap">
+                    Fri, 11 Jul 2025 00:00:00 &#43;0000</relative-time>
+
+                  
+                  <span class="file-info-divider"></span>
+                  Modified <relative-time datetime="Sun, 13 Jul 2025 09:05:14 &#43;0900"
+                    class="no-wrap">
+                    Sun, 13 Jul 2025 09:05:14 &#43;0900</relative-time>
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-lg px-3 new-discussion-timeline">
+      <div class="repository-content gist-content">
+        <div>
+          <div class="js-gist-file-update-container js-task-list-container file-box">
+            <div id="file-pytest" class="file my-2">
+              <div id="post-header" class="file-header d-flex flex-md-items-center flex-items-start sticky-header" style="z-index: 2">
+                <div class="file-info d-flex flex-md-items-center flex-items-start flex-order-1 flex-auto">
+                  <div class="text-mono f6 flex-auto pr-3 flex-order-2 flex-md-order-1 mt-2 mt-md-0">
+                    
+                    <summary id="toc-toggle" onclick="clickToc()" class="btn btn-octicon m-0 mr-2 p-2">
+                      <svg aria-hidden="true" viewBox="0 0 16 16" height="16" width="16" class="octicon octicon-list-unordered">
+                        <path fill-rule="evenodd" d="M2 4a1 1 0 100-2 1 1 0 000 2zm3.75-1.5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zM3 8a1 1 0 11-2 0 1 1 0 012 0zm-1 6a1 1 0 100-2 1 1 0 000 2z"></path>
+                      </svg>
+                    </summary>
+                    <details-menu class="SelectMenu" id="toc-details" style="display: none;">
+                      <div class="SelectMenu-modal rounded-3 mt-1" style="max-height: 340px;">
+                        <div class="SelectMenu-list SelectMenu-list--borderless p-2" style="overscroll-behavior: contain;" id="toc-list">
+                        </div>
+                      </div>
+                    </details-menu>
+                      3792 Words
+                    
+
+                  </div>
+                  <div class="file-actions flex-order-2 pt-0">
+                    
+                    
+                    <a class="muted-link mr-3" href="/tags/r">
+                      <svg class="octicon octicon-tag" viewBox="0 0 16 16" version="1.1" width="16" height="16">
+                        <path fill-rule="evenodd"
+                          d="M2.5 7.775V2.75a.25.25 0 01.25-.25h5.025a.25.25 0 01.177.073l6.25 6.25a.25.25 0 010 .354l-5.025 5.025a.25.25 0 01-.354 0l-6.25-6.25a.25.25 0 01-.073-.177zm-1.5 0V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 010 2.474l-5.026 5.026a1.75 1.75 0 01-2.474 0l-6.25-6.25A1.75 1.75 0 011 7.775zM6 5a1 1 0 100 2 1 1 0 000-2z">
+                        </path>
+                      </svg>
+                      R
+                    </a>
+                    
+                    <a class="muted-link mr-3" href="/tags/%E5%BC%B7%E5%8C%96%E5%AD%A6%E7%BF%92">
+                      <svg class="octicon octicon-tag" viewBox="0 0 16 16" version="1.1" width="16" height="16">
+                        <path fill-rule="evenodd"
+                          d="M2.5 7.775V2.75a.25.25 0 01.25-.25h5.025a.25.25 0 01.177.073l6.25 6.25a.25.25 0 010 .354l-5.025 5.025a.25.25 0 01-.354 0l-6.25-6.25a.25.25 0 01-.073-.177zm-1.5 0V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 010 2.474l-5.026 5.026a1.75 1.75 0 01-2.474 0l-6.25-6.25A1.75 1.75 0 011 7.775zM6 5a1 1 0 100 2 1 1 0 000-2z">
+                        </path>
+                      </svg>
+                      強化学習
+                    </a>
+                    
+                    <a class="muted-link mr-3" href="/tags/%E5%8B%89%E5%BC%B7">
+                      <svg class="octicon octicon-tag" viewBox="0 0 16 16" version="1.1" width="16" height="16">
+                        <path fill-rule="evenodd"
+                          d="M2.5 7.775V2.75a.25.25 0 01.25-.25h5.025a.25.25 0 01.177.073l6.25 6.25a.25.25 0 010 .354l-5.025 5.025a.25.25 0 01-.354 0l-6.25-6.25a.25.25 0 01-.073-.177zm-1.5 0V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 010 2.474l-5.026 5.026a1.75 1.75 0 01-2.474 0l-6.25-6.25A1.75 1.75 0 011 7.775zM6 5a1 1 0 100 2 1 1 0 000-2z">
+                        </path>
+                      </svg>
+                      勉強
+                    </a>
+                    
+                    <a class="muted-link mr-3" href="/tags/mpr">
+                      <svg class="octicon octicon-tag" viewBox="0 0 16 16" version="1.1" width="16" height="16">
+                        <path fill-rule="evenodd"
+                          d="M2.5 7.775V2.75a.25.25 0 01.25-.25h5.025a.25.25 0 01.177.073l6.25 6.25a.25.25 0 010 .354l-5.025 5.025a.25.25 0 01-.354 0l-6.25-6.25a.25.25 0 01-.073-.177zm-1.5 0V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 010 2.474l-5.026 5.026a1.75 1.75 0 01-2.474 0l-6.25-6.25A1.75 1.75 0 011 7.775zM6 5a1 1 0 100 2 1 1 0 000-2z">
+                        </path>
+                      </svg>
+                      MPR
+                    </a>
+                    
+                    
+                  </div>
+                </div>
+              </div>
+              <div class="Box-body px-5 pb-5" style="z-index: 1">
+                <article class="markdown-body entry-content container-lg">
+
+
+<p>MPRの2つ目の原理、Constraint 制約について説明していきます。</p>
+<p>今回の記事では、IRTについての説明の後に、Constraintについて理解を深めていきます。</p>
+<div id="irt-反応間間隔とresponse-rate反応率の関係性" class="section level2">
+<h2>IRT 反応間間隔とresponse rate反応率の関係性</h2>
+<div id="irt-反応間間隔" class="section level3">
+<h3>IRT 反応間間隔</h3>
+<p>IRTとは、Inter-Response Timeです。言葉の通りですが、これは反応と反応との間の時間を意味します。</p>
+<p>反応と反応との間と書いていますが、このIRTはどのような時間の構成要素によって成立しているでしょうか。それは、「反応に要する時間」δと、「本当の反応間間隔」τです。</p>
+<p>一応式にすると、</p>
+<p><span class="math display">\[
+IRT = \delta + \tau
+\]</span></p>
+<p>となります。では、それぞれのギリシャ文字の説明をしていきます。</p>
+<p>δは、反応に要する時間と言っていますが、これは標的になっている行動の発生に必要な時間です。標的となる反応が「レバーを押す」という行動だとしましょう。スキナー箱の設定にもよるでしょうが、通常「レバーを押す」というのは「動物の反応によりレバーで制御する接点が接続して電気回路に通電が起こった」というように点で表現がされてしまいます。つまり、0秒で反応が生起したように見えてしまうということです。しかしながら、実際の動物の反応を見てみると「レバーを押す」という行動には必ず0秒より大きい時間が必要になります。特に工夫せずにスキナー箱で記録したら0秒で動いたように見えてしまうものの、0秒で動く、つまり瞬間移動ができる動物がいたら怖いですもんね。クロロはなんかすごい速さで手刀を打ち込めますが、それでも「俺でなきゃ見逃せないね」という名言が出る程度の速さなので瞬間移動ではありません。クロロが手刀を打ち込むのにすら「反応に要する時間」δが発生しているわけですね。</p>
+<p>後で重要になるので再度書いておきます。スキナー箱では、0秒で反応しているように見えたとしても、実際に「反応に要する時間」<strong>δはどんなに小さくとも必ず0より大きな値になります。</strong></p>
+<p>次のτは、シンプルな話で、次の反応までの時間から反応に要する時間δを差し引いた時間です。仮に反応と反応との時間間隔が1秒ならば、</p>
+<p><span class="math display">\[
+τ = 1 - δ
+\]</span></p>
+<p>と表記できます。</p>
+<p>ちなみに、このτは、先ほどδを差し引いた時間と書きましたが、言い換えるならば、標的になっている行動（上の例ではレバー押し）以外の行動に割くことができる時間とも言えます。</p>
+</div>
+<div id="response-rate-反応率を出してみる" class="section level3">
+<h3>Response Rate 反応率を出してみる</h3>
+<p>Response Rate 反応率を出すことを考えましょう。ここでは、bという変数が1秒あたりの反応回数、つまり反応率を指します。この時、反応率bは伝統的には以下の式で表現することができます。</p>
+<p><span class="math display">\[
+b = \frac{1}{\delta + \tau}
+\]</span></p>
+<p>シンプルな話ですね。反応間間隔であるIRTで1を割るだけですね。その値が反応率になるということです。</p>
+<p>ところで、1秒のIRTでのτの算出の式を以下の通り書きました。</p>
+<p><span class="math display">\[
+τ = 1 - δ
+\]</span></p>
+<p>少し違和感がありますが、反応率b、つまり1秒間にb回反応をするという状況の下で、どれだけ他の行動に時間を割けるかの総和がτであるとすると、それはそれは以下の式で表す事ができます。</p>
+<p><span class="math display">\[
+τ = 1 - bδ
+\]</span></p>
+<p>この時、bの値が1/δに近づくことを考えましょう。これは「反応に要する時間」δだけで1秒という時間が埋め尽くされる状態です。言い換えるならば、休み（τ）なく反応し続けている状態ですね。つまりτ=0になっている状態です。式にするとこうなります。</p>
+<p><span class="math display">\[
+0 = 1 - bδ
+\]</span></p>
+<p>その時、bの最大値b<sub>max</sub>は以下の式で表せます。</p>
+<p><span class="math display">\[
+b_{max} = \frac{1}{\delta}
+\]</span></p>
+<p>ここで、<strong>重要なのはb<sub>max</sub> には絶対に上限が生じます。</strong></p>
+<p>具体的に考えてみましょう。たとえば、よく訓練を積んでレバーの早押しができるラットがいるとします。また、このラットのレバー押しそれ自体の限界の速さが、0.1秒だったとします。つまり、δの限界の下限が0.1という状態です。この時、このラットが1秒間に反応できる回数の限界は、1/0.1で、10回になります。これは休みなく限界速度でレバーを押している状態です。このラットはこれ以上早くボタンを押す事ができませんから、<strong>b<sub>max</sub> は10を超える事ができなくなってしまいます。</strong></p>
+<p>以上から、最初の方に書いた伝統的な反応率の式</p>
+<p><span class="math display">\[
+b = \frac{1}{\delta + \tau}
+\]</span></p>
+<p>には、一つ重大な問題が生じます。それは、高頻度に行動が行われている状態を考えようとしても、bには必ず1/δという上限が必ず付き纏ってしまうということです。訓練を積んだラットの例だと、反応率の上限は必ず10回になってしまうということですね。</p>
+<p>問題とは言っていますが、学問として反応率を考えない場合には、僕もこの定義で良い気はします。「反応に要する時間」δが反応率の上限を決めてしまうというだけの話ですからね。</p>
+<p>一方、τを使って反応率bを以下の式で定義してみたと考えてみましょう。</p>
+<p><span class="math display">\[
+b = \frac{1}{\tau}
+\]</span></p>
+<p>この時、「反応に要する時間」δを分離して、真の反応間隔τをとる事ができたとします。</p>
+<p>先ほどの早押しラットを思い出しましょう。「レバーを押す」という行動を分解してみると</p>
+<ul>
+<li><p>レバーに手をかける</p></li>
+<li><p>レバーを押し込む</p></li>
+<li><p>レバーから手を離す</p></li>
+</ul>
+<p>という一連の動作になります。この時、それぞれについて時点を取ることができたとします。たとえば</p>
+<ul>
+<li><p>レバーに触れた時の電流の変化を感知する（0.05秒点）</p></li>
+<li><p>レバーを押し込んでスイッチがオンになる（0.10秒点）</p></li>
+<li><p>レバーから手を離して生じた電流の変化を感知する（0.15秒点）</p></li>
+<li><p>レバーに触れた時の電流の変化を感知する（0.35秒点）</p></li>
+<li><p>レバーを押し込んでスイッチがオンになる（0.40秒点）</p></li>
+<li><p>レバーから手を離して生じた電流の変化を感知する（0.45秒点）</p></li>
+</ul>
+<p>とします。この計測方法ではレバーに触れた0.05秒点から手を離して生じた電流の変化である0.15秒の間の時間である0.1秒というのが「反応に要する時間」δであり、「手を離している時間」、つまりは手を離して（0.15秒点）からレバーに触れた(0.35秒点)の時間、0.2秒がτに対応します。</p>
+<p>動物の行動は、先ほども書きましたがどんなに短くとも必ず時間が必要であり、δは0になりません。しかし、τについて考えてみましょう。これは、究極的には0にすることができます。なぜなら休まなければ良いからです。</p>
+<p>先ほどの例であれば、</p>
+<ul>
+<li><p>レバーに触れた時の電流の変化を感知する（0.05秒点）</p></li>
+<li><p>レバーを押し込んでスイッチがオンになる（0.10秒点）</p></li>
+<li><p>レバーから手を離さないため電流の変化を感知できない（0.??秒点）</p></li>
+<li><p>レバーを押し込んでスイッチがオンになる（0.20秒点）</p></li>
+<li><p>レバーから手を離さないため電流の変化を感知できない（0.??秒点）</p></li>
+<li><p>レバーを押し込んでスイッチがオンになる（0.30秒点）</p></li>
+</ul>
+<p>というような挙動をラットが示したとしましょう。この時、τというのは0です。となると、b = 1/τで表現した反応率であれば、<strong>bは無限大にすることができるようになります。つまり、反応率の上限がなくなるんですね。</strong></p>
+<p><span class="citation">Killeen and Sitomer (<a href="#ref-Killeen2003">2003</a>)</span> 曰く、1/τで表現した反応率の方が、上限がなくなるからより良い測定方法である可能性があるとのことです。</p>
+</div>
+</div>
+<div id="arousal-覚醒と反応率の関連性" class="section level2">
+<h2>arousal 覚醒と反応率の関連性</h2>
+<p>さて、<a href="mailto:arousal%E3%81%A8%E5%8F%8D%E5%BF%9C%E7%8E%87%E3%81%AE%E9%96%A2%E4%BF%82%E6%80%A7%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6@Killeen2002" class="email">arousalと反応率の関係性について@Killeen2002</a> は以下の関係性を発見しました。</p>
+<p>1/τ は、覚醒レベルAと相関するということでした。また、<a href="https://takuto-psych.github.io/post/2025-06-23/">前回の記事</a>の最後に書いたように覚醒レベルは、A = arという式で表現されます。これらから以下の式が得られます。aは特定の強化子に対する活性度になるspecific activation、rは、強化子の出現頻度です。</p>
+<p><span class="math display">\[
+\frac{1}{\tau} = ar
+\]</span></p>
+<p>さらに式を変形すると、</p>
+<p><span class="math display">\[
+\tau = \frac{1}{ar}
+\]</span></p>
+<p>となります。</p>
+<p>さて、伝統的に反応率として利用されていた</p>
+<p><span class="math display">\[
+b = \frac{1}{\delta + \tau}
+\]</span></p>
+<p>という式に、代入して変形すると、以下の式になります。</p>
+<p><span class="math display">\[
+b = \frac{r}{\delta r + \frac{1}{a}}
+\]</span></p>
+<p>この式の分母の左側を見てみましょう。反応には必ず時間を要するため、δrというのは必ず0以上になります。一方右側の、1/aについて見てみましょう。aの値が大きくなると、0に近づいていきます。つまり、この分母の最小値は、必ずδの大きさに依存してしまいます。</p>
+<p>また、分子のrは、強化の頻度です。</p>
+<p>以上より、上で問題点として挙げた通りですが、最大の反応率b<sub>max</sub>は以下の式にのように天井が生じてしまいます。</p>
+<p><span class="math display">\[
+b_{max} = \frac{1}{\tau}
+\]</span></p>
+<p>この関係性をグラフにしておきます。</p>
+<pre class="r"><code>##なんのパッケージ使ってるかを示すために、見えるようにしておきます。
+rm(list = ls())
+library(tidyverse)</code></pre>
+<pre><code>## ── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+## ✔ dplyr     1.1.4     ✔ readr     2.1.5
+## ✔ forcats   1.0.0     ✔ stringr   1.5.1
+## ✔ ggplot2   3.5.2     ✔ tibble    3.3.0
+## ✔ lubridate 1.9.4     ✔ tidyr     1.3.1
+## ✔ purrr     1.0.4     
+## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+## ✖ dplyr::filter() masks stats::filter()
+## ✖ dplyr::lag()    masks stats::lag()
+## ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
+<pre class="r"><code>rate_get &lt;- function(delta, r, a){
+  b &lt;- r / (delta * r + (1/a))
+  return(b)
+}
+##deltaは生物がマックスの速度で動いているものと捉えるために、固定の0.1秒に設定
+DF &lt;- data.frame(
+  r = rep(1:10, 100)
+  ,a = rep(c(1:10), each = 100)
+  ,delta = 0.1
+)
+
+DF &lt;- DF %&gt;% mutate(
+  .
+  ,b = rate_get(delta = DF$delta, r = DF$r, a = DF$a)
+)
+
+DF %&gt;% ggplot(
+  .
+  ,aes(x = a, y = b, colour = r)
+) + geom_point()</code></pre>
+<p><img src="https://takuto-psych.github.io/post/2025-07-11-/index_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<p>このグラフのように、1/0.1 = 10の天井を超えないような反応率が出てきます。</p>
+<p>以上より</p>
+<p><span class="math display">\[
+b = \frac{r}{\delta r + \frac{1}{a}}
+\]</span></p>
+<p>この式で示されるMPRの第二の重要な原理を再度説明します。それは、反応率bは、「反応に要する時間」δによって制御されるということです。</p>
+<div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
+<div id="ref-Killeen2003" class="csl-entry">
+Killeen, Peter R, and Matthew T Sitomer. 2003. <span>“<span>MPR</span>.”</span> <em>Behavioural Processes</em> 62 (1): 49–64. https://doi.org/<a href="https://doi.org/10.1016/S0376-6357(03)00017-2">https://doi.org/10.1016/S0376-6357(03)00017-2</a>.
+</div>
+</div>
+</div>
+</article>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script type="application/javascript" src='https://takuto-psych.github.io/js/toc.js'></script>
+<link rel="stylesheet" href='https://takuto-psych.github.io/css/toc.css' />
+
+
+<div class="utterances">
+  <script>
+    if(currentTheme() == 'light'){
+      var utterancesTheme = 'github-light';
+    } else{
+      var utterancesTheme = 'github-dark';
+    }
+    var utterancesScript = document.createElement('script');
+    utterancesScript.src = 'https://utteranc.es/client.js';
+    utterancesScript.setAttribute('repo', 'Takuto-Psych\/Takuto-Psych.github.io');
+    utterancesScript.setAttribute('issue-term', 'title');
+    utterancesScript.setAttribute('theme', utterancesTheme);
+    utterancesScript.setAttribute('crossorigin', 'anonymous');
+    utterancesScript.setAttribute('async', '');
+    document.querySelector('.utterances').appendChild(utterancesScript);
+  </script>
+</div>
+
+
+  <div class="footer container-xl width-full p-responsive">
+  <div
+    class="position-relative d-flex flex-row-reverse flex-lg-row flex-wrap flex-lg-nowrap flex-justify-center flex-lg-justify-between flex-sm-items-center pt-6 pb-2 mt-6 f6 text-gray border-top border-gray-light ">
+    <a aria-label="Homepage" title="GitHub" class="footer-octicon d-none d-lg-block mr-lg-4" href="https://takuto-psych.github.io/">
+      <svg height="24" class="octicon octicon-mark-github" viewBox="0 0 16 16" version="1.1" width="24">
+        <path fill-rule="evenodd"
+          d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z">
+        </path>
+      </svg>
+    </a>
+    <ul class="list-style-none d-flex flex-wrap col-12 flex-justify-center flex-lg-justify-between mb-2 mb-lg-0">
+      
+      <li class="mr-3 mr-lg-0">Theme by <a href='https://github.com/MeiK2333/github-style'>github-style</a></li>
+      
+    </ul>
+  </div>
+  <div class="d-flex flex-justify-center pb-6">
+    <span class="f6 text-gray-light"></span>
+  </div>
+
+
+</div>
+</body>
+
+<script type="application/javascript" src="https://takuto-psych.github.io/js/github-style.js"></script>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"
+  integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"
+  integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"
+  integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
+  onload="renderMathInElement(document.body);"></script>
+
+
+
+</html>
