@@ -128,9 +128,9 @@
 
                   
                   <span class="file-info-divider"></span>
-                  Modified <relative-time datetime="Sun, 13 Jul 2025 13:44:27 &#43;0900"
+                  Modified <relative-time datetime="Fri, 25 Jul 2025 23:41:16 &#43;0900"
                     class="no-wrap">
-                    Sun, 13 Jul 2025 13:44:27 &#43;0900</relative-time>
+                    Fri, 25 Jul 2025 23:41:16 &#43;0900</relative-time>
                   
                 </div>
               </div>
@@ -160,7 +160,7 @@
                         </div>
                       </div>
                     </details-menu>
-                      813 Words
+                      853 Words
                     
 
                   </div>
@@ -211,12 +211,12 @@
                 <article class="markdown-body entry-content container-lg">
 
 
-<p>最近なぜか部分強化スケジュールの勉強をしています。具体的には、スケジュールでのそれぞれのスケジュール固有の動物の挙動を表現する強化学習モデルの式を探しています。今回は、そんな式を理解するために記事にします。誰かのためというよりも、自分が理解をするために書いていきます。</p>
+<p>最近なぜか部分強化スケジュールの勉強をしています。具体的には、スケジュールでのそれぞれのスケジュール固有の動物の挙動を表現する強化学習モデルの式を探しています。その結果、MPRという考え方を知りました。日本語の記事や文献が見当たらないため、日本語の文章にしてまとめます。とりあえず、誰かのためというよりも、自分が理解をするために書いていきます。</p>
 <p>一個の記事で終わるかなと思っていたけど、覚醒だけでかなりの文字数になったので３つの大きな要素をそれぞれ分けて記事にしました。</p>
 <div id="mpr-mathmatical-principles-of-reinforcement" class="section level2">
 <h2>MPR: Mathmatical Principles of Reinforcement</h2>
 <p>日本語にするなら、強化の数学的原理（以下MPR）でしょうか。行動が増える強化という現象ですが、その現象を数式で表現したものになります。</p>
-<p>元の論文はこの二つです<span class="citation">(<a href="#ref-Killeen1994">Killeen 1994</a>; <a href="#ref-Killeen2003">Killeen and Sitomer 2003</a>)</span>。オープンアクセスでもないです。また、内容もなかなかにややこしいのでまだ全文通して読んでの理解が僕もできていないです。なので、今回は<a href="https://en.wikipedia.org/wiki/Mathematical_principles_of_reinforcement">Wikipedia</a>の英語版ページの和訳をしてきます。</p>
+<p>元の論文はこの二つです<span class="citation">(<a href="#ref-Killeen1994">Killeen 1994</a>; <a href="#ref-Killeen2003">Killeen and Sitomer 2003</a>)</span>。オープンアクセスでもないです。また、内容もなかなかにややこしいのでまだ全文通して読んでの理解が僕もできていないです。なので、基本的には<a href="https://en.wikipedia.org/wiki/Mathematical_principles_of_reinforcement">Wikipedia</a>の英語版ページの和訳をしてきます。</p>
 <p>さて、このMPRというのは、重要な要素が３つに分かれているそうです。<strong>arousal:覚醒</strong>、<strong>association:結合、constraint:抑制</strong>、です。それぞれの内容について３個の記事に分けて書きました。ここでは、簡単にそれぞれの内容に触れておきます。</p>
 </div>
 <div id="arousal覚醒" class="section level2">
