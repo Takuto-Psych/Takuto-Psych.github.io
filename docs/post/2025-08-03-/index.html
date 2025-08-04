@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <script type="application/javascript" src='https://takuto-psych.github.io/js/theme-mode.js'></script>
+    <link rel="stylesheet" href='https://takuto-psych.github.io/css/frameworks.min.css' />
+    <link rel="stylesheet" href='https://takuto-psych.github.io/css/github.min.css' />
+    <link rel="stylesheet" href='https://takuto-psych.github.io/css/github-style.css' />
+    <link rel="stylesheet" href='https://takuto-psych.github.io/css/light.css' />
+    <link rel="stylesheet" href='https://takuto-psych.github.io/css/dark.css' />
+    <link rel="stylesheet" href='https://takuto-psych.github.io/css/syntax.css' />
+    <title>Mathmatical Principles of Reinforcement 強化の数学的原理(MPR)におけるCoupling 結合の意味を説明する - Takuto Psych Blog</title>
+    
+    <link rel="icon" type="image/x-icon" href='/images/avatar.png'>
+    
+    <meta name="theme-color" content="#1e2327">
+
+    
+    <meta name="description"
+  content="各比率スケジュール固有の結合係数があるせいで、スケジュール固有の反応率になるんだね" />
+<meta name="keywords"
+  content='MPR, 強化学習, スケジュール学習' />
+<meta name="robots" content="noodp" />
+<link rel="canonical" href="https://takuto-psych.github.io/post/2025-08-03-/" />
+
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Mathmatical Principles of Reinforcement 強化の数学的原理(MPR)におけるCoupling 結合の意味を説明する - Takuto Psych Blog" />
+<meta name="twitter:description"
+  content="各比率スケジュール固有の結合係数があるせいで、スケジュール固有の反応率になるんだね" />
+<meta name="twitter:site" content="https://takuto-psych.github.io/" />
+<meta name="twitter:creator" content="Takuto-Psych" />
+<meta name="twitter:image"
+  content="https://takuto-psych.github.io/">
+
+
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Mathmatical Principles of Reinforcement 強化の数学的原理(MPR)におけるCoupling 結合の意味を説明する - Takuto Psych Blog">
+<meta property="og:description"
+  content="各比率スケジュール固有の結合係数があるせいで、スケジュール固有の反応率になるんだね" />
+<meta property="og:url" content="https://takuto-psych.github.io/post/2025-08-03-/" />
+<meta property="og:site_name" content="Mathmatical Principles of Reinforcement 強化の数学的原理(MPR)におけるCoupling 結合の意味を説明する" />
+<meta property="og:image"
+  content="https://takuto-psych.github.io/">
+<meta property="og:image:width" content="2048">
+<meta property="og:image:height" content="1024">
+
+<meta property="article:published_time" content="2025-08-03 00:00:00 &#43;0000 UTC" />
+
+
+
+
+
+
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-N1GWYLJZ1D"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-N1GWYLJZ1D');
+</script>
+
+    
+    <meta name="google-site-verification" content="ZTJLaWcJsPiyOc11H0OSIjk1bYevn3VcRp4FNnJVpuw" />
+</head>
+
+<body>
+  <div style="position: relative">
+  <header class="Header js-details-container Details px-3 px-md-4 px-lg-5 flex-wrap flex-md-nowrap open Details--on">
+    <div class="Header-item mobile-none" style="margin-top: -4px; margin-bottom: -4px;">
+      <a class="Header-link " href="https://takuto-psych.github.io/">
+        <span style="margin-left: 8px;">
+          Takuto Psych Blog
+        </span>
+      </a>
+    </div>
+    
+    <div class="Header-item Header-item--full flex-justify-center d-md-none position-relative">
+      <a class="Header-link " href="https://takuto-psych.github.io/">
+        
+        <span style="margin-left: 8px;">
+          Takuto Psych Blog
+        </span>
+      </a>
+    </div>
+    <div class="Header-item" style="margin-left: auto;">
+      <a href="javascript:void(0)" class="Header-link no-select" onclick="switchTheme()">
+        <svg style="fill: var(--color-profile-color-modes-toggle-moon);" class="no-select" viewBox="0 0 16 16"
+          version="1.1" width="16" height="16">
+          <path fill-rule="evenodd" clip-rule="evenodd"
+            d="M4.52208 7.71754C7.5782 7.71754 10.0557 5.24006 10.0557 2.18394C10.0557 1.93498 10.0392 1.68986 10.0074 1.44961C9.95801 1.07727 10.3495 0.771159 10.6474 0.99992C12.1153 2.12716 13.0615 3.89999 13.0615 5.89383C13.0615 9.29958 10.3006 12.0605 6.89485 12.0605C3.95334 12.0605 1.49286 10.001 0.876728 7.24527C0.794841 6.87902 1.23668 6.65289 1.55321 6.85451C2.41106 7.40095 3.4296 7.71754 4.52208 7.71754Z">
+          </path>
+        </svg>
+      </a>
+    </div>
+  </header>
+</div>
+  
+<div>
+  <main>
+    <div class="gisthead pagehead bg-gray-light pb-0 pt-3 mb-4">
+      <div class="px-0">
+        <div class="mb-3 d-flex px-3 px-md-3 px-lg-5">
+          <div class="flex-auto min-width-0 width-fit mr-3">
+            <div class="d-flex">
+              <div class="d-none d-md-block">
+                <a class="avatar mr-2 flex-shrink-0" href="https://takuto-psych.github.io/">
+                  <img class=" avatar-user"
+                    src="https://takuto-psych.github.io/images/avatar.png"
+                    width="32" height="32"></a>
+              </div>
+              <div class="d-flex flex-column">
+                <h1 class="break-word f3 text-normal mb-md-0 mb-1">
+                  <span class="author">
+                    <a href="https://takuto-psych.github.io/">Takuto-Psych</a></span><span
+                    class="path-divider">/</span><strong class="css-truncate-target mr-1" style="max-width: 410px"><a
+                      href="https://takuto-psych.github.io/post/2025-08-03-/">Mathmatical Principles of Reinforcement 強化の数学的原理(MPR)におけるCoupling 結合の意味を説明する</a></strong>
+                </h1>
+                <div class="note m-0">
+                  Created <relative-time datetime="Sun, 03 Aug 2025 00:00:00 &#43;0000"
+                    class="no-wrap">
+                    Sun, 03 Aug 2025 00:00:00 &#43;0000</relative-time>
+
+                  
+                  <span class="file-info-divider"></span>
+                  Modified <relative-time datetime="Tue, 05 Aug 2025 01:00:54 &#43;0900"
+                    class="no-wrap">
+                    Tue, 05 Aug 2025 01:00:54 &#43;0900</relative-time>
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-lg px-3 new-discussion-timeline">
+      <div class="repository-content gist-content">
+        <div>
+          <div class="js-gist-file-update-container js-task-list-container file-box">
+            <div id="file-pytest" class="file my-2">
+              <div id="post-header" class="file-header d-flex flex-md-items-center flex-items-start sticky-header" style="z-index: 2">
+                <div class="file-info d-flex flex-md-items-center flex-items-start flex-order-1 flex-auto">
+                  <div class="text-mono f6 flex-auto pr-3 flex-order-2 flex-md-order-1 mt-2 mt-md-0">
+                    
+                    <summary id="toc-toggle" onclick="clickToc()" class="btn btn-octicon m-0 mr-2 p-2">
+                      <svg aria-hidden="true" viewBox="0 0 16 16" height="16" width="16" class="octicon octicon-list-unordered">
+                        <path fill-rule="evenodd" d="M2 4a1 1 0 100-2 1 1 0 000 2zm3.75-1.5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zM3 8a1 1 0 11-2 0 1 1 0 012 0zm-1 6a1 1 0 100-2 1 1 0 000 2z"></path>
+                      </svg>
+                    </summary>
+                    <details-menu class="SelectMenu" id="toc-details" style="display: none;">
+                      <div class="SelectMenu-modal rounded-3 mt-1" style="max-height: 340px;">
+                        <div class="SelectMenu-list SelectMenu-list--borderless p-2" style="overscroll-behavior: contain;" id="toc-list">
+                        </div>
+                      </div>
+                    </details-menu>
+                      7716 Words
+                    
+
+                  </div>
+                  <div class="file-actions flex-order-2 pt-0">
+                    
+                    
+                    <a class="muted-link mr-3" href="/tags/%E5%BC%B7%E5%8C%96%E5%AD%A6%E7%BF%92">
+                      <svg class="octicon octicon-tag" viewBox="0 0 16 16" version="1.1" width="16" height="16">
+                        <path fill-rule="evenodd"
+                          d="M2.5 7.775V2.75a.25.25 0 01.25-.25h5.025a.25.25 0 01.177.073l6.25 6.25a.25.25 0 010 .354l-5.025 5.025a.25.25 0 01-.354 0l-6.25-6.25a.25.25 0 01-.073-.177zm-1.5 0V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 010 2.474l-5.026 5.026a1.75 1.75 0 01-2.474 0l-6.25-6.25A1.75 1.75 0 011 7.775zM6 5a1 1 0 100 2 1 1 0 000-2z">
+                        </path>
+                      </svg>
+                      強化学習
+                    </a>
+                    
+                    <a class="muted-link mr-3" href="/tags/%E5%8B%89%E5%BC%B7">
+                      <svg class="octicon octicon-tag" viewBox="0 0 16 16" version="1.1" width="16" height="16">
+                        <path fill-rule="evenodd"
+                          d="M2.5 7.775V2.75a.25.25 0 01.25-.25h5.025a.25.25 0 01.177.073l6.25 6.25a.25.25 0 010 .354l-5.025 5.025a.25.25 0 01-.354 0l-6.25-6.25a.25.25 0 01-.073-.177zm-1.5 0V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 010 2.474l-5.026 5.026a1.75 1.75 0 01-2.474 0l-6.25-6.25A1.75 1.75 0 011 7.775zM6 5a1 1 0 100 2 1 1 0 000-2z">
+                        </path>
+                      </svg>
+                      勉強
+                    </a>
+                    
+                    <a class="muted-link mr-3" href="/tags/mpr">
+                      <svg class="octicon octicon-tag" viewBox="0 0 16 16" version="1.1" width="16" height="16">
+                        <path fill-rule="evenodd"
+                          d="M2.5 7.775V2.75a.25.25 0 01.25-.25h5.025a.25.25 0 01.177.073l6.25 6.25a.25.25 0 010 .354l-5.025 5.025a.25.25 0 01-.354 0l-6.25-6.25a.25.25 0 01-.073-.177zm-1.5 0V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 010 2.474l-5.026 5.026a1.75 1.75 0 01-2.474 0l-6.25-6.25A1.75 1.75 0 011 7.775zM6 5a1 1 0 100 2 1 1 0 000-2z">
+                        </path>
+                      </svg>
+                      MPR
+                    </a>
+                    
+                    <a class="muted-link mr-3" href="/tags/r">
+                      <svg class="octicon octicon-tag" viewBox="0 0 16 16" version="1.1" width="16" height="16">
+                        <path fill-rule="evenodd"
+                          d="M2.5 7.775V2.75a.25.25 0 01.25-.25h5.025a.25.25 0 01.177.073l6.25 6.25a.25.25 0 010 .354l-5.025 5.025a.25.25 0 01-.354 0l-6.25-6.25a.25.25 0 01-.073-.177zm-1.5 0V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 010 2.474l-5.026 5.026a1.75 1.75 0 01-2.474 0l-6.25-6.25A1.75 1.75 0 011 7.775zM6 5a1 1 0 100 2 1 1 0 000-2z">
+                        </path>
+                      </svg>
+                      R
+                    </a>
+                    
+                    
+                  </div>
+                </div>
+              </div>
+              <div class="Box-body px-5 pb-5" style="z-index: 1">
+                <article class="markdown-body entry-content container-lg">
+
+
+<p>MPRの最後の原理、Coupling 結合について説明していきます。</p>
+<p><a href="https://takuto-psych.github.io/post/2025-07-11-/">前回の記事</a>では、IRTを元にした反応率というものについて考えました。IRTを構成する要素には、「反応に要する時間」δと、指数関数的な性質の「真の反応間間隔」τで構成されているという内容でした。そして、このIRTを元にした反応率の算出方法では、δが必ず0より大きい値になるという性質による、反応率の上限が生じるという特徴がありました。</p>
+<p><strong>Coupling 結合</strong>というのは簡単にいうとこの反応率を調整する概念です。この理解を、元論文<span class="citation">(<a href="#ref-Killeen2003">Killeen and Sitomer 2003</a>)</span>を元に深めていきます。</p>
+<div id="強化子と反応との関係性" class="section level2">
+<h2>強化子と反応との関係性</h2>
+<p>我々が強化子を提示されて反応が増える時のことを考えてみます。</p>
+<p>まずは連続強化CRFについて考えてみます。もしあなたが、目の前のレバーを1回押すと1秒後に空から1円玉が1メートル先に落ちてきたとしましょう。何度やっても、レバーを押すと1秒後に1円玉が降ってきます。このような環境では、「レバーを1回押す」という反応と、1秒後の1円玉という強化子との関係性（随伴性）を<strong>coupling 結合</strong>させるわけです。</p>
+<p>次に、同じCRFでも少し特殊な環境を考えます。先ほどはレバー押しの1秒後に1メートル先に1円玉が降ってきましたが、今回は、レバー押しの10秒後に1メートル先に1円玉が落ちてきたとします。この時、「レバーを1回押す」という反応と10秒後の1円玉という強化子との関係性（随伴性）の結合は先ほどより弱くなることが予測できます。</p>
+<p>これが、MPRの3つ目の<strong>Coupling 結合</strong>の原則です。その原則とは「反応と強化子の間の<strong>coupling 結合</strong>は、両者の間に距離があるほど減少する」というものです。この距離というのは、時間的なものでも、空間的なものでも、間に介在する事象の数でも良いです。たとえば、先のCRFの例ならば10秒後というものだけでなく、1円玉が1メートル先に落ちるのではなく、10メートル先に落ちてくるという環境でも、結合が弱まるということです。そして、この結合は、反応と強化子の間の距離に対して指数関数的に減衰していくものであるという仮定を置くことにします。</p>
+<p>また、すべての強化子はその出現前のあらゆる行動を強化し得ます。たとえば、FTスケジュールでよく見られるような迷信的な行動の獲得についても、この結合の考え方で説明ができ得ます。本来一定時間で勝手に強化子が出る環境だとしても、その強化子が出現する前に（時間的に）距離が近かった行動と強化子との間の<strong>結合</strong>も生じうるということです。ただし、FRやFIといった明確に標的行動を設定しているものよりも、その何らかの迷信的な行動は強化子と距離が空いているので、結合強度が弱くなるわけですね。</p>
+<p>ここで重要なのはKilleenは、強化子というのは、記憶の中にあるすべての反応の確率を増加させることによって、その機能を有すると考えていることです。この記憶の中の反応の確率の増やし具合を<strong>結合</strong>という概念が調整しているのではないかという主張をしているわけです。そしてその結合は、強化子と行動との間の距離が決めているという考えているわけですね。</p>
+<div id="frスケジュールの各レバー押しについて考える" class="section level3">
+<h3>FRスケジュールの各レバー押しについて考える</h3>
+<p>さて、この<strong>Coupling 結合</strong>を、FRスケジュールに当てはめて考えてみましょう。ここではFR5を考えます。</p>
+<p>強化子が提示される直前（スキナー箱の設定によってはほぼ同時）に押した5回目のレバー押しというのは、強化との距離を1とします。次に、4回目のレバー押しを強化との距離を2に、同様に計算して、1回目のレバー押しを距離5とします。</p>
+<p>この時、強化子は直前に行われていた行動の集まりに対して最大1の連想強度を持ちます。FR5というスケジュールであれば、5回レバーを押すという行動の集まりに対して最大1の連想強度を利用できると捉えるということですね。</p>
+<p>さて、5回目のレバー押しについて考えてみるとそれは強化子の1個前の事態です。レバー押しは1の連想強度のうち割合β（0 &lt; β &lt; 1）だけ受け取ることができると考えます。ここで、1個過去の事態という意味でpast<sub>1</sub> と表現すると、</p>
+<p><span class="math display">\[
+{past}_1 = \beta
+\]</span></p>
+<p>4回目のレバー押しについては、最大の連想強度1から5回目のレバー押しで使われた強度βを引いた（1-β）だけが利用可能になります。その(1-β)にβをかけた</p>
+<p><span class="math display">\[
+past_2 = β(1-β)
+\]</span></p>
+<p>が4回目のレバー押しの強度として受け取られます。3回目のレバー押しについても同様に考えると、β(1-β)の残りの分が利用可能になりますが、その差分というのは5回目のレバー押しで利用した残りから引くため以下の式になります。</p>
+<p><span class="math display">\[
+(1-\beta) - \beta(1-\beta) = (1-\beta)^2
+\]</span></p>
+<p>これについて、またβを掛け合わせたものが、3回目のレバー押しの強度になるわけで、以下の通りです。</p>
+<p><span class="math display">\[
+past_3 = \beta(1-\beta)^2
+\]</span></p>
+<p>以上より、これをFRnについてn回目のレバー押しからどれだけ離れているかを意味するpast<sub>n</sub> の強度について一般化すると以下のようにになります。</p>
+<p><span class="math display">\[
+past_n = \beta(1-\beta)^ {n - 1}
+\]</span></p>
+<p>FR<sub>n</sub>スケジュールでは、レバーを押すという同じ種類の行動がn個集まっていると捉えることができます。このn回ボタンを押すという行動の集まりの結合係数C<sub>FRn</sub> というのは以下の式のようにその和で表現できます。</p>
+<p><span class="math display">\[
+C_{FR_n} = \sum \beta(1 - \beta)^n　\\= 1 - (1- \beta)^n
+\]</span></p>
+<p>途中式は以下の通り。等比数列の和の公式なんて、10年ぶりに見た。</p>
+<div class="float">
+<embed src="FR_coupling.pdf" />
+<div class="figcaption">汚い手書きでスンマヘン</div>
+</div>
+<p>さて、C<sub>FRn</sub>というのは実は、nが十分に大きくなると1に近づきます。上の式について代入して計算してみると、以下の通り。</p>
+<pre class="r"><code>##使っている関数を明示
+library(tidyverse)</code></pre>
+<pre><code>## ── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+## ✔ dplyr     1.1.4     ✔ readr     2.1.5
+## ✔ forcats   1.0.0     ✔ stringr   1.5.1
+## ✔ ggplot2   3.5.2     ✔ tibble    3.3.0
+## ✔ lubridate 1.9.4     ✔ tidyr     1.3.1
+## ✔ purrr     1.0.4     
+## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+## ✖ dplyr::filter() masks stats::filter()
+## ✖ dplyr::lag()    masks stats::lag()
+## ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
+<pre class="r"><code>c_FR_fun &lt;- function(
+    beta = .56
+    ,n
+){
+  c &lt;- 1 - (1 - beta) ^ n
+  return(c)
+}
+
+DF_FR_C &lt;- data.frame(
+  c = c_FR_fun(n = 1:25)
+  ,n = 1:25
+)
+
+DF_FR_C %&gt;% ggplot(
+  aes(x = n, y = c)
+) + geom_line()</code></pre>
+<p><img src="https://takuto-psych.github.io/post/2025-08-03-/index_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<p>ここまでは、結合の係数がどのように算出されるかをFRを例にC<sub>FRn</sub> について考えてきました。次はこの結合の係数がどのように反応率に影響をするかを考えます。</p>
+</div>
+</div>
+<div id="結合係数は反応率に対して影響を及ぼす" class="section level2">
+<h2>結合係数は反応率に対して影響を及ぼす</h2>
+<p>さて、IRTを元に計算をした反応率について振り返りましょう。</p>
+<p><span class="math display">\[
+b = \frac{1}{\delta + \tau}
+\]</span></p>
+<p>という式をいろいろ代入して計算すると、</p>
+<p><span class="math display">\[
+b = \frac{r}{\delta r + \frac{1}{a}}
+\]</span></p>
+<p>という式になります。</p>
+<p>ここで、反応率をb、反応に要する時間をδ、特異的活性化をa、強化率をrとします。それぞれの意味については、<a href="https://takuto-psych.github.io/post/2025-07-11-/">前回の記事</a>でご確認を。</p>
+<p>この式に対して、結合 Couplingの係数c.を掛け合わせることで、スケジュールごとの反応率を算出することができるのではないかという提案をKilleenはしています。つまり、以下のような式ですね。</p>
+<p><span class="math display">\[
+b = \frac{c.r}{\delta r + \frac{1}{a}}
+\]</span></p>
+<p>ここで、結合係数c.というのは、あくまで仮置きのものであるため「.」という記号をつけているそうです。FR<sub>n</sub> についての結合係数なら、先に出したようなC<sub>FRn</sub> というものを代入できるからですね。</p>
+<p>だから今回の例なら、</p>
+<p><span class="math display">\[
+c. = C_{FR_n} = 1 - (1- \beta)^n
+\]</span></p>
+<p>になります。</p>
+<p>ところで、強化率というのは、1秒あたりの強化子提示の回数を意味します。この時、FRnスケジュールにおいては、毎秒何回反応するかという意味のbと組み合わせると、</p>
+<p><span class="math display">\[
+r = \frac{b}{n}
+\]</span></p>
+<p>と置くことができます。たとえば、1秒間に16回ボタンを連打することができる名人がいるとして、その名人が仮にFR2スケジュールに従事すれば、1秒間に8回（=16/2）餌を獲得できるということです。その名人にとっては、餌よりも弾丸のほうがいい強化子な気はしますけども。</p>
+<p>本題に戻って、</p>
+<p><span class="math display">\[
+r = \frac{b}{n}
+\]</span></p>
+<p>と</p>
+<p><span class="math display">\[
+b = \frac{c.r}{\delta r + \frac{1}{a}}
+\]</span></p>
+<p>を組み合わせると、反応率bは以下の式になります。</p>
+<p><span class="math display">\[
+b = \frac{c.}{\delta} - \frac{n}{\delta a}
+\]</span></p>
+<div class="float">
+<embed src="Coupling_response_rate.pdf" />
+<div class="figcaption">途中式</div>
+</div>
+<p>FRスケジュールについてnを増やしていった時に、この式に従って反応率がどのように振る舞うかを見てみましょう。ただし、ここでいう反応率は、セッション時間に対しての総反応数というような意味だと思います（元論文のさらに元の論文に当たらねば確信はできないのですが）。</p>
+<pre class="r"><code>FR_rate_fun &lt;- function(
+    delta = 0.32
+    ,a = 200
+    ,beta = 0.56
+    ,n = 50
+){
+  c &lt;- c_FR_fun(beta = beta, n = n)
+  b &lt;- (c / delta) - (n / (delta * a))
+  b &lt;- ifelse(b&lt;0, 0, b)
+  return(b)
+}
+##FR0というスケジュールは存在しないけど、グラフにする時のために0も含める
+DF_FR_rate &lt;- data.frame(
+  b = FR_rate_fun(n = 0:250, a = 200)
+  ,n = 0:250
+)
+
+DF_FR_rate %&gt;% ggplot(
+  aes(x = n, y = b)
+) + geom_line()</code></pre>
+<p><img src="https://takuto-psych.github.io/post/2025-08-03-/index_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<p>FRスケジュールでは、強化子提示までに必要な比率が少ないうちには、CRFの時よりも連続的な反応が生じ、比率が一定を超えるとPRPが生じて、そのPRPはnの値が大きいほど長くなるということが知られています。また、ある一定のnを超えると反応すらしなくなるということも知られています。</p>
+<p>グラフを見てみましょう。n = 7くらいで反応率bは3回/秒という最大の値になります。仮にPRPが出現したとしても連打モードに入った時の反応率は3回/秒と同じだと仮定をします。すると、このグラフのn&gt;7でのほぼ線形の反応率の減少は、PRPの長さによるものと解釈できるかもしれません。まあ、今回引用している <span class="citation">Killeen and Sitomer (<a href="#ref-Killeen2003">2003</a>)</span> の中ではPauseの話をしてはいないんですけどね。</p>
+<p>続けてグラフを見ると、FR200を超えると、反応率が0になってしまいます。つまり反応しなくなったということですね。このFRスケジュールで反応しなくなる比率というのが特異的活性化aと一致するのではないかという指摘を <span class="citation">Killeen and Sitomer (<a href="#ref-Killeen2003">2003</a>)</span> はしています。</p>
+<p>この特異的活性化aというのは、個体ごとに、あるいは、強化子ごとに、またその相互作用ごとに異なるようです。行動分析学者がブチギレそうな表現ですがわかりやすく書くならば、個々人で餌ごとに好き嫌いがあり、その好き嫌いによって活性化係数が変わるのではないだろうかという考えですね。</p>
+<p>この活性化係数が変わることによって、二つの影響を及ぼします。一つは特異的活性化という名前の通り、その強化子がより好ましいのであれば（aがより大きいのであれば）、<a href="https://takuto-psych.github.io/post/2025-06-23/">第一の原理</a>で示したように、我々はより活発・覚醒的になるのかもしれません。確かに、より好きなものが与えられたらより活発になりそうですね。もう一つの影響というのが、FR<sub>n</sub>（もしくはPR<sub>n</sub>）スケジュールにおいて、その提示される強化子がより好ましいものであれば。より大きな比率nでも我慢して他の競合する行動に心を奪われずにレバーを押すことができるということなのかもしれません。たとえば、ヘロインなんかがもらえるなら、FR<sub>1000</sub> でも永遠にレバーを押すシドヴィシャスは居そうですね（晩年はメサドンで我慢しようと彼も頑張ってはいたんですけどね）。その場合、しどヴィシャスにとってのヘロインの特異的活性化aは 1000になると捉えられそうですね。</p>
+<p>ここまでで重要なことというのはFRスケジュールにおいて、nが大きくなると結合係数のC<sub>FRn</sub> は1に近づくため、ある一定の最高速度を超えたら、nが増えると直線的に反応率が減ってしまうということです。また、この反応率が0に、つまり反応しないようなnの数になる条件というのは、その強化子の持つ特異的活性化aと同値以上になるような時ということです。</p>
+</div>
+<div id="vrスケジュールとはfrスケジュールを組み合わせたもの" class="section level2">
+<h2>VRスケジュールとはFRスケジュールを組み合わせたもの</h2>
+<p>すごいどうでもいい余談なんですが、僕修士まで社会心理学に属していたためどんなふうに比率を設定していたのかを知らなかったんですよね。当然スケジュール学習に特有の動物や人間の挙動をグラフで見たことはありますけどね。博士に入ってから、VRスケジュールにおいて、必要反応数を指数乱数から取ってきているということを知りました。以下のグラフのイメージです。</p>
+<pre class="r"><code>#1000回レバー押して1セッション終わりという環境を想像。ちょっと酷な気はするけど。
+VR_array &lt;- rexp(1000, rate = 1/20) %&gt;% round(.) ##この計算だと0回押して強化子が出る謎環境も生じるけど、修正面倒なので一旦このままで。
+
+##平均何回押すと強化子出るか
+VR_array %&gt;% mean(.)</code></pre>
+<pre><code>## [1] 19.01</code></pre>
+<pre class="r"><code>##何回押すと強化子出るかの中央値
+VR_array %&gt;% median(.)</code></pre>
+<pre><code>## [1] 13</code></pre>
+<pre class="r"><code>##ヒストグラム
+VR_array %&gt;% hist()</code></pre>
+<p><img src="https://takuto-psych.github.io/post/2025-08-03-/index_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<p>これの理由が、毎回のレバー押しでの当選確率を等しくするためなんですね。たとえば、VR20なら、毎回5%で強化子を獲得できるレバー押しをさせてあげると平均的には20回に1回強化子が得られるよね？という考えになっているということです。連チャンするかもしれないし、ずっと外れてるかもしれないけど、各試行での当選確率は等しく「見える」ということで、こんな指数乱数を使っているんです。</p>
+<p>ちなみに余談ですが、毎回のレバー押しで本当に確率抽選をしている場合（駅前のスキナー箱のレバーは一応この毎回独立の抽選になっているそうです、打たんから知らんけど。）には、Random Ratio:RRスケジュールと呼ばれるそうです。配列の要素を十分にシャッフルされているVR20でもRR20でも、スキナー箱に放り込まれた個体から見ると違いはわからないでしょうけどね。</p>
+<pre class="r"><code>random_ratio_fun &lt;- function(
+  p = 1/20
+  ,session = 1000
+){
+  
+  ratio &lt;- NA %&gt;% list()
+  for (i in 1:session) {
+    # 試行回数をカウント
+    count &lt;- 0
+    
+    # 当選するまでループを続ける
+    while (TRUE) {
+      count &lt;- count + 1
+      # 乱数を生成し、当選確率と比較
+      if (runif(1) &lt; p) {
+        break # 当選したらループを抜ける
+        }
+      }
+    # 当選までに要した試行回数を記録
+    ratio[[i]]&lt;- count 
+  }
+  ratio &lt;- unlist(ratio)
+  return(ratio)
+}
+RR_array &lt;- random_ratio_fun()
+
+##平均何回押すと強化子出るか
+RR_array %&gt;% mean(.)</code></pre>
+<pre><code>## [1] 18.831</code></pre>
+<pre class="r"><code>##何回押すと強化子出るかの中央値
+RR_array %&gt;% median(.)</code></pre>
+<pre><code>## [1] 13</code></pre>
+<pre class="r"><code>##ヒストグラム
+RR_array %&gt;% hist()</code></pre>
+<p><img src="https://takuto-psych.github.io/post/2025-08-03-/index_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<p>さて、こんなVR<sub>n</sub>スケジュールにおける結合係数C<sub>VRn</sub> をどのように出すかについて考えてみます。まずはVRスケジュールというものの本質的な部分を考えます。VR<sub>n</sub>スケジュールというのは、FR<sub>1</sub>, FR<sub>2</sub>, FR<sub>3</sub>, FR<sub>4</sub>,…FR<sub>n</sub>…,FR<sub>∞</sub>,というスケジュールが組み合わさって構成されていると考えられます。ここで∞というふうな添字が存在するのは、VR<sub>n</sub>スケジュールでは、毎回1/nの確率で抽選をしているだけで、その繰り返しの先には、理論上は∞回レバーを押しても強化子が出てこない可能性があるからです。実際のスキナー箱での実験では、有限回数に収めた環境を設定するでしょうから、あくまで理論上の話です。</p>
+<p>つまり、VRスケジュールでは、1回レバーを押して強化子を提示されるという経験や2回レバーを押して強化子が提示されるという経験というのが集約されて、C<sub>VRn</sub> が出来上がるという考え方になるわけですね。この集約の仕方については注意が必要です。VRスケジュールは指数乱数の設定になっているわけですが、その真意は各試行での当選確率を一定にしたいからです。だから、その各試行での当選確率分の重みづけをした期待値に集約することになります。計算し終えると以下の式になります。ちょっとこの式の導出過程が論文内で書かれていなかったのでわからないですが、最初の式を立式できたらΣの足し算を展開していくと出せると思います。立式できたら追記します。</p>
+<p><span class="math display">\[
+C_{VR_n} = \frac{n}{n + \frac{1-\beta}{\beta}}
+\]</span></p>
+<p>何はともあれこの式が出来上がったとして、このC<sub>VRn</sub> は、FRのそれと比較してどんな性質になっているかをグラフにしてみましょう。</p>
+<pre class="r"><code>c_VR_fun &lt;- function(n = 100, beta =0.56){
+  c &lt;- n /(n + ((1+beta)/beta))
+  return(c)
+}
+
+DF_VR_C &lt;- data.frame(
+  c = c_VR_fun(n = 1:25)
+  ,n = 1:25
+  ,schedule = &quot;VR&quot;
+)
+##FRとの比較もしておく
+DF_FR_VR_C &lt;- DF_FR_C %&gt;%  mutate(
+  .
+  ,schedule = &quot;FR&quot;
+) %&gt;% rbind(., DF_VR_C)
+
+DF_FR_VR_C %&gt;%  ggplot(
+  aes(x = n, y = c, colour = schedule)
+) + geom_line() </code></pre>
+<p><img src="https://takuto-psych.github.io/post/2025-08-03-/index_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<p>結合係数は、FRのものと比べて、立ち上がりが遅くなるし、いくらnが増えてもちょーっとずつ結合係数は増えていくんですね。当然と言えば当然ですね。</p>
+<p>最後に、このC<sub>VRn</sub> という結合係数を利用して、VRスケジュールでの反応速度を出してみましょう。ここでも同じ比率のFRとの比較を行います。δやa、βといった他のパラメータは同じにしておきます。</p>
+<pre class="r"><code>VR_rate_fun &lt;- function(
+    delta = 0.32
+    ,a = 200
+    ,beta = 0.56
+    ,n = 50
+){
+  c &lt;- c_VR_fun(beta = beta, n = n)
+  b &lt;- (c / delta) - (n / (delta * a))
+  b &lt;- ifelse(b&lt;0, 0, b)
+  return(b)
+}
+
+DF_VR_rate &lt;- data.frame(
+  b = VR_rate_fun(n = 0:250)
+  ,n = 0:250
+  ,schedule = &quot;VR&quot;
+)
+
+DF_FR_VR_rate &lt;- DF_FR_rate %&gt;% mutate(
+  .
+  ,schedule = &quot;FR&quot;
+) %&gt;% rbind(., DF_VR_rate)
+
+##全部表示ver
+DF_FR_VR_rate %&gt;% ggplot(
+  aes(x = n, y = b, color = schedule)
+) + geom_line()</code></pre>
+<p><img src="https://takuto-psych.github.io/post/2025-08-03-/index_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<pre class="r"><code>##一部表示ver
+DF_FR_VR_rate %&gt;% filter(
+  .
+  , n &lt; 100
+) %&gt;% ggplot(
+  aes(x = n, y = b, color = schedule)
+) + geom_line()</code></pre>
+<p><img src="https://takuto-psych.github.io/post/2025-08-03-/index_files/figure-html/unnamed-chunk-7-2.png" width="672" /></p>
+<p>さて、2個目のグラフを見てみましょう。FRでは、最大の反応率になってから、直線的に反応率は低下していました。一方、VRではどうなるかというと、最大の反応率に至るまでにもVRよりもnの増大で遅れが生じます。また、最大反応率に至ってからもその減少の程度は直線的に減っていないことがわかります。これは、VRではFRよりも反応率が安定している性質の反映と理解することができます。</p>
+<p>ただし、VRでもnが十分に大きくなるとやはりC<sub>VRn</sub> は1に近づくため、1枚目のグラフのように、100を超えたあたりからは直線的な反応率の減少が生じるようになってしまうのですね。</p>
+<p>また、他のパラメータを変えてもいないので、x軸と触れるnの値というのもFRのaの値と同じになってしまいます。このモデルの真偽は置いておいて、直感的には、ボタンを押さなくなるFRnのnの比率よりも、ボタンを押さなくなるVRnのnの比率は高そうな気何するので、モデルの改良ができそうな気はします。</p>
+</div>
+<div id="まとめ" class="section level2">
+<h2>まとめ</h2>
+<p>強化子によって生じる反応率というのは、各スケジュールに固有の<strong>Coupling</strong> <strong>結合</strong>の係数によって調整されるというのです。</p>
+<p>今回引用した <span class="citation">Killeen and Sitomer (<a href="#ref-Killeen2003">2003</a>)</span> では比率 ratioスケジュールについての説明しか行われていませんでした。また、休止、特にPRPや各レバー押しの試行の間のIRTの分布がどのような数理的な原則で生み出されているのかについては触れられていませんでした。そちらは、2023年に引退前の総集編みたいな論文<span class="citation">(<a href="#ref-Killeen2023">Killeen 2023</a>)</span>を出しているので、そちらを読んで理解をしたいです。手に入れてチラッと読みましたが、PRPの数式が本当に何を書いているのかわからなかったので、気合い入れて読みたいなと思っています。</p>
+<p>以下は完全な余談ですが、僕はスロットは好きではありません。ギャンブルは競馬が好きです、お馬さん可愛いので。ただ、スケジュール研究、ましてやスキナー箱のそれをするからには、スロット打たなきゃなと最近強く思っています。昔に打ったことはありますが、レバー叩いたら精霊に「頑張って」って言われて変なコンビがいつも降ってきて頑張る気力を奪われて飽きました。ちなみに、その <span class="citation">Killeen (<a href="#ref-Killeen2023">2023</a>)</span> の論文では、弁別刺激を提示して強化子が来るかどうかの予告をした事態でのPRPの長さを調べた研究を引用してたりします。パチスロ以外は打ったことないので映像しか見たことないですが、カジノスロットでも激アツ予告ってあるらしいですからね、そういう発想を持つためにはやっぱりスロット打つしかないのかな。何も楽しくないまま金をスリ続けた記憶が蘇ります。ああ、大勝ちして、記憶を塗り替えてあげたらいいのか。みなさん、VRスケジュールにはお気をつけて、ほどほどに確率的な強化子獲得のための意思決定を楽しみましょう。</p>
+</div>
+<div id="引用文献" class="section level2 unnumbered">
+<h2>引用文献</h2>
+<div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
+<div id="ref-Killeen2023" class="csl-entry">
+Killeen, Peter R. 2023. <span>“<span class="nocase">Theory of reinforcement schedules</span>.”</span> <em>Journal of the Experimental Analysis of Behavior</em> 120 (3): 289–319. https://doi.org/<a href="https://doi.org/10.1002/jeab.880">https://doi.org/10.1002/jeab.880</a>.
+</div>
+<div id="ref-Killeen2003" class="csl-entry">
+Killeen, Peter R, and Matthew T Sitomer. 2003. <span>“<span>MPR</span>.”</span> <em>Behavioural Processes</em> 62 (1): 49–64. https://doi.org/<a href="https://doi.org/10.1016/S0376-6357(03)00017-2">https://doi.org/10.1016/S0376-6357(03)00017-2</a>.
+</div>
+</div>
+</div>
+</article>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script type="application/javascript" src='https://takuto-psych.github.io/js/toc.js'></script>
+<link rel="stylesheet" href='https://takuto-psych.github.io/css/toc.css' />
+
+
+<div class="utterances">
+  <script>
+    if(currentTheme() == 'light'){
+      var utterancesTheme = 'github-light';
+    } else{
+      var utterancesTheme = 'github-dark';
+    }
+    var utterancesScript = document.createElement('script');
+    utterancesScript.src = 'https://utteranc.es/client.js';
+    utterancesScript.setAttribute('repo', 'Takuto-Psych\/Takuto-Psych.github.io');
+    utterancesScript.setAttribute('issue-term', 'title');
+    utterancesScript.setAttribute('theme', utterancesTheme);
+    utterancesScript.setAttribute('crossorigin', 'anonymous');
+    utterancesScript.setAttribute('async', '');
+    document.querySelector('.utterances').appendChild(utterancesScript);
+  </script>
+</div>
+
+
+  <div class="footer container-xl width-full p-responsive">
+  <div
+    class="position-relative d-flex flex-row-reverse flex-lg-row flex-wrap flex-lg-nowrap flex-justify-center flex-lg-justify-between flex-sm-items-center pt-6 pb-2 mt-6 f6 text-gray border-top border-gray-light ">
+    <a aria-label="Homepage" title="GitHub" class="footer-octicon d-none d-lg-block mr-lg-4" href="https://takuto-psych.github.io/">
+      <svg height="24" class="octicon octicon-mark-github" viewBox="0 0 16 16" version="1.1" width="24">
+        <path fill-rule="evenodd"
+          d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z">
+        </path>
+      </svg>
+    </a>
+    <ul class="list-style-none d-flex flex-wrap col-12 flex-justify-center flex-lg-justify-between mb-2 mb-lg-0">
+      
+      <li class="mr-3 mr-lg-0">Theme by <a href='https://github.com/MeiK2333/github-style'>github-style</a></li>
+      
+    </ul>
+  </div>
+  <div class="d-flex flex-justify-center pb-6">
+    <span class="f6 text-gray-light"></span>
+  </div>
+
+
+</div>
+</body>
+
+<script type="application/javascript" src="https://takuto-psych.github.io/js/github-style.js"></script>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"
+  integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"
+  integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"
+  integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
+  onload="renderMathInElement(document.body);"></script>
+
+
+
+</html>

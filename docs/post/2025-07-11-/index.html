@@ -128,9 +128,9 @@
 
                   
                   <span class="file-info-divider"></span>
-                  Modified <relative-time datetime="Sat, 26 Jul 2025 00:58:10 &#43;0900"
+                  Modified <relative-time datetime="Tue, 05 Aug 2025 01:00:52 &#43;0900"
                     class="no-wrap">
-                    Sat, 26 Jul 2025 00:58:10 &#43;0900</relative-time>
+                    Tue, 05 Aug 2025 01:00:52 &#43;0900</relative-time>
                   
                 </div>
               </div>
@@ -160,7 +160,7 @@
                         </div>
                       </div>
                     </details-menu>
-                      5068 Words
+                      5071 Words
                     
 
                   </div>
@@ -358,8 +358,8 @@ DF_rate &lt;- DF_rate %&gt;% mutate(
 
 DF_rate %&gt;% ggplot(
   .
-  ,aes(x = a, y = b, colour = r)
-) + geom_point()</code></pre>
+  ,aes(x = a, y = b, colour = r, group = r)
+) + geom_line()</code></pre>
 <p><img src="https://takuto-psych.github.io/post/2025-07-11-/index_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
 <p>このグラフのように、1/0.1 = 10の天井を超えないような反応率が出てきます。</p>
 </div>

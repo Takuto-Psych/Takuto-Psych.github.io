@@ -6,8 +6,15 @@
     <description>Recent content in MPR on Takuto Psych Blog</description>
     <generator>Hugo</generator>
     <language>ja</language>
-    <lastBuildDate>Sat, 26 Jul 2025 00:58:10 +0900</lastBuildDate>
+    <lastBuildDate>Tue, 05 Aug 2025 01:00:54 +0900</lastBuildDate>
     <atom:link href="https://takuto-psych.github.io/tags/mpr/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Mathmatical Principles of Reinforcement 強化の数学的原理(MPR)におけるCoupling 結合の意味を説明する</title>
+      <link>https://takuto-psych.github.io/post/2025-08-03-/</link>
+      <pubDate>Sun, 03 Aug 2025 00:00:00 +0000</pubDate>
+      <guid>https://takuto-psych.github.io/post/2025-08-03-/</guid>
+      <description>各比率スケジュール固有の結合係数があるせいで、スケジュール固有の反応率になるんだね</description>
+    </item>
     <item>
       <title>Mathmatical Principles of Reinforcement 強化の数学的原理(MPR)におけるConstraint 制約の意味を説明する</title>
       <link>https://takuto-psych.github.io/post/2025-07-11-/</link>
@@ -17,9 +24,9 @@
     </item>
     <item>
       <title>Mathmatical Principles of Reinforcement 強化の数学的原理(MPR)におけるarousal覚醒の意味を説明する</title>
-      <link>https://takuto-psych.github.io/post/2025-06-23/</link>
+      <link>https://takuto-psych.github.io/post/2025-06-23-/</link>
       <pubDate>Mon, 23 Jun 2025 00:00:00 +0000</pubDate>
-      <guid>https://takuto-psych.github.io/post/2025-06-23/</guid>
+      <guid>https://takuto-psych.github.io/post/2025-06-23-/</guid>
       <description>強化子提示の頻度が上がれば覚醒も線形に上がるんだって。一定時間おきに飴ちゃん降ってくる仕事部屋作ってみようかな！</description>
     </item>
     <item>
