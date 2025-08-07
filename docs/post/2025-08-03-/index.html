@@ -128,9 +128,9 @@
 
                   
                   <span class="file-info-divider"></span>
-                  Modified <relative-time datetime="Tue, 05 Aug 2025 10:45:58 &#43;0900"
+                  Modified <relative-time datetime="Fri, 08 Aug 2025 00:03:49 &#43;0900"
                     class="no-wrap">
-                    Tue, 05 Aug 2025 10:45:58 &#43;0900</relative-time>
+                    Fri, 08 Aug 2025 00:03:49 &#43;0900</relative-time>
                   
                 </div>
               </div>
@@ -160,7 +160,7 @@
                         </div>
                       </div>
                     </details-menu>
-                      7835 Words
+                      7830 Words
                     
 
                   </div>
@@ -212,7 +212,7 @@
 
 
 <p>MPRの最後の原理、Coupling 結合について説明していきます。</p>
-<p><a href="https://takuto-psych.github.io/post/2025-07-11-/">前回の記事</a>では、IRTを元にした反応率というものについて考えました。IRTを構成する要素には、「反応に要する時間」δと、指数関数的な性質の「真の反応間間隔」τで構成されているという内容でした。そして、このIRTを元にした反応率の算出方法では、δが必ず0より大きい値になるという性質による、反応率の上限が生じるという特徴がありました。</p>
+<p><a href="https://takuto-psych.github.io/post/2025-07-11-/">前回の記事</a>では、IRTを元にした反応率というものについて考えました。IRTを構成する要素には、「反応に要する時間」δと、指数関数的な性質の「真の反応間間隔」τがあるよという内容でした。そして、このIRTを元にした反応率の算出方法では、δが必ず0より大きい値になるという性質による、反応率の上限が生じるという特徴がありました。</p>
 <p><strong>Coupling 結合</strong>というのは簡単にいうとこの反応率を調整する概念です。この理解を、元論文<span class="citation">(<a href="#ref-Killeen2003">Killeen and Sitomer 2003</a>)</span>を元に深めていきます。</p>
 <div id="強化子と反応との関係性" class="section level2">
 <h2>強化子と反応との関係性</h2>
@@ -369,10 +369,10 @@ VR_array &lt;- rexp(1000, rate = 1/20) %&gt;% round(.) ##この計算だと0回�
 
 ##平均何回押すと強化子出るか
 VR_array %&gt;% mean(.)</code></pre>
-<pre><code>## [1] 19.232</code></pre>
+<pre><code>## [1] 20.223</code></pre>
 <pre class="r"><code>##何回押すと強化子出るかの中央値
 VR_array %&gt;% median(.)</code></pre>
-<pre><code>## [1] 13</code></pre>
+<pre><code>## [1] 14</code></pre>
 <pre class="r"><code>##ヒストグラム
 VR_array %&gt;% hist()</code></pre>
 <p><img src="https://takuto-psych.github.io/post/2025-08-03-/index_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
@@ -406,7 +406,7 @@ RR_array &lt;- random_ratio_fun()
 
 ##平均何回押すと強化子出るか
 RR_array %&gt;% mean(.)</code></pre>
-<pre><code>## [1] 19.02</code></pre>
+<pre><code>## [1] 19.54</code></pre>
 <pre class="r"><code>##何回押すと強化子出るかの中央値
 RR_array %&gt;% median(.)</code></pre>
 <pre><code>## [1] 13</code></pre>
@@ -485,7 +485,7 @@ DF_FR_VR_rate %&gt;% filter(
 <h2>まとめ</h2>
 <p>強化子によって生じる反応率というのは、各スケジュールに固有の<strong>Coupling</strong> <strong>結合</strong>の係数によって調整されると考えます。この<strong>Coupling 結合</strong>という考え方を元にして、強化学習モデルを拡張させることも可能な気がしました。余力ある時に作ってみようかな。</p>
 <p>今回引用した <span class="citation">Killeen and Sitomer (<a href="#ref-Killeen2003">2003</a>)</span> では比率 ratioスケジュールについての説明しか行われていませんでした。また、休止、特にPRPや各レバー押しの試行の間のIRTの分布がどのような数理的な原則で生み出されているのかについては触れられていませんでした。休止やIntervalスケジュールは、2023年に引退前の総集編みたいな論文<span class="citation">(<a href="#ref-Killeen2023">Killeen 2023</a>)</span>を出しているので、そちらを読んで理解をしたいです。手に入れてチラッと読みましたが、PRPの数式が本当に何を書いているのかわからなかったので、気合い入れて読みたいなと思っています。</p>
-<p>以下は完全な余談ですが、僕はスロットは好きではありません。ギャンブルは競馬が好きです、お馬さん可愛いので。ただ、スケジュール研究、ましてやスキナー箱のそれをするからには、スロット打たなきゃなと最近強く思っています。昔に打ったことはありますが、レバー叩いたら精霊に「頑張って」って言われて変なコンビがいつも降ってきて頑張る気力を奪われて飽きました。ちなみに、その <span class="citation">Killeen (<a href="#ref-Killeen2023">2023</a>)</span> の論文では、弁別刺激を提示して強化子が来るかどうかの予告をした事態でのPRPの長さを調べた研究を引用してたりします。パチスロ以外は打ったことないので映像しか見たことないですが、カジノスロットでも激アツ予告ってあるらしいですからね、こういう発想を獲得するためにもやっぱりスロット打つしかないのかな。</p>
+<p>以下は完全な余談です。僕はスロットは好きではありません。ギャンブルは競馬が好きです、お馬さん可愛いので。ただ、スケジュール研究、ましてやスキナー箱のそれをするからには、スロット打たなきゃなと最近強く思っています。昔に打ったことはありますが、レバー叩いたら精霊に「頑張って」って言われて変なコンビがいつも降ってきて頑張る気力を奪われて飽きました。ちなみに、その <span class="citation">Killeen (<a href="#ref-Killeen2023">2023</a>)</span> の論文では、弁別刺激を提示して強化子が来るかどうかの予告をした事態でのPRPの長さを調べた研究を引用してたりします。パチスロ以外は打ったことないので映像しか見たことないですが、カジノスロットでも激アツ予告ってあるらしいですからね、こういう発想を獲得するためにもやっぱりスロット打つしかないのかな。</p>
 <p>みなさんも、VR（RR）スケジュールにはお気をつけて、ほどほどに確率的な強化子獲得のための意思決定を楽しみましょう。今後も僕はオッズ10倍くらいの単勝一本勝負競馬だけでいいかな。</p>
 </div>
 <div id="引用文献" class="section level2 unnumbered">
